@@ -1,7 +1,9 @@
 {
   "pages": [
     "pages/serve/serve",
-    "pages/merchant/merchant"
+    "pages/merchant/merchant",
+    "compoents/buttomBar/buttomBar",
+    "compoents/headBar/headBar"
   ],
   "subPackages": [
     {
@@ -42,5 +44,8 @@
     "rpxCalcBaseDeviceWidth": 375,
     "rpxCalcIncludeWidth": 750
   },
-  "usingComponents": {}
+  "usingComponents": {
+    "buttom-bar": "/compoents/buttomBar/buttomBar",
+    "head-bar": "/compoents/headBar/headBar"
+  }
 }

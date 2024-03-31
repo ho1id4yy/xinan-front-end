@@ -1,5 +1,11 @@
 {
   "navigationBarTitleText": "",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "pet-item": "/page_list/pet/compoents/petItem",
+    "add-pet-box": "/page_list/pet/compoents/addPetBox",
+    "get-pet-box": "/page_list/pet/compoents/getPetBox",
+    "send-pet-box": "/page_list/pet/compoents/sendAccount",
+    "edit-accolunt-vue": "/page_list/pet/compoents/editAccolunt"
+  }
 }

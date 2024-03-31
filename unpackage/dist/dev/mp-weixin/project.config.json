@@ -11,6 +11,7 @@
     "minified": false,
     "newFeature": true,
     "bigPackageSizeSupport": true,
+    "ignoreUploadUnusedFiles": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -18,10 +19,45 @@
     }
   },
   "compileType": "miniprogram",
-  "libVersion": "3.3.4",
-  "appid": "wx7adde43fd3a91d98",
+  "libVersion": "3.3.5",
+  "appid": "wx311765e51ce48c17",
   "projectname": "xinan-front-end",
-  "condition": {},
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "列表主页",
+          "pathName": "page_list/mainlist/mainlist",
+          "query": ""
+        },
+        {
+          "name": "珍宝",
+          "pathName": "page_list/treasure/treasure",
+          "query": ""
+        },
+        {
+          "name": "密码",
+          "pathName": "page_list/password/password",
+          "query": ""
+        },
+        {
+          "name": "宠物",
+          "pathName": "page_list/pet/pet",
+          "query": ""
+        },
+        {
+          "name": "愿望单",
+          "pathName": "page_list/wishlist/wishlist",
+          "query": ""
+        },
+        {
+          "name": "平台管理",
+          "pathName": "page_list/socialplatform/socialplatform",
+          "query": ""
+        }
+      ]
+    }
+  },
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2

@@ -1,0 +1,1 @@
+<view data-event-opts="{{[['tap',[['openEditBox',['$event']]]]]}}" class="treasureItem data-v-ecea062c" bindtap="__e"><view class="treasureItemHead data-v-ecea062c"><image src="{{treasureItemDetail.img}}" alt srcset mode="aspectFit" class="data-v-ecea062c"></image></view><view class="treasureItemContent data-v-ecea062c">{{''+treasureItemDetail.text+''}}</view></view>

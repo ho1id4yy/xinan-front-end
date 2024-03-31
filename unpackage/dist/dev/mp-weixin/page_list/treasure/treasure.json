@@ -1,5 +1,9 @@
 {
   "navigationBarTitleText": "",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "treasure-item": "/page_list/treasure/compoents/treasureItem",
+    "add-treasure": "/page_list/treasure/compoents/addTreasure",
+    "edit-treasure-vue": "/page_list/treasure/compoents/editTreasure"
+  }
 }

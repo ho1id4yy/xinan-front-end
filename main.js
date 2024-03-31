@@ -3,6 +3,10 @@ import App from './App'
 // #ifndef VUE3
 import Vue from 'vue'
 import './uni.promisify.adaptor'
+import buttomBarVue from './compoents/buttomBar/buttomBar.vue'
+import headBarVue from './compoents/headBar/headBar.vue'
+Vue.component("buttom-bar",buttomBarVue)
+Vue.component("head-bar",headBarVue)
 Vue.config.productionTip = false
 App.mpType = 'app'
 const app = new Vue({
