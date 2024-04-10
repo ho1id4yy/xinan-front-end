@@ -42,7 +42,7 @@
 			<image  class='label'  src='../../static/icon/Group_black.png'></image>
 			<image @click='tocircle' class='label' src='../../static/icon/third_white.png'></image>
 			<image @click="toserve" class='label' src='../../static/icon/second_white.png'></image>
-			<image @click='tolist' class='label' src='../../static/icon/first_black.png'></image>
+			<image @click='tolist' class='label' src='../../static/icon/first_white.png'></image>
 		</view>
 		<view v-if='showcover' class='grayblock'>
 		</view>

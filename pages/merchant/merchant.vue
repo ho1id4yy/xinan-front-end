@@ -22,42 +22,71 @@
 			<view class='tar2'>收藏</view>
 			<view class='tar2'>致电</view>
 		</view>
-		<view class='block1'>
-			<view class='padding'>
-				瑞星
+		<view class='mechantblock'>
+				<view class='rectangle' v-if="iscancel1">
+				<view class='name'>瑞星殡葬用品</view>
+				<view class='opac'>全用品售卖店</view>
+				<view class='addr'>地址：碑林区八仙庵</view>
+				<view class='addr'>负责人：潘先生 电话：123456789212</view>
+				<view>
+					<view @click="cancel1">
+						<image class='circle' src='../../static/icon/star.png'></image>
+						<image class='phone' src='../../static/icon/starblack.png'></image>
+					</view>
+					<view>
+						<image class='circle2' src='../../static/icon/phone.png'></image>
+						<image class='phone2' src='../../static/icon/tel.png'></image>
+					</view>
+				</view>
 			</view>
-			<image class='icon1' src='../../static/icon/Ellipse 25.png'></image>
-			<image class='surface1' src='../../static/icon/tel.png'></image>
-			<image class='icon2' src='../../static/icon/Ellipse 25.png'></image>
-			<image  class='surface2' src='../../static/icon/star.png'></image>
-			<image  class='surface3' src='../../static/icon/starblack.png'></image>
-		</view>
-		<view class='block1'>
-			<view class='padding'>
-				瑞星
+			<view class='rectangle' v-if="iscancel1">
+				<view class='name'>临潼殡仪馆</view>
+				<view class='opac'>火化殡仪馆</view>
+				<view class='addr'>地址：临潼区苗坡路1号</view>
+				<view class='addr'>负责人：吕国华 电话：029-83886470</view>
+				<view>
+					<view @click="cancel1">
+						<image class='circle' src='../../static/icon/star.png'></image>
+						<image class='phone' src='../../static/icon/starblack.png'></image>
+					</view>
+					<view>
+						<image class='circle2' src='../../static/icon/phone.png'></image>
+						<image class='phone2' src='../../static/icon/tel.png'></image>
+					</view>
+				</view>
 			</view>
-			<image class='icon1' src='../../static/icon/Ellipse 25.png'></image>
-			<image class='surface1' src='../../static/icon/tel.png'></image>
-			<image class='icon2' src='../../static/icon/Ellipse 25.png'></image>
-			<image  class='surface2' src='../../static/icon/star.png'></image>
-		</view>
-		<view class='block1'>
-			<view class='padding'>
-				瑞星
+			<view class='rectangle' v-if="iscancel1">
+				<view class='name'>西安市回民殡仪馆</view>
+				<view class='opac'>土葬殡仪馆</view>
+				<view class='addr'>地址：东举院巷146号</view>
+				<view class='addr'>负责人：屈景慧 电话：123456789212</view>
+				<view>
+					<view @click="cancel1">
+						<image class='circle' src='../../static/icon/star.png'></image>
+						<image class='phone' src='../../static/icon/starblack.png'></image>
+					</view>
+					<view>
+						<image class='circle2' src='../../static/icon/phone.png'></image>
+						<image class='phone2' src='../../static/icon/tel.png'></image>
+					</view>
+				</view>
 			</view>
-			<image class='icon1' src='../../static/icon/Ellipse 25.png'></image>
-			<image class='surface1' src='../../static/icon/tel.png'></image>
-			<image class='icon2' src='../../static/icon/Ellipse 25.png'></image>
-			<image  class='surface2' src='../../static/icon/star.png'></image>
-		</view>
-		<view class='block1'>
-			<view class='padding'>
-				瑞星
+			<view class='rectangle' v-if='iscancel2'>
+				<view class='name'>西安市殡仪馆</view>
+				<view class='opac'>火化殡仪馆</view>
+				<view class='addr'>地址：鸣犊街办留公村</view>
+				<view class='addr'>负责人：许惜民 电话：123456789212</view>
+				<view>
+					<view @click="cancel2">
+						<image class='circle' src='../../static/icon/star.png'></image>
+						<image class='phone' src='../../static/icon/starblack.png'></image>
+					</view>
+					<view>
+						<image class='circle2' src='../../static/icon/phone.png'></image>
+						<image class='phone2' src='../../static/icon/tel.png'></image>
+					</view>
+				</view>
 			</view>
-			<image class='icon1' src='../../static/icon/Ellipse 25.png'></image>
-			<image class='surface1' src='../../static/icon/tel.png'></image>
-			<image class='icon2' src='../../static/icon/Ellipse 25.png'></image>
-			<image  class='surface2' src='../../static/icon/star.png'></image>
 		</view>
 		<view class='bottombar'>
 				<image class='label' @click='touser' src='../../static/icon/Group_white.png'></image>
@@ -74,6 +103,8 @@
 	export default {
 		data() {
 			return {
+				iscancel1:true,
+				iscancel2:true,
 			};
 		},
 		methods:{
@@ -102,57 +133,66 @@
 </script>
 
 <style lang="scss" scoped>
-.block1{
-	.padding{
-		padding: 20rpx 0rpx 20rpx 50rpx;
-		font-weight: bold;
+.mechantblock{
+	.circle{
+		height:80rpx;
+		width:80rpx;
+		position: absolute;
+		margin:-95rpx 20rpx 40rpx 540rpx;
+		display: inline;
+		z-index: 1;
+	};
+	.phone{
+		height:35rpx;
+		width:35rpx;
+		position: absolute;
+		margin:-80rpx 20rpx 40rpx 565rpx;
+		z-index: 100;
+		display: inline;
+	};
+	.phone2{
+		height:38rpx;
+		width:38rpx;
+		position: absolute;
+		margin:-80rpx 20rpx 40rpx 470rpx;
 	}
-	height:160rpx;
-	box-sizing: border-box;
-	border-radius: 40rpx;
-	width:660rpx;
-	margin:20rpx 40rpx 30rpx;
-	clear:both;
-	background-color: #F5F5F5;
-	.icon1{
+	.circle2{
 		height:80rpx;
 		width:80rpx;
 		position: absolute;
-		margin-left: 430rpx;
-		z-index:5;
-	};
-	.surface1{
-		height:40rpx;
-		width:40rpx;
+		margin:-95rpx 20rpx 40rpx 450rpx;
+	}
+	height:780rpx;
+	overflow: auto;
+	.rectangle{
+		width:620rpx;
+		height:130rpx;
+		margin-left: 40rpx;
+		margin-top: 25rpx;
 		position: relative;
-		z-index:50;
-		margin-left: 450rpx;
-		margin-top: 10rpx;
+		padding:20rpx;
+		background-color: rgb(248,248,248);
+		border: 5rpx solid white;
+		border-radius: 50rpx;
 	};
-	.icon2{
-		height:80rpx;
-		width:80rpx;
-		position: absolute;
-		margin-left: 50rpx;
-		z-index:5;
-	};
-	.surface2{
-		height:40rpx;
-		width:40rpx;
+	.name{
+		font-weight: bold;
 		position: relative;
-		z-index:10;
-		margin-left: 70rpx;
-		display: inline-block;
-		margin-top: 10rpx;
+		display: inline;
+		margin:-100rpx 20rpx 30rpx 20rpx;
 	};
-	.surface3{
-		height:40rpx;
-		width:40rpx;
-		z-index:100;
+	.opac{
+		font-size: 20%;
 		position: relative;
-		margin-left: 558rpx;
-		display: inline-block;
-		margin-top: -40rpx;
+		color: rgb(210, 210, 210);
+		opacity: 0.8;
+		display: inline;
+	};
+	.addr{
+		font-size: 5%;
+		position: relative;
+		color: rgb(50,50,50);
+		margin:20rpx 0rpx -15rpx 20rpx;
 	}
 }
 .tar1{
@@ -246,7 +286,6 @@
 		z-index:100;
 		background-color: #FFFFFF;
 		position:absolute;
-		z-index: 100;
 		.block{
 			border:5rpx solid black;
 			border-radius: 50rpx;

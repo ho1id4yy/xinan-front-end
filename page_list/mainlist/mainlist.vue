@@ -29,7 +29,7 @@
 			</view>
 			<view class='select'>
 				<view>
-					<view class='font'>愿望清单</view>
+					<view class='font' @click='towishlist'>愿望清单</view>
 					<image class='circle' src='../../static/icon/Ellipse 6.png'></image>
 					<view>
 						<image class='right' src='../../static/icon/Vector 19.png'></image>
@@ -38,7 +38,7 @@
 				<image class='wall' src='../../static/icon/Vector 18.png'></image>
 			</view>
 			<view class='select'>
-				<view class='font'>社交平台管理</view>
+				<view class='font' @click='tosocial'>社交平台管理</view>
 				<view>
 					<image class='circle' src='../../static/icon/Ellipse 6.png'></image>
 					<view>
@@ -48,7 +48,7 @@
 				<image class='wall' src='../../static/icon/Vector 18.png'></image>
 			</view>
 			<view class='select'>
-				<view class='font'>密码柜管理</view>
+				<view class='font' @click='topsw'>密码柜管理</view>
 				<view>
 					<image class='circle' src='../../static/icon/Ellipse 6.png'></image>
 					<view>
@@ -58,7 +58,7 @@
 				<image class='wall' src='../../static/icon/Vector 18.png'></image>
 			</view>
 			<view class='select'>
-				<view class='font'>宠物管理</view>
+				<view class='font' @click='topet'>宠物管理</view>
 				<view>
 					<image class='circle' src='../../static/icon/Ellipse 6.png'></image>
 					<view>
@@ -68,7 +68,7 @@
 				<image class='wall' src='../../static/icon/Vector 18.png'></image>
 			</view>
 			<view class='select'>
-				<view class='font'>珍宝收藏馆</view>
+				<view class='font' @click='totre'>珍宝收藏馆</view>
 				<view>
 					<image class='circle' src='../../static/icon/Ellipse 6.png'></image>
 					<image class='right' src='../../static/icon/Vector 19.png'></image>
@@ -97,6 +97,31 @@
 			toinvitelist(){
 				uni.navigateTo({
 					url:'/page_list/invitelist/invitelist'
+				})
+			},
+			towishlist(){
+				uni.navigateTo({
+					url:'/page_list/wishlist/wishlist'
+				})
+			},
+			tosocial(){
+				uni.navigateTo({
+					url:'/page_list/socialplatform/socialplatform'
+				})
+			},
+			totre(){
+				uni.navigateTo({
+					url:'/page_list/treasure/treasure'
+				})
+			},
+			topsw(){
+				uni.navigateTo({
+					url:'/page_list/password/password'
+				})
+			},
+			topet(){
+				uni.navigateTo({
+					url:'/page_list/pet/pet'
 				})
 			},
 			toserve(){

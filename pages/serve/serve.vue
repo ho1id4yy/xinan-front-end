@@ -17,23 +17,30 @@
 			<image class='column' src='../../static/icon/Component 22.png'></image>
 			<image class='alter' src='../../static/icon/Ellipse 18.png'></image>
 			<view class='right'>
-				<view class='row1'>医生确认死亡</view>
-				<view class='row1'>净身穿衣</view>
-				<view class='row1'>医院开具死亡证明</view>
+				<view>
+					<view class='row1'>医生确认死亡</view>
+					<view class='row1'>净身穿衣</view>
+					<view class='row1'>医院开具死亡证明</view>
+				</view>
+				
 				<view class='row2'>
 				<view class='font'>
 					联系殡仪馆灵车
 				</view>
 					<image class='btn' src='../../static/icon/Ellipse 99.png'></image>
-					<image class='btnright' src='../../static/icon/Component 110.png'></image>
+					<image @click="todetail" class='btnright' src='../../static/icon/Component 110.png'></image>
 					<view class='small'>灵车运送、存放遗体</view>
 				</view>
-				<view class='row3'>摆设灵堂</view>
-				<view class='row3'>预约殡仪馆事项</view>
-				<view class='row3'>选购殡葬用品</view>
-				<view class='row3'>预备丧宴</view>
-				<view class='row3'>办理殡仪馆手续</view>
-				<view class='row3'>出殡仪式</view>
+				
+				<view>
+					<view class='row3'>摆设灵堂</view>
+					<view class='row3'>预约殡仪馆事项</view>
+					<view class='row3'>选购殡葬用品</view>
+					<view class='row3'>预备丧宴</view>
+					<view class='row3'>办理殡仪馆手续</view>
+					<view class='row3'>出殡仪式</view>
+				</view>
+				
 			</view>
 			
 		</view>
@@ -79,6 +86,11 @@
 				uni.redirectTo({
 					url:'/page_list/mainlist/mainlist'
 				})
+			},
+			todetail(){
+				uni.redirectTo({
+					url:'/pages/detail/detail'
+				})
 			}
 		}
 	}
@@ -99,10 +111,13 @@
 	margin:565rpx 0rpx 0rpx 85.5rpx;
 }
 .right{
+	position: fixed;
 	width:600rpx;
+	height: 700rpx;
+	left: 140rpx;
 	display: inline-block;
-	margin-left: 150rpx;
-	margin-top: -1000rpx;
+	top:440rpx;
+	overflow: auto;
 	.row1{
 		height:55rpx;
 		opacity: 0.2;
@@ -123,7 +138,7 @@
 		padding:10rpx 0rpx 10rpx 20rpx;
 		.font{
 			font-weight: bold;
-		}
+		};
 		.btn{
 			width:80rpx;
 			height:80rpx;
@@ -206,13 +221,15 @@
 }
 .bottombar{
 		width:700rpx;
-		margin:0rpx 20rpx 20rpx 22rpx;
+		bottom: 28rpx;
+		left:30rpx;
 		border:5rpx solid black;
 		box-sizing: border-box;
 		border-radius: 60rpx;
 		height:120rpx;
 		background-color: #FFFFFF;
 		float: left;
+		position: fixed;
 		.block{
 			border:5rpx solid black;
 			border-radius: 50rpx;
