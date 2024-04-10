@@ -142,21 +142,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 98));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 100));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 90));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 92));
 var addBox = function addBox() {
   __webpack_require__.e(/*! require.ensure | page_list/socialplatform/compoents/addBox */ "page_list/socialplatform/compoents/addBox").then((function () {
-    return resolve(__webpack_require__(/*! ./compoents/addBox.vue */ 263));
+    return resolve(__webpack_require__(/*! ./compoents/addBox.vue */ 271));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var Item = function Item() {
   __webpack_require__.e(/*! require.ensure | page_list/socialplatform/compoents/Item */ "page_list/socialplatform/compoents/Item").then((function () {
-    return resolve(__webpack_require__(/*! ./compoents/Item.vue */ 270));
+    return resolve(__webpack_require__(/*! ./compoents/Item.vue */ 278));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var editimgVue = function editimgVue() {
   __webpack_require__.e(/*! require.ensure | page_list/socialplatform/compoents/editimg */ "page_list/socialplatform/compoents/editimg").then((function () {
-    return resolve(__webpack_require__(/*! ./compoents/editimg.vue */ 306));
+    return resolve(__webpack_require__(/*! ./compoents/editimg.vue */ 285));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {

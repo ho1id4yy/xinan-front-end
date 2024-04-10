@@ -142,31 +142,31 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 98));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 100));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 90));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 92));
 var petItem = function petItem() {
   __webpack_require__.e(/*! require.ensure | page_list/pet/compoents/petItem */ "page_list/pet/compoents/petItem").then((function () {
-    return resolve(__webpack_require__(/*! ./compoents/petItem.vue */ 221));
+    return resolve(__webpack_require__(/*! ./compoents/petItem.vue */ 229));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var addPetBox = function addPetBox() {
   __webpack_require__.e(/*! require.ensure | page_list/pet/compoents/addPetBox */ "page_list/pet/compoents/addPetBox").then((function () {
-    return resolve(__webpack_require__(/*! ./compoents/addPetBox.vue */ 228));
+    return resolve(__webpack_require__(/*! ./compoents/addPetBox.vue */ 236));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var getPetBox = function getPetBox() {
   __webpack_require__.e(/*! require.ensure | page_list/pet/compoents/getPetBox */ "page_list/pet/compoents/getPetBox").then((function () {
-    return resolve(__webpack_require__(/*! ./compoents/getPetBox.vue */ 235));
+    return resolve(__webpack_require__(/*! ./compoents/getPetBox.vue */ 243));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var sendPetBox = function sendPetBox() {
   __webpack_require__.e(/*! require.ensure | page_list/pet/compoents/sendAccount */ "page_list/pet/compoents/sendAccount").then((function () {
-    return resolve(__webpack_require__(/*! ./compoents/sendAccount.vue */ 242));
+    return resolve(__webpack_require__(/*! ./compoents/sendAccount.vue */ 250));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var editAccoluntVue = function editAccoluntVue() {
   __webpack_require__.e(/*! require.ensure | page_list/pet/compoents/editAccolunt */ "page_list/pet/compoents/editAccolunt").then((function () {
-    return resolve(__webpack_require__(/*! ./compoents/editAccolunt.vue */ 249));
+    return resolve(__webpack_require__(/*! ./compoents/editAccolunt.vue */ 257));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {

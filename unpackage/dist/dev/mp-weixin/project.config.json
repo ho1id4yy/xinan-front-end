@@ -26,6 +26,11 @@
     "miniprogram": {
       "list": [
         {
+          "name": "心安圈",
+          "pathName": "page_anxincircle/anxincircle/anxincircle",
+          "query": ""
+        },
+        {
           "name": "列表主页",
           "pathName": "page_list/mainlist/mainlist",
           "query": ""

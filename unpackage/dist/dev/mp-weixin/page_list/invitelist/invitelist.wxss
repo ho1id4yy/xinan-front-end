@@ -24,6 +24,42 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.graybox.data-v-f35fc820 {
+  display: inline-block;
+  height: 1334rpx;
+  width: 750rpx;
+  z-index: 50;
+  position: absolute;
+  background-color: #8D8C8C;
+  opacity: 0.5;
+  margin-top: -1190rpx;
+}
+.addfriend.data-v-f35fc820 {
+  height: 450rpx;
+  width: 450rpx;
+  float: left;
+  position: relative;
+  z-index: 100;
+  display: inline-block;
+  margin: -700rpx 60rpx 300rpx 140rpx;
+  border: 5rpx solid white;
+  border-radius: 20rpx;
+  background-color: #FFFFFF;
+}
+.addfriend .close.data-v-f35fc820 {
+  height: 30rpx;
+  width: 30rpx;
+  float: right;
+  margin: 10rpx 10rpx 0 0;
+}
+.addfriend .friend.data-v-f35fc820 {
+  width: 160rpx;
+  height: 160rpx;
+  margin: 40rpx 140rpx 0rpx 140rpx;
+}
+.addfriend .name.data-v-f35fc820 {
+  text-align: center;
+}
 .block1.data-v-f35fc820 {
   height: 250rpx;
   border: 5rpx solid black;
@@ -31,7 +67,7 @@
   border-radius: 30rpx;
   width: 660rpx;
   margin: 0 40rpx;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
   z-index: -1;
   clear: both;
 }
@@ -81,6 +117,14 @@
   font-size: 90%;
   display: inline;
 }
+.block .input .text.data-v-f35fc820 {
+  height: 70rpx;
+  width: 400rpx;
+  margin-left: 40rpx;
+  font-size: 90%;
+  float: left;
+  display: inline;
+}
 .block .button.data-v-f35fc820 {
   background-color: #343434;
   color: #FFFFFF;
@@ -91,7 +135,7 @@
   float: right;
   display: inline;
   font-size: 21rpx;
-  margin-top: -40rpx;
+  margin-top: 5rpx;
   margin-right: 8rpx;
 }
 .block .icon.data-v-f35fc820 {
@@ -130,15 +174,14 @@
 }
 .bottombar.data-v-f35fc820 {
   width: 700rpx;
-  margin: -20rpx 20rpx 20rpx 20rpx;
+  margin: 0rpx 20rpx 20rpx 20rpx;
   border: 5rpx solid black;
   box-sizing: border-box;
   border-radius: 60rpx;
   height: 120rpx;
-  z-index: 100;
+  z-index: 10;
   background-color: #FFFFFF;
   position: absolute;
-  z-index: 100;
 }
 .bottombar .block.data-v-f35fc820 {
   border: 5rpx solid black;
@@ -147,7 +190,7 @@
   width: 140rpx;
   display: inline-block;
   position: absolute;
-  margin: 15rpx 0rpx 0rpx 185rpx;
+  margin: 20rpx 70rpx 20rpx 30rpx;
 }
 .bottombar .label.data-v-f35fc820 {
   height: 40rpx;

@@ -168,14 +168,55 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
-    return {};
+    return {
+      buttombar: {
+        active: 1,
+        imglist: ['/static/icon/first_white.png', '/static/icon/second_black.png', '/static/icon/third_white.png', '/static/icon/Group_white.png']
+      }
+    };
   },
   methods: {
-    c: function c() {
-      uni.navigateTo({
+    tomerchant: function tomerchant() {
+      uni.redirectTo({
         url: '/pages/merchant/merchant'
+      });
+    },
+    toserve: function toserve() {
+      uni.redirectTo({
+        url: '/pages/serve/serve'
+      });
+    },
+    tocircle: function tocircle() {
+      uni.redirectTo({
+        url: '/page_anxincircle/anxincircle/anxincircle'
+      });
+    },
+    touser: function touser() {
+      uni.redirectTo({
+        url: '/page_user/homepage/homepage'
+      });
+    },
+    tolist: function tolist() {
+      uni.redirectTo({
+        url: '/page_list/mainlist/mainlist'
       });
     }
   }

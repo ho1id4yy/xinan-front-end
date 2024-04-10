@@ -176,92 +176,49 @@ exports.default = void 0;
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default = {
   data: function data() {
     return {
       buttombar: {
         active: 0,
         imglist: ['/static/icon/first_black.png', '/static/icon/second_white.png', '/static/icon/third_white.png', '/static/icon/Group_white.png']
-      }
+      },
+      mainList: [{
+        name: "葬礼邀请名单",
+        checked: false,
+        url: '/page_list/invitelist/invitelist'
+      }, {
+        name: "愿望清单",
+        checked: false,
+        url: '/page_list/wishlist/wishlist'
+      }, {
+        name: "社交平台管理",
+        checked: false,
+        url: '/page_list/socialplatform/socialplatform'
+      }, {
+        name: "密码柜管理",
+        checked: false,
+        url: '/page_list/password/password'
+      }, {
+        name: "宠物管理",
+        checked: false,
+        url: '/page_list/pet/pet'
+      }, {
+        name: "珍宝收藏馆",
+        checked: false,
+        url: '/page_list/treasure/treasure'
+      }]
     };
   },
   methods: {
-    goWish: function goWish() {
-      uni.navigateTo({
-        url: '/page_list/wishlist/wishlist'
-      });
-    },
-    goSocial: function goSocial() {
-      uni.navigateTo({
-        url: '/page_list/socialplatform/socialplatform'
-      });
-    },
-    goPassword: function goPassword() {
-      uni.navigateTo({
-        url: '/page_list/password/password'
-      });
-    },
-    goPet: function goPet() {
-      uni.navigateTo({
-        url: '/page_list/pet/pet'
-      });
-    },
-    goTreasure: function goTreasure() {
-      uni.navigateTo({
-        url: '/page_list/treasure/treasure'
-      });
-    },
     c: function c() {
       uni.navigateTo({
         url: '/page_list/invitelist/invitelist'
+      });
+    },
+    goto: function goto(url) {
+      uni.navigateTo({
+        url: url
       });
     }
   }

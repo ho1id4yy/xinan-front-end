@@ -1,0 +1,110 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.boxmarsk.data-v-7d55f33e {
+  height: 100vh;
+  width: 100%;
+  background-color: #343434bd;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+}
+.boxmarsk .addBox-wrap.data-v-7d55f33e {
+  width: 525rpx;
+  height: 750rpx;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  background-color: #ffffff;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  border-radius: 15rpx;
+  padding: 30rpx;
+}
+.boxmarsk .addBox-wrap .addBox.data-v-7d55f33e {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.boxmarsk .addBox-wrap .addBox .head.data-v-7d55f33e {
+  height: 60rpx;
+  width: 100%;
+  border-bottom: 2rpx solid #000;
+}
+.boxmarsk .addBox-wrap .addBox .head input.data-v-7d55f33e {
+  color: #d9d9d9;
+  font-size: 42rpx;
+}
+.boxmarsk .addBox-wrap .addBox .content.data-v-7d55f33e {
+  box-sizing: border-box;
+  height: 465rpx;
+  width: 465rpx;
+}
+.boxmarsk .addBox-wrap .addBox .content image.data-v-7d55f33e {
+  height: 204.6rpx;
+  width: 204.6rpx;
+  margin: 18.6rpx;
+  float: left;
+  background-color: #d9d9d9;
+}
+.boxmarsk .addBox-wrap .addBox .content image.data-v-7d55f33e:nth-child(1) {
+  margin-right: 0;
+}
+.boxmarsk .addBox-wrap .addBox .content image.data-v-7d55f33e:nth-child(3) {
+  margin-top: 0;
+  margin-right: 0;
+}
+.boxmarsk .addBox-wrap .addBox .content image.data-v-7d55f33e:nth-child(4) {
+  margin-top: 0;
+}
+.boxmarsk .addBox-wrap .addBox .buttom.data-v-7d55f33e {
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 100%;
+}
+.boxmarsk .addBox-wrap .addBox .buttom text.data-v-7d55f33e:nth-child(1) {
+  float: left;
+  font-weight: 600;
+}
+.boxmarsk .addBox-wrap .addBox .buttom text.data-v-7d55f33e:nth-child(2) {
+  float: right;
+}
+.boxmarsk .addBox-wrap .addBox .addIcon.data-v-7d55f33e {
+  margin-top: 30rpx;
+  height: 55rpx;
+  width: 100%;
+  background-color: #343434;
+  border-radius: 15rpx;
+  box-sizing: border-box;
+  border: 2rpx solid #343434;
+  color: #fff;
+  line-height: 55rpx;
+  text-align: center;
+}
+

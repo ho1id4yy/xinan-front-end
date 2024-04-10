@@ -135,28 +135,67 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+var addBox = function addBox() {
+  __webpack_require__.e(/*! require.ensure | page_anxincircle/anxincircle/compoents/addBox */ "page_anxincircle/anxincircle/compoents/addBox").then((function () {
+    return resolve(__webpack_require__(/*! ./compoents/addBox.vue */ 326));
+  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+};
 var _default = {
+  components: {
+    addBox: addBox
+  },
   data: function data() {
-    return {};
+    return {
+      buttombar: {
+        active: 2,
+        imglist: ['/static/icon/first_white.png', '/static/icon/second_white.png', '/static/icon/third_black.png', '/static/icon/Group_white.png']
+      },
+      isShowAddBox: false,
+      circleList: [{
+        title: "独自旅行1",
+        headImg: "/static/picture/headImg.png",
+        time: "2024-4-2",
+        contentList: ["../../static/icon/homepagebackground.png", "../../static/icon/homepagebackground.png", "../../static/icon/homepagebackground.png", "../../static/icon/homepagebackground.png"]
+      }, {
+        title: "独自旅行2",
+        headImg: "/static/picture/headImg.png",
+        time: "2024-4-4",
+        contentList: ["../../static/icon/homepagebackground.png", "../../static/icon/homepagebackground.png", "../../static/icon/homepagebackground.png", "../../static/icon/homepagebackground.png"]
+      }, {
+        title: "独自旅行3",
+        headImg: "/static/picture/headImg.png",
+        time: "2024-4-4",
+        contentList: ["../../static/icon/homepagebackground.png", "../../static/icon/homepagebackground.png", "../../static/icon/homepagebackground.png", "../../static/icon/homepagebackground.png"]
+      }]
+    };
+  },
+  methods: {
+    showAddBox: function showAddBox() {
+      this.isShowAddBox = !this.isShowAddBox;
+    }
+  },
+  onLoad: function onLoad() {
+    var _this = this;
+    uni.$on('closeAddBox', function () {
+      _this.isShowAddBox = !_this.isShowAddBox;
+    });
+    uni.$on('addItem', function (res) {
+      _this.circleList.unshift(res);
+      _this.isShowAddBox = !_this.isShowAddBox;
+    });
+  },
+  onUnload: function onUnload() {
+    uni.$off();
   }
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

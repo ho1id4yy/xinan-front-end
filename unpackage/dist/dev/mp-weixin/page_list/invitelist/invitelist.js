@@ -135,7 +135,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -240,12 +240,53 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
-    return {};
+    return {
+      opacity: false,
+      buttombar: {
+        active: 0,
+        imglist: ['/static/icon/first_black.png', '/static/icon/second_white.png', '/static/icon/third_white.png', '/static/icon/Group_white.png']
+      }
+    };
+  },
+  methods: {
+    toinvitelist: function toinvitelist() {
+      uni.navigateTo({
+        url: '/page_list/invitelist/invitelist'
+      });
+    },
+    toserve: function toserve() {
+      uni.reLaunch({
+        url: '/pages/serve/serve'
+      });
+    },
+    tocircle: function tocircle() {
+      uni.reLaunch({
+        url: '/page_anxincircle/anxincircle/anxincircle'
+      });
+    },
+    touser: function touser() {
+      uni.reLaunch({
+        url: '/page_user/homepage/homepage'
+      });
+    },
+    change: function change() {},
+    changeopacity: function changeopacity() {
+      this.opacity = true;
+    },
+    close: function close() {
+      this.opacity = false;
+    }
   }
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

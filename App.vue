@@ -44,14 +44,42 @@
 		}
 	}
 
+
+	.Mainlist-content {
+		checkbox {
+			$size: 50rpx;
+			width: $size;
+			height: $size;
+
+			@mixin box {
+				border-radius: 50% !important;
+				border: #000 solid 2rpx;
+			}
+
+			.wx-checkbox-input {
+				@include box;
+			}
+
+			.wx-checkbox-input-checked {
+				@include box;
+			}
+
+			.wx-checkbox-input-checked.wx-checkbox-input::before {
+				color: #000 !important;
+				font-size: 80rpx;
+				transform: translate(-35%, -65%);
+			}
+		}
+	}
+
 	.socialItem {
 		radio {
 			.wx-radio-input {
-				border:2rpx solid #ddd ;
+				border: 2rpx solid #ddd;
 			}
 
 			.wx-radio-input-checked {
-				border:2rpx solid #ddd ;
+				border: 2rpx solid #ddd;
 				background-color: #000 !important;
 			}
 

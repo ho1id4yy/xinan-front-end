@@ -4,8 +4,8 @@
 			<view class="buttom-bar">
 				<ul>
 					<li :class="[idx==buttombar.active?'border active':'border']"
-						v-for="(item,idx) in buttombar.imglist">
-						<image :src="item" alt="" @click="goto(idx)" />
+						v-for="(item,idx) in buttombar.imglist" @click="goto(idx)">
+						<image :src="item" alt=""  />
 					</li>
 				</ul>
 			</view>
@@ -64,9 +64,9 @@
 </script>
 
 <style lang="scss" scoped>
-	$height:100rpx;
+	$height:8vh;
 	.buttom-bar-wrap {
-		background-color: #ffffff;
+		background-color: transparent;
 		z-index: 999;
 		box-sizing: border-box;
 		height: $height;
@@ -84,6 +84,7 @@
 			position: relative;
 			box-sizing: border-box;
 			overflow: hidden;
+			background-color: #fff;
 
 			ul {
 				height: 100%;
