@@ -206,13 +206,40 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
-      buttombar: {
-        active: 1,
-        imglist: ['/static/icon/first_white.png', '/static/icon/second_black.png', '/static/icon/third_white.png', '/static/icon/Group_white.png']
-      }
+      iscancel1: true,
+      iscancel2: true
     };
   },
   methods: {

@@ -3,7 +3,8 @@
     "pages/serve/serve",
     "pages/merchant/merchant",
     "compoents/buttomBar/buttomBar",
-    "compoents/headBar/headBar"
+    "compoents/headBar/headBar",
+    "pages/detail/detail"
   ],
   "subPackages": [
     {

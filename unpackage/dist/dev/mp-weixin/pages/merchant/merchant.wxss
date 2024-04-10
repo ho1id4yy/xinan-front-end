@@ -24,58 +24,67 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.block1.data-v-0d1050f4 {
-  height: 160rpx;
-  box-sizing: border-box;
-  border-radius: 40rpx;
-  width: 660rpx;
-  margin: 20rpx 40rpx 30rpx;
-  clear: both;
-  background-color: #F5F5F5;
+.mechantblock.data-v-0d1050f4 {
+  height: 780rpx;
+  overflow: auto;
 }
-.block1 .padding.data-v-0d1050f4 {
-  padding: 20rpx 0rpx 20rpx 50rpx;
-  font-weight: bold;
-}
-.block1 .icon1.data-v-0d1050f4 {
+.mechantblock .circle.data-v-0d1050f4 {
   height: 80rpx;
   width: 80rpx;
   position: absolute;
-  margin-left: 430rpx;
-  z-index: 5;
+  margin: -95rpx 20rpx 40rpx 540rpx;
+  display: inline;
+  z-index: 1;
 }
-.block1 .surface1.data-v-0d1050f4 {
-  height: 40rpx;
-  width: 40rpx;
-  position: relative;
-  z-index: 50;
-  margin-left: 450rpx;
-  margin-top: 10rpx;
-}
-.block1 .icon2.data-v-0d1050f4 {
-  height: 80rpx;
-  width: 80rpx;
+.mechantblock .phone.data-v-0d1050f4 {
+  height: 35rpx;
+  width: 35rpx;
   position: absolute;
-  margin-left: 50rpx;
-  z-index: 5;
-}
-.block1 .surface2.data-v-0d1050f4 {
-  height: 40rpx;
-  width: 40rpx;
-  position: relative;
-  z-index: 10;
-  margin-left: 70rpx;
-  display: inline-block;
-  margin-top: 10rpx;
-}
-.block1 .surface3.data-v-0d1050f4 {
-  height: 40rpx;
-  width: 40rpx;
+  margin: -80rpx 20rpx 40rpx 565rpx;
   z-index: 100;
+  display: inline;
+}
+.mechantblock .phone2.data-v-0d1050f4 {
+  height: 38rpx;
+  width: 38rpx;
+  position: absolute;
+  margin: -80rpx 20rpx 40rpx 470rpx;
+}
+.mechantblock .circle2.data-v-0d1050f4 {
+  height: 80rpx;
+  width: 80rpx;
+  position: absolute;
+  margin: -95rpx 20rpx 40rpx 450rpx;
+}
+.mechantblock .rectangle.data-v-0d1050f4 {
+  width: 620rpx;
+  height: 130rpx;
+  margin-left: 40rpx;
+  margin-top: 25rpx;
   position: relative;
-  margin-left: 558rpx;
-  display: inline-block;
-  margin-top: -40rpx;
+  padding: 20rpx;
+  background-color: #f8f8f8;
+  border: 5rpx solid white;
+  border-radius: 50rpx;
+}
+.mechantblock .name.data-v-0d1050f4 {
+  font-weight: bold;
+  position: relative;
+  display: inline;
+  margin: -100rpx 20rpx 30rpx 20rpx;
+}
+.mechantblock .opac.data-v-0d1050f4 {
+  font-size: 20%;
+  position: relative;
+  color: #d2d2d2;
+  opacity: 0.8;
+  display: inline;
+}
+.mechantblock .addr.data-v-0d1050f4 {
+  font-size: 5%;
+  position: relative;
+  color: #323232;
+  margin: 20rpx 0rpx -15rpx 20rpx;
 }
 .tar1.data-v-0d1050f4 {
   display: inline;
@@ -168,7 +177,6 @@
   z-index: 100;
   background-color: #FFFFFF;
   position: absolute;
-  z-index: 100;
 }
 .bottombar .block.data-v-0d1050f4 {
   border: 5rpx solid black;

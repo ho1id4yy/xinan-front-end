@@ -38,10 +38,13 @@
   margin: 565rpx 0rpx 0rpx 85.5rpx;
 }
 .right.data-v-0b7ec4a6 {
+  position: fixed;
   width: 600rpx;
+  height: 700rpx;
+  left: 140rpx;
   display: inline-block;
-  margin-left: 150rpx;
-  margin-top: -1000rpx;
+  top: 440rpx;
+  overflow: auto;
 }
 .right .row1.data-v-0b7ec4a6 {
   height: 55rpx;
@@ -144,13 +147,15 @@
 }
 .bottombar.data-v-0b7ec4a6 {
   width: 700rpx;
-  margin: 0rpx 20rpx 20rpx 22rpx;
+  bottom: 28rpx;
+  left: 30rpx;
   border: 5rpx solid black;
   box-sizing: border-box;
   border-radius: 60rpx;
   height: 120rpx;
   background-color: #FFFFFF;
   float: left;
+  position: fixed;
 }
 .bottombar .block.data-v-0b7ec4a6 {
   border: 5rpx solid black;
