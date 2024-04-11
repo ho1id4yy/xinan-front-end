@@ -18,23 +18,8 @@
 				<view class='label' @click="cgn11">
 					<view>我的家人</view>
 				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
+				<view class='friend' v-for='(item,idx) in notdel1' v-if='notdel1[idx]'>
+					<view :id='idx' @click='change(idx)'>心小安</view>
 				</view>
 				
 			</view>
@@ -42,115 +27,40 @@
 				<view class='label' @click="cgn12">
 					<view>我的朋友</view>
 				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
+				<view class='friend' v-for='(item,idx) in notdel2' v-if='notdel2[idx]'>
+					<view :id='idx' @click='change2(idx)'>心小安</view>
 				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
+			</view>
+			<view class='block1'>
+				<view class='label' @click="cgn12">
+					<view>我的朋友</view>
 				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
+				<view class='friend' v-for='(item,idx) in notdel3' v-if='notdel3[idx]'>
+					<view :id='idx' @click='change3(idx)'>心小安</view>
 				</view>
 			</view>
 			<view class='block1'>
 				<view class='label' @click="cgn11">
 					<view>我的家人</view>
 				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
+				<view class='friend' v-for='(item,idx) in notdel4' v-if='notdel4[idx]'>
+					<view :id='idx' @click='change4(idx)'>心小安</view>
 				</view>
 			</view>
 			<view class='block1'>
 				<view class='label' @click="cgn11">
 					<view>我的家人</view>
 				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
+				<view class='friend' v-for='(item,idx) in notdel5' v-if='notdel5[idx]'>
+					<view :id='idx' @click='change5(idx)'>心小安</view>
 				</view>
 			</view>
 			<view class='block1'>
 				<view class='label' @click="cgn11">
 					<view>我的家人</view>
 				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-			</view>
-			<view class='block1'>
-				<view class='label' @click="cgn11">
-					<view>我的家人</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
-				</view>
-				<view class='friend'>
-					<view @click='change'>心小安</view>
+				<view class='friend' v-for='(item,idx) in notdel6' v-if='notdel6[idx]'>
+					<view :id='idx' @click='change6(idx)'>心小安</view>
 				</view>
 			</view>
 		</view>
@@ -172,7 +82,7 @@
 		</view>
 		<view v-if='showlist' class='changeheadblock'>
 			<image class='head' src='../../static/icon/Ellipse 30.png'></image>
-			<image @click='close2' class='close' src='../../static/icon/close.png'></image>
+			<image @click='close5' class='close' src='../../static/icon/close.png'></image>
 			<view class='name'>安小心</view>
 			<view class='number'>心安号：123456789999</view>
 			<view class='choose'>选择分组</view>
@@ -199,7 +109,7 @@
 				我的家人
 			</view>
 			</view>
-			<view class='btn1' @click='close2'>
+			<view class='btn1'>
 				更改备注
 			</view>
 			<view class='btn2' @click='close2'>
@@ -285,7 +195,20 @@
 				showlist:false,
 				showaddgroup:false,
 				cgn1:false,
-				cgn2:false
+				cgn2:false,
+				notdel1:[true,true,true,true,true,true],
+				notdel2:[true,true,true,true,true,true],
+				notdel3:[true,true,true,true,true,true],
+				notdel4:[true,true,true,true,true,true],
+				notdel5:[true,true,true,true,true,true],
+				notdel6:[true,true,true,true,true,true],
+				idtemp1:null,
+				idtemp2:null,
+				idtemp3:null,
+				idtemp4:null,
+				idtemp5:null,
+				idtemp6:null,
+				id:null
 			};
 		},
 		methods:{
@@ -309,11 +232,78 @@
 					url:'/page_user/homepage/homepage'
 				})
 			},
-			change(){
+			change(idx){
 				this.showlist=true
+				this.idtemp1=idx
+				this.idtemp2=null
+				this.idtemp3=null
+				this.idtemp4=null
+				this.idtemp5=null
+				this.idtemp6=null
+			},
+			change2(idx){
+				this.showlist=true
+				this.idtemp2=idx
+			},
+			change3(idx){
+				this.showlist=true
+				this.idtemp3=idx
+				this.idtemp1=null
+				this.idtemp2=null
+				this.idtemp4=null
+				this.idtemp5=null
+				this.idtemp6=null
+			},
+			change4(idx){
+				this.showlist=true
+				this.idtemp4=idx
+				this.idtemp1=null
+				this.idtemp2=null
+				this.idtemp3=null
+				this.idtemp5=null
+				this.idtemp6=null
+			},
+			change5(idx){
+				this.showlist=true
+				this.idtemp5=idx
+				this.idtemp1=null
+				this.idtemp2=null
+				this.idtemp3=null
+				this.idtemp4=null
+				this.idtemp6=null
+			},
+			change6(idx){
+				this.showlist=true
+				this.idtemp6=idx
+				this.idtemp1=null
+				this.idtemp2=null
+				this.idtemp3=null
+				this.idtemp4=null
+				this.idtemp5=null
+			},
+			close5(){
+				this.showlist=false
 			},
 			close2(){
 				this.showlist=false
+				if (this.idtemp1!=null || this.idtemp1==0){
+					this.notdel1[Number(this.idtemp1)]=false
+				}
+				else if(this.idtemp2!=null || this.idtemp2==0){
+					this.notdel2[Number(this.idtemp2)]=false
+				}
+				else if(this.idtemp3!=null || this.idtemp3==0){
+					this.notdel3[Number(this.idtemp3)]=false
+				}
+				else if(this.idtemp4!=null || this.idtemp4==0){
+					this.notdel4[Number(this.idtemp4)]=false
+				}
+				else if(this.idtemp5!=null || this.idtemp5==0){
+					this.notdel5[Number(this.idtemp5)]=false
+				}
+				else if(this.idtemp6!=null || this.idtemp6==0){
+					this.notdel6[Number(this.idtemp6)]=false
+				}
 			},
 			addgroup(){
 				this.showaddgroup=true
