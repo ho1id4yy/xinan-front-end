@@ -42,13 +42,7 @@
 				</view>
 			</view>
 		</view>
-		<view class='bottombar'>
-			<view class='block' @click='touser'></view>
-			<image @click='touser' class='label'  src='../../static/icon/Group_black.png'></image>
-			<image @click='tocircle' class='label' src='../../static/icon/third_white.png'></image>
-			<image @click="toserve" class='label' src='../../static/icon/second_white.png'></image>
-			<image @click="tolist" class='label' src='../../static/icon/first_white.png'></image>
-		</view>
+		<buttom-bar :buttombar="buttombar"></buttom-bar>
 		<view v-if='showcover1' class='grayblock'>
 		</view>
 		<view v-if='showcover1' class='changeheadblock'>
@@ -77,13 +71,23 @@
 </template>
 
 <script>
+	import buttomBar from '@/compoents/buttomBar/buttomBar.vue'
 	export default {
 		data() {
 			return {
 				showcover1:false,
 				iscancel1:true,
 				iscancel2:true,
-				showcover2:false
+				showcover2:false,
+				buttombar: {
+					active: 3,
+					imglist: [
+						'/static/icon/first_white.png',
+						'/static/icon/second_white.png',
+						'/static/icon/third_white.png',
+						'/static/icon/Group_black.png'
+					]
+				},
 			};
 		},
 		methods:{
@@ -103,7 +107,7 @@
 				})
 			},
 			tolist(){
-				uni.redirectTo({
+				uni.reLaunch({
 					url:'/page_list/mainlist/mainlist'
 				})
 			},

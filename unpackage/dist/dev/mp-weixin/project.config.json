@@ -18,12 +18,17 @@
     }
   },
   "compileType": "miniprogram",
-  "libVersion": "3.4.0",
+  "libVersion": "3.4.1",
   "appid": "wx311765e51ce48c17",
   "projectname": "xinan-front-end",
   "condition": {
     "miniprogram": {
       "list": [
+        {
+          "name": "心安圈",
+          "pathName": "page_anxincircle/anxincircle/anxincircle",
+          "query": ""
+        },
         {
           "name": "列表主页",
           "pathName": "page_list/mainlist/mainlist",

@@ -60,41 +60,47 @@
 				</view>
 			</view>
 		</view>
-		<view class='bottombar'>
-				<image class='label' @click='touser' src='../../static/icon/Group_white.png'></image>
-				<view class='block' @click="toserve"></view>
-				<image class='label' @click='tocircle' src='../../static/icon/third_white.png'></image>
-				<image class='label' src='../../static/icon/second_black.png'></image>
-				<image  class='label' @click='tolist' src='../../static/icon/first_white.png'></image>
-			</view>
+		<buttom-bar :buttombar="buttombar"></buttom-bar>
 	</view>
 </template>
 
 <script>
+	import buttomBar from '@/compoents/buttomBar/buttomBar.vue'
 	export default {
+	    components: {
+	        buttomBar
+	    },
 		data() {
 			return {
-				
+				buttombar: {
+					active: 1,
+					imglist: [
+						'/static/icon/first_white.png',
+						'/static/icon/second_black.png',
+						'/static/icon/third_white.png',
+						'/static/icon/Group_white.png'
+					]
+				},
 			};
 		},
 		methods:{
 			toserve(){
-				uni.redirectTo({
+				uni.reLaunch({
 					url:'/pages/serve/serve'
 				})
 			},
 			tocircle(){
-				uni.redirectTo({
+				uni.reLaunch({
 					url:'/page_anxincircle/anxincircle/anxincircle'
 				})
 			},
 			touser(){
-				uni.redirectTo({
+				uni.reLaunch({
 					url:'/page_user/homepage/homepage'
 				})
 			},
 			tolist(){
-				uni.redirectTo({
+				uni.reLaunch({
 					url:'/page_list/mainlist/mainlist'
 				})
 			}

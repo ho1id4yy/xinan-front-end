@@ -24,49 +24,32 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.select.data-v-1c6ac870 {
-  z-index: -1;
-  border: 5rpx solid black;
-  border-radius: 40rpx;
+.Mainlist-content.data-v-1c6ac870 {
+  width: 100%;
+  padding: 0rpx 5%;
+  box-sizing: border-box;
+}
+.Mainlist-content .ListItem.data-v-1c6ac870 {
   height: 100rpx;
-  width: 670rpx;
-  margin: 20rpx 20rpx 20rpx 30rpx;
-  clear: both;
+  background-color: #fff;
+  border-radius: 30rpx;
+  border: 4rpx solid #000;
+  margin: 10rpx 0rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0rpx 20rpx;
 }
-.select .font.data-v-1c6ac870 {
-  font-size: 120%;
-  display: inline-block;
-  float: left;
-  margin-left: 30rpx;
-  margin-top: 15rpx;
-}
-.select .wall.data-v-1c6ac870 {
+.Mainlist-content .ListItem .left.data-v-1c6ac870 {
+  font-size: 45rpx;
+  font-weight: 500;
+  width: 80%;
   height: 100rpx;
-  width: 5rpx;
-  float: right;
-  margin-right: 40rpx;
-  display: inline-block;
+  line-height: 100rpx;
 }
-.select .circle.data-v-1c6ac870 {
-  height: 40rpx;
-  width: 40rpx;
-  display: inline-block;
-  position: relative;
-  margin-right: 50rpx;
-  margin-top: 30rpx;
-  margin-left: 20rpx;
-  z-index: 1;
-  float: right;
-}
-.select .right.data-v-1c6ac870 {
-  height: 40rpx;
-  float: right;
-  width: 40rpx;
-  display: inline-block;
-  position: relative;
-  z-index: 10;
-  margin-right: -70rpx;
-  margin-top: 20rpx;
+.Mainlist-content .buttom.data-v-1c6ac870 {
+  height: 30vh;
+  width: 100%;
 }
 .rectangle26.data-v-1c6ac870 {
   width: 750rpx;
@@ -130,35 +113,5 @@
   margin-left: 130rpx;
   color: #FFFFFF;
   font-size: 25rpx;
-}
-.bottombar.data-v-1c6ac870 {
-  width: 700rpx;
-  margin: -130rpx 20rpx 20rpx 20rpx;
-  border: 5rpx solid black;
-  box-sizing: border-box;
-  border-radius: 60rpx;
-  height: 120rpx;
-  z-index: 100;
-  background-color: #FFFFFF;
-  position: absolute;
-  z-index: 100;
-}
-.bottombar .block.data-v-1c6ac870 {
-  border: 5rpx solid black;
-  border-radius: 50rpx;
-  height: 70rpx;
-  width: 140rpx;
-  display: inline-block;
-  position: absolute;
-  margin: 20rpx 70rpx 20rpx 30rpx;
-}
-.bottombar .label.data-v-1c6ac870 {
-  height: 40rpx;
-  width: 40rpx;
-  display: inline-block;
-  margin-right: 85rpx;
-  margin-left: 40rpx;
-  margin-top: 35rpx;
-  float: right;
 }
 

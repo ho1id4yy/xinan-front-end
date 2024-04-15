@@ -1,8 +1,8 @@
 <template>
 	<view>
+		<!--rectangle26部分是上面的黑色部分-->
 		<view class="rectangle26">
-			<image class='icon' src='../../static/icon/quill_serve.png' />
-			<view class="title">服务</view>
+			<view class="title"><image class='icon' src='../../static/icon/quill_serve.png' />服务</view>
 			<view class="rectangle27">
 				<view class="process">商家直联：</view>
 				<image class='centericon' src="../../static/icon/Tech Life Communication.png"></image>
@@ -10,118 +10,405 @@
 					<image  class='circle1' src='../../static/icon/Ellipse 69.png'></image>
 					<image @click='tomerchant' class='circle2' src='../../static/icon/Vector.png'></image>		
 				</view>
-						
 			</view>
 		</view>
-		<view>
-			<image class='column' src='../../static/icon/Component 22.png'></image>
-			<image class='alter' src='../../static/icon/Ellipse 18.png'></image>
-			<view class='right'>
-				<view>
-					<view class='row1'>医生确认死亡</view>
-					<view class='row1'>净身穿衣</view>
-					<view class='row1'>医院开具死亡证明</view>
-				</view>
 				
-				<view class='row2'>
-				<view class='font'>
-					联系殡仪馆灵车
-				</view>
-					<image class='btn' src='../../static/icon/Ellipse 99.png'></image>
-					<image @click="todetail" class='btnright' src='../../static/icon/Component 110.png'></image>
-					<view class='small'>灵车运送、存放遗体</view>
-				</view>
-				
-				<view>
-					<view class='row3'>摆设灵堂</view>
-					<view class='row3'>预约殡仪馆事项</view>
-					<view class='row3'>选购殡葬用品</view>
-					<view class='row3'>预备丧宴</view>
-					<view class='row3'>办理殡仪馆手续</view>
-					<view class='row3'>出殡仪式</view>
-				</view>
-				
-			</view>
-			
-		</view>
-		<view class='bottombar'>
-			<image class='label' @click='touser' src='../../static/icon/Group_white.png'></image>
-			<view class='block' @click="toserve"></view>
-			<image class='label' @click='tocircle' src='../../static/icon/third_white.png'></image>
-			<image class='label' src='../../static/icon/second_black.png'></image>
-			<image  class='label' @click='tolist' src='../../static/icon/first_white.png'></image>
-		</view>
+        <scroll-view :style="{height: `${areaHeight}px`}" class="right" scroll-y @scroll="scroll">
+            <view class="wrapper">
+                <view class="wrap">
+                    <view class="view-top" :style="{height: `${gap}px`}"></view>
+                    <view :class="{item: true, active: index === current}" :key="index" v-for="(item, index) in list">
+                        
+                        <!-- 默认状态 -->
+                        <view class="default">
+                            <view class="point"></view>
+                            <text>{{ item.title }}</text>
+                        </view>
+                        
+                        <!-- 当前流程 -->
+                        <view class="current">
+                            <view class="cirl">
+                                <view class="point"></view>
+                            </view>
+                            <view class="box">
+                                <view class="flex-row">
+                                    <text class="title">{{ item.title }}</text>
+                                    <text class="desc">携带相关证件</text>
+                                </view>
+                                <view class="more" @click="todetail"></view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="view-bottom" :style="{height: `${gap + 40}px`}"></view>
+                    
+                    <!-- column是左边那个进度线的图片，暂时先放-->
+                    <!-- <image class='column' src='../../static/icon/Component 22.png'></image> -->
+                    <!--进度条倒数第三个点ui封装的时候好像缺了，找一个补上-->
+                    <!-- <image class='alter' src='../../static/icon/Ellipse 18.png'></image> -->
+                    
+                    <!--上面三个流程-->
+                    <!-- <view>
+                        <view class='row1'>摆设灵堂</view>
+                        </view>
+                        <view>
+                            <view class='row1'>摆设灵堂</view>
+                        </view>
+                        <view>
+                        <view class='row1'>摆设灵堂</view>
+                    </view> -->
+                    
+                    
+                    <!--重点框-->
+                    <!-- <view class='row2'>
+                        <image class='btn' src='../../static/icon/Ellipse 99.png'></image>
+                        <image @click="todetail" class='btnright' src='../../static/icon/Component 110.png'></image>
+                    </view> -->
+                    
+                    <!--下面-->
+                    <!-- <view>
+                        <view class='row1'>摆设灵堂</view>
+                        </view>
+                        <view>
+                            <view class='row1'>摆设灵堂</view>
+                        </view>
+                        <view>
+                        <view class='row1'>摆设灵堂</view>
+                    </view>
+                    <view>
+                        <view class='row1'>摆设灵堂</view>
+                        </view>
+                        <view>
+                            <view class='row1'>摆设灵堂</view>
+                        </view>
+                        <view>
+                        <view class='row1'>摆设灵堂</view>
+                    </view>
+                    <view>
+                        <view class='row1'>摆设灵堂</view>
+                        </view>
+                        <view>
+                            <view class='row1'>摆设灵堂</view>
+                        </view>
+                        <view>
+                        <view class='row1'>摆设灵堂</view>
+                    </view>
+                    <view>
+                        <view class='row1'>摆设灵堂</view>
+                        </view>
+                        <view>
+                            <view class='row1'>摆设灵堂</view>
+                        </view>
+                        <view>
+                        <view class='row1'>摆设灵堂</view>
+                    </view> -->
+                </view>
+            </view>
+        </scroll-view>
+        
+        <buttom-bar :buttombar="buttombar"></buttom-bar>
+        
 	</view>
 </template>
 
 <script>
+    import buttomBar from '@/compoents/buttomBar/buttomBar.vue'
 	export default {
+        components: {
+            buttomBar
+        },
 		data() {
 			return {
-				
+                areaHeight: 0,
+                current: 0,
+				isRowFoucsed:[false, false, false],
+				buttombar: {
+					active: 1,
+					imglist: [
+						'/static/icon/first_white.png',
+						'/static/icon/second_black.png',
+						'/static/icon/third_white.png',
+						'/static/icon/Group_white.png'
+					]
+				},
+                list: [
+                    {
+                        title: '医生确认死亡',
+                        desc: '需要携带证件'
+                    },
+                    {
+                        title: '净身穿衣',
+                        desc: '需要携带证件'
+                    },
+                    {
+                        title: '开具死亡证明',
+                        desc: '需要携带证件'
+                    },
+                    {
+                        title: '联系殡仪馆灵车',
+                        desc: '需要携带证件'
+                    },
+                    {
+                        title: '搭设灵堂',
+                        desc: '需要携带证件'
+                    },
+                    {
+                        title: '预约殡仪馆事项',
+                        desc: '需要携带证件'
+                    },
+                    {
+                        title: '选购殡葬用品',
+                        desc: '需要携带证件'
+                    },
+                    {
+                        title: '预备丧宴',
+                        desc: '需要携带证件'
+                    },
+                    {
+                        title: '办理殡仪馆手续',
+                        desc: '需要携带证件'
+                    },
+                    {
+                        title: '出殡仪式',
+                        desc: '需要携带证件'
+                    },
+                    {
+                        title: '举行尊体告别仪式',
+                        desc: '需要携带证件'
+                    },
+                    {
+                        title: '尊体火化',
+                        desc: '需要携带证件'
+                    },
+                    {
+                        title: '后续祭祀',
+                        desc: '需要携带证件'
+                    },
+                ]
 			};
 		},
+        created() {
+            // console.log(uni.getSystemInfoSync());
+            const { screenHeight, statusBarHeight, safeArea, screenWidth } = uni.getSystemInfoSync()
+            const height = screenHeight - statusBarHeight - 44 - (screenHeight - safeArea.bottom)
+            const t = Math.floor(200 / 375 * screenWidth)
+            const b = Math.floor(53 / 375 * screenWidth)
+            // console.log(height, t, b);
+            this.areaHeight = height - t - b
+        },
+        computed:{
+            gap(){
+                return this.areaHeight / 2 - 42
+            }
+        },
 		methods:{
+            scroll(e){
+                const top = e.detail.scrollTop
+                const max = Math.floor(top/42)
+                if (max > this.list.length) return
+                this.current = max
+            },
 			tomerchant(){
-				uni.redirectTo({
+				uni.reLaunch({
 					url:'/pages/merchant/merchant'
 				})
 			},
 			toserve(){
-				uni.redirectTo({
+				uni.reLaunch({
 					url:'/pages/serve/serve'
 				})
 			},
 			tocircle(){
-				uni.redirectTo({
+				uni.reLaunch({
 					url:'/page_anxincircle/anxincircle/anxincircle'
 				})
 			},
 			touser(){
-				uni.redirectTo({
+				uni.reLaunch({
 					url:'/page_user/homepage/homepage'
 				})
 			},
 			tolist(){
-				uni.redirectTo({
+				uni.reLaunch({
 					url:'/page_list/mainlist/mainlist'
 				})
 			},
 			todetail(){
-				uni.redirectTo({
+				uni.reLaunch({
 					url:'/pages/detail/detail'
 				})
 			}
-		}
+		},
+		
 	}
 </script>
 
 <style lang="scss" scoped>
-.column{
-	height:680rpx;
-	width:30rpx;
-	margin-left: 80rpx;
-	display:inline;
-	position: absolute;
-	z-index:-1;
-};
-.alter{
-	height:20rpx;
-	width:20rpx;
-	margin:565rpx 0rpx 0rpx 85.5rpx;
+@keyframes rotate {
+    0%{
+        opacity: 0;
+        transform: translate(50upx, 0) rotate(360deg);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0, 0) rotate(0);
+    }
 }
+@keyframes opacityRight {
+    0%{
+        opacity: 0;
+        transform: translate(50upx, 0);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+@keyframes opacityLeft {
+    0%{
+        opacity: 0;
+        transform: translate(-50upx, 0);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+.wrapper{
+    padding-left: 120rpx;
+    .wrap{
+        border-left: solid 2px #ccc;
+    }
+    .item{
+        padding: 26rpx 0;
+        &.active{
+            padding: 20rpx 0;
+            .default{
+                display: none;
+            }
+            .current{
+                display: flex;
+                .box{
+                    .flex-row{
+                        .title{
+                            animation: opacityLeft 500ms both;
+                        }
+                        .desc{
+                            animation: opacityRight 500ms 100ms both;
+                        }
+                    }
+                    .more{
+                        animation: rotate 600ms 200ms both;
+                    }
+                    
+                }
+            }
+        }
+        .default{
+            display: flex;
+            align-items: center;
+            position: relative;
+            .point{
+                width: 24rpx;
+                height: 24rpx;
+                background-color: #c5c5c5;
+                border-radius: 50%;
+                position: absolute;
+                left: -15rpx;
+            }
+            text{
+                color: #ccc;
+                font-size: 24rpx;
+                margin-left: 34rpx;
+            }
+        }
+        .current{
+            display: none;
+            position: relative;
+            align-items: center;
+            padding: 0 40rpx 0 30rpx;
+            .cirl{
+                position: absolute;
+                width: 30rpx;
+                height: 90rpx;
+                background-color: #fff;
+                left: -18rpx;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .point{
+                    flex-shrink: 0;
+                    width: 20rpx;
+                    height: 20rpx;
+                    background-color: #fff;
+                    border: solid 10rpx #343434;
+                    border-radius: 50%;
+                }
+            }
+            .box{
+                padding: 20rpx 20rpx 20rpx 20rpx;
+                border-radius: 10rpx;
+                flex-grow: 1;
+                display: flex;
+                justify-content: space-between;
+                border: solid 1.5px #343434;
+                align-items: center;
+                overflow: hidden;
+                .flex-row{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    .title{
+                        font-weight: bold;
+                    }
+                    .desc{
+                        color: #666;
+                        font-size: 20rpx;
+                        margin-top: 4rpx;
+                    }
+                }
+                .more{
+                    width: 70rpx;
+                    height: 70rpx;
+                    border-radius: 50%;
+                    background-color: #fff;
+                    box-shadow: 0 8rpx 8rpx rgba(#333, .35);
+                    position: relative;
+                    &:after{
+                        content: '';
+                        width: 20rpx;
+                        height: 20rpx;
+                        position: absolute;
+                        border-right: solid 2px #343434;
+                        border-top: solid 2px #343434;
+                        transform: rotate(45deg);
+                        left: 20upx;
+                        top: 20upx;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .right{
-	position: fixed;
-	width:600rpx;
-	height: 700rpx;
-	left: 140rpx;
-	display: inline-block;
-	top:440rpx;
-	overflow: auto;
+	.column{
+		height:630rpx;
+		width:30rpx;
+		display:inline;
+		position: absolute;
+	};
+	.alter{
+		height:20rpx;
+		width:20rpx;
+		margin:535rpx 0rpx 0rpx 5rpx;
+		position: absolute;
+	};
 	.row1{
-		height:55rpx;
+		background-position: 50% 0;
 		opacity: 0.2;
-		font-size: 60%;
+		display: inline;
+		
+		font-size: 70%;
 	};
 	.row3{
 		height:55rpx;
@@ -129,13 +416,17 @@
 		font-size: 60%;
 	}
 	.row2{
+		margin: 0 0 10rpx 60rpx;
 		border:5rpx solid black;
 		border-radius: 20rpx;
 		margin-bottom: 20rpx;
-		width:540rpx;
+		width:520rpx;
 		height:70rpx;
-		margin-top:10rpx;
+		position: fixed;
+		top:600rpx;
 		padding:10rpx 0rpx 10rpx 20rpx;
+		z-index: 2000;
+		background-color: #FFFFFF;
 		.font{
 			font-weight: bold;
 		};
@@ -145,29 +436,39 @@
 			position: relative;
 			z-index: -1;
 			float: right;
-			margin-top: -45rpx;
 			margin-right: 20rpx;
 		};
 		.btnright{
 			width:30rpx;
 			height:40rpx;
 			position: absolute;
-			margin-left: 470rpx;
-			margin-top: -25rpx;
+			margin-left: 450rpx;
+			margin-top: 20rpx;
 		};
 		.small{
 			font-size: 18rpx;
 		}
 	}
 }
-	
+.right2{
+	margin:5rpx 0 0rpx 120rpx;
+	height: 700rpx;
+	overflow-y:auto;
+	z-index:20000;
+	overflow: auto;
+		.font{
+			height:30;
+			font-weight: bold;
+		};
+		
+}
 .rectangle26{
 	width: 750rpx;
 	height: 400rpx;
 	background-color:#343434;
-	border: 1rpx solid black;
 	border-radius: 0rpx 0rpx 60rpx 60rpx;
-	display: inline-block;
+    flex-shrink: 0;
+    overflow: hidden;
 	.rectangle27{
 		width: 580rpx;
 		height: 280rpx;
@@ -208,45 +509,51 @@
 		background-color: #343434;
 		float:left;
 		display: inline-block;
-		margin-top: 20rpx;
-		margin-left:80rpx;
+		margin-top: 0rpx;
+		margin-left:0rpx;
 		margin-right: 0rpx;
 	};
 	.title{
 		margin-top: 25rpx;
-		margin-left:130rpx;
+		margin-left:80rpx;
 		color: #FFFFFF;
 		font-size:25rpx;
+        display: flex;
+        align-items: center;
+        image{
+            margin-right: 10rpx;
+        }
 	}
 }
 .bottombar{
-		width:700rpx;
-		bottom: 28rpx;
-		left:30rpx;
-		border:5rpx solid black;
-		box-sizing: border-box;
-		border-radius: 60rpx;
-		height:120rpx;
-		background-color: #FFFFFF;
-		float: left;
-		position: fixed;
-		.block{
-			border:5rpx solid black;
-			border-radius: 50rpx;
-			height:70rpx;
-			width:140rpx;
-			display:inline-block;
-			position:absolute;
-			margin:15rpx 0rpx 0rpx 185rpx;
-		}
-		.label{
-			height:40rpx;
-			width:40rpx;
-			display:inline-block;
-			margin-right:85rpx;
-			margin-left: 40rpx;
-			margin-top:35rpx;
-			float:right;
-		}
+    width:700rpx;
+    bottom: 28rpx;
+    left:30rpx;
+    border:5rpx solid black;
+    box-sizing: border-box;
+    border-radius: 60rpx;
+    height:120rpx;
+    background-color: #FFFFFF;
+    float: left;
+    position: fixed;
+    .block{
+        border:5rpx solid black;
+        border-radius: 50rpx;
+        height:70rpx;
+        width:140rpx;
+        display:inline-block;
+        position:absolute;
+        margin:15rpx 0rpx 0rpx 185rpx;
+    }
+    .label{
+        height:40rpx;
+        width:40rpx;
+        display:inline-block;
+        margin-right:85rpx;
+        margin-left: 40rpx;
+        margin-top:35rpx;
+        float:right;
+    }
 }
+
 </style>

@@ -42,6 +42,24 @@
   color: #fff !important;
   font-weight: 900;
 }
+.Mainlist-content checkbox {
+  width: 50rpx;
+  height: 50rpx;
+}
+.Mainlist-content checkbox .wx-checkbox-input {
+  border-radius: 50% !important;
+  border: #000 solid 2rpx;
+}
+.Mainlist-content checkbox .wx-checkbox-input-checked {
+  border-radius: 50% !important;
+  border: #000 solid 2rpx;
+}
+.Mainlist-content checkbox .wx-checkbox-input-checked.wx-checkbox-input::before {
+  color: #000 !important;
+  font-size: 80rpx;
+  -webkit-transform: translate(-35%, -65%);
+          transform: translate(-35%, -65%);
+}
 .socialItem radio .wx-radio-input {
   border: 2rpx solid #ddd;
 }
@@ -76,16 +94,24 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.footer.data-v-8a672320 {
+  position: fixed;
+  bottom: 10rpx;
+  left: 0;
+  right: 0;
+  flex-shrink: 0;
+}
+.null.data-v-8a672320 {
+  text-align: center;
+  font-size: 18rpx;
+  opacity: 0;
+}
 .buttom-bar-wrap.data-v-8a672320 {
-  background-color: #ffffff;
+  background-color: transparent;
   z-index: 999;
   box-sizing: border-box;
-  height: 100rpx;
   width: 100%;
-  position: fixed;
-  bottom: 0rpx;
-  left: 0rpx;
-  padding: 0rpx 25rpx 10rpx;
+  padding: 0rpx 25rpx 0;
 }
 .buttom-bar-wrap .buttom-bar.data-v-8a672320 {
   height: 100%;
@@ -95,17 +121,18 @@
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
+  background-color: #fff;
+  padding: 8rpx 0rpx;
 }
 .buttom-bar-wrap .buttom-bar ._ul.data-v-8a672320 {
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: space-around;
   align-items: center;
 }
 .buttom-bar-wrap .buttom-bar ._ul .border.data-v-8a672320 {
-  width: 20%;
-  height: 70rpx;
+  width: 25%;
+  height: 84rpx;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -115,8 +142,8 @@
   border: #000 2rpx solid;
 }
 .buttom-bar-wrap .buttom-bar ._ul .border image.data-v-8a672320 {
-  width: 33.33333rpx;
-  height: 33.33333rpx;
+  width: 2.66667vh;
+  height: 2.66667vh;
 }
 
 @charset "UTF-8";

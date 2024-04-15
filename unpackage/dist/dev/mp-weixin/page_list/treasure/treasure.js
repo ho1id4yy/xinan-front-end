@@ -175,17 +175,17 @@ var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 100));
 var treasureItem = function treasureItem() {
   __webpack_require__.e(/*! require.ensure | page_list/treasure/compoents/treasureItem */ "page_list/treasure/compoents/treasureItem").then((function () {
-    return resolve(__webpack_require__(/*! ./compoents/treasureItem.vue */ 181));
+    return resolve(__webpack_require__(/*! ./compoents/treasureItem.vue */ 189));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var addTreasure = function addTreasure() {
   __webpack_require__.e(/*! require.ensure | page_list/treasure/compoents/addTreasure */ "page_list/treasure/compoents/addTreasure").then((function () {
-    return resolve(__webpack_require__(/*! ./compoents/addTreasure.vue */ 188));
+    return resolve(__webpack_require__(/*! ./compoents/addTreasure.vue */ 196));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var editTreasureVue = function editTreasureVue() {
   __webpack_require__.e(/*! require.ensure | page_list/treasure/compoents/editTreasure */ "page_list/treasure/compoents/editTreasure").then((function () {
-    return resolve(__webpack_require__(/*! ./compoents/editTreasure.vue */ 195));
+    return resolve(__webpack_require__(/*! ./compoents/editTreasure.vue */ 203));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {

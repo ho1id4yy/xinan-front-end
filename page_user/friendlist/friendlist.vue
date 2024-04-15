@@ -13,21 +13,25 @@
 			</view>
 			<image class='add' src='../../static/icon/Component 43.png' />
 		</view>
-		<image @click="changefriend2" class='list' src='/static/icon/Component 104.png'></image>
-		<view class='bottombar'>
-			<view class='block' @click='touser' ></view>
-			<image @click='touser' class='label'  src='../../static/icon/Group_black.png'></image>
-			<image @click='tocircle' class='label' src='../../static/icon/third_white.png'></image>
-			<image @click="toserve" class='label' src='../../static/icon/second_white.png'></image>
-			<image @click="tolist" class='label' src='../../static/icon/first_white.png'></image>
+		<view>
+			<view class='list'>
+				<view v-for='(item,idx) in notdel1' v-if='notdel1[idx]'>
+					<image class='head' src='../../static/icon/Ellipse 30.png'></image>
+					<view class='name' :id='idx' @click="changefriend2(idx)">
+						心小安
+					</view>
+					<image class="line" src='../../static/icon/Line 8.png'></image>
+				</view>
+			</view>
 		</view>
+		<buttom-bar :buttombar="buttombar"></buttom-bar>
 		<view v-if='showcover' class='grayblock'>
 		</view>
 		<view v-if='showcover' class='changeheadblock'>
 			<image class='head' src='../../static/icon/Ellipse 30.png'></image>
-			<image @click='close' class='close' src='../../static/icon/close.png'></image>
+			<image @click='close1' class='close' src='../../static/icon/close.png'></image>
 			<view class='name'>安小心</view>
-			<view class='number'>心安号：123456789999</view>
+			<view class='number'>心安号：123456789</view>
 			<view class='choose'>选择分组</view>
 			<view class='biggroup'>
 				<view class='group' @click='close'>
@@ -60,8 +64,10 @@
 		</view>
 		<view v-if='showlist' class='changeheadblock'>
 			<image class='head' src='../../static/icon/Ellipse 30.png'></image>
-			<image @click='close2' class='close' src='../../static/icon/close.png'></image>
-			<view class='name'>安小心</view>
+			<image @click='close3' class='close' src='../../static/icon/close.png'></image>
+			<view class='name'>
+				<view>安小心</view>
+			</view>
 			<view class='number'>心安号：123456789999</view>
 			<view class='choose'>选择分组</view>
 			<view class='biggroup'>
@@ -98,11 +104,27 @@
 </template>
 
 <script>
+	import buttomBar from '@/compoents/buttomBar/buttomBar.vue'
 	export default {
+		components: {
+		    buttomBar
+		},
 		data() {
 			return {
 				showcover:false,
 				showlist:false,
+				notdel1:[true,true,true,true,true,true],
+				idtemp1:null,
+				id:null,
+				buttombar: {
+					active: 3,
+					imglist: [
+						'/static/icon/first_white.png',
+						'/static/icon/second_white.png',
+						'/static/icon/third_white.png',
+						'/static/icon/Group_black.png'
+					]
+				},
 			};
 		},
 		methods:{
@@ -129,20 +151,54 @@
 			changefriend(){
 				this.showcover=true
 			},
-			close(){
-				this.showcover=false
+			close3(){
+				this.showlist=false
 			},
-			changefriend2(){
+			changefriend2(idx){
 				this.showlist=true
+				this.idtemp1=idx
 			},
 			close2(){
 				this.showlist=false
+				if (this.idtemp1!=null || this.idtemp1==0){
+					this.notdel1[Number(this.idtemp1)]=false
+				}
 			},
+			close1(){
+				this.showcover=false
+			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+	.list{
+		height:900rpx;
+		border:5rpx solid black;
+		border-radius: 20rpx;
+		margin-left: 5rpx;
+		margin-bottom: 20rpx;
+		overflow: auto;
+		.head{
+			height:80rpx;
+			width:80rpx;
+			margin:20rpx 0 -30rpx 20rpx;
+			position: relative;
+		}
+		.name{
+			height:80rpx;
+			display: inline;
+			position: relative;
+			margin: 0rpx 0 10rpx 150rpx;
+		};
+		.line{
+			height:4rpx;
+			width:600rpx;
+			margin-left:25rpx;
+			display: block;
+			margin-top: 30rpx;
+		}
+	}
 .block1{
 	.label{
 		border:5rpx solid black;
@@ -262,7 +318,7 @@
 }
 .bottombar{
 		width:700rpx;
-		margin:0rpx 20rpx 20rpx 20rpx;
+		margin:0rpx 20rpx 20rpx 22rpx;
 		border:5rpx solid black;
 		box-sizing: border-box;
 		border-radius: 60rpx;
@@ -325,13 +381,13 @@
 		font-size: 50%;
 		color: rgb(120,120,120);
 		opacity: 0.5;
-		margin:10rpx 50rpx 10rpx 125rpx;
+		margin:10rpx 50rpx 10rpx 170rpx;
 	};
 	.choose{
 			font-size: 40%;
 			color: rgb(120,120,120);
 			opacity: 0.5;
-			margin:10rpx 50rpx 10rpx 205rpx;
+			margin:10rpx 50rpx 10rpx 220rpx;
 	};
 	.close{
 		height:30rpx;
@@ -378,7 +434,7 @@
 			margin:40rpx 40rpx 60rpx 30rpx;
 		};
 	.biggroup{
-		margin:20rpx 0rpx 40rpx 50rpx;
+		margin:20rpx 0rpx 40rpx 85rpx;
 		.group{
 			border: 5rpx solid black;
 			border-radius: 15rpx;

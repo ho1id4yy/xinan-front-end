@@ -355,7 +355,7 @@ var _default = {
   },
   methods: {
     toinvitelist: function toinvitelist() {
-      uni.navigateTo({
+      uni.reLaunch({
         url: '/page_list/invitelist/invitelist'
       });
     },
@@ -386,6 +386,11 @@ var _default = {
     change2: function change2(idx) {
       this.showlist = true;
       this.idtemp2 = idx;
+      this.idtemp1 = null;
+      this.idtemp3 = null;
+      this.idtemp4 = null;
+      this.idtemp5 = null;
+      this.idtemp6 = null;
     },
     change3: function change3(idx) {
       this.showlist = true;
@@ -459,6 +464,11 @@ var _default = {
     },
     close4: function close4() {
       this.cgn2 = false;
+    },
+    tohome: function tohome() {
+      uni.reLaunch({
+        url: '/page_list/friendhome/friendhome'
+      });
     }
   }
 };

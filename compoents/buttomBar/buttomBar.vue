@@ -1,25 +1,32 @@
 <template>
-	<view>
+	<view class="footer">
 		<view class="buttom-bar-wrap">
 			<view class="buttom-bar">
 				<ul>
-					<li :class="[idx==buttombar.active?'border active':'border']"
-						v-for="(item,idx) in buttombar.imglist">
-						<image :src="item" alt="" @click="goto(idx)" />
+					<li :key="idx" :class="[idx==buttombar.active?'border active':'border']"
+						v-for="(item,idx) in buttombar.imglist" @click="goto(idx)">
+						<image :src="item" alt=""  />
 					</li>
 				</ul>
 			</view>
 		</view>
+        <view class="null" :style="{height: bottom + 'px'}">占位符</view>
 	</view>
 </template>
 
 <script>
 	export default {
 		data() {
-			return {}
+			return {
+                bottom: 0,
+            }
 		},
+        created() {
+            const {safeArea,  screenHeight} = uni.getSystemInfoSync()
+            this.bottom = screenHeight - safeArea.bottom
+        },
 		mounted() {
-
+            
 		},
 		methods: {
 			goto(idx) {
@@ -64,18 +71,25 @@
 </script>
 
 <style lang="scss" scoped>
-	$height:100rpx;
+	$height:8vh;
+    .footer{
+        position: fixed;
+        bottom: 0rpx;
+        left: 0;
+        right: 0;
+        flex-shrink: 0;
+    }
+    .null{
+        text-align: center;
+        font-size: 18rpx;
+        opacity: 0;
+    }
 	.buttom-bar-wrap {
-		background-color: #ffffff;
-		z-index: 999;
+		background-color: transparent;
+		z-index: 2999;
 		box-sizing: border-box;
-		height: $height;
 		width: 100%;
-		position: fixed;
-		bottom: 0rpx;
-		left: 0rpx;
-		padding: 0rpx 25rpx 10rpx;
-
+		padding: 0rpx 25rpx 0;
 		.buttom-bar {
 			height: 100%;
 			width: 100%;
@@ -84,17 +98,18 @@
 			position: relative;
 			box-sizing: border-box;
 			overflow: hidden;
-
+			background-color: #fff;
+            padding: 8rpx 0rpx;
 			ul {
 				height: 100%;
 				width: 100%;
 				display: flex;
-				justify-content: space-around;
+				//justify-content: space-around;
 				align-items: center;
 
 				.border {
 					width: 20%;
-					height: $height*0.7;
+					height: 84rpx;
 					display: flex;
 					justify-content: center;
 					align-items: center;
@@ -103,7 +118,6 @@
 					&.active {
 						border: #000 2rpx solid;
 					}
-
 					image {
 						width: ($height/3);
 						height: ($height/3);

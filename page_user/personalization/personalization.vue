@@ -43,21 +43,27 @@
 		<view class='tip'>性别、手机号及生日信息保存后无法重新修改，请谨慎填写。</view>
 		
 		
-		<view class='bottombar'>
-			<view class='block' @click='touser' ></view>
-			<image @click='touser' class='label'  src='../../static/icon/Group_black.png'></image>
-			<image @click='tocircle' class='label' src='../../static/icon/third_white.png'></image>
-			<image @click="toserve" class='label' src='../../static/icon/second_white.png'></image>
-			<image @click="tolist" class='label' src='../../static/icon/first_white.png'></image>
-		</view>
+		<buttom-bar :buttombar="buttombar"></buttom-bar>
 	</view>
 </template>
 
 <script>
+	import buttomBar from '@/compoents/buttomBar/buttomBar.vue'
 	export default {
+		components: {
+		    buttomBar
+		},
 		data() {
 			return {
-				
+				buttombar: {
+					active: 3,
+					imglist: [
+						'/static/icon/first_white.png',
+						'/static/icon/second_white.png',
+						'/static/icon/third_white.png',
+						'/static/icon/Group_black.png'
+					]
+				},
 			};
 		},
 		methods:{

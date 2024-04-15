@@ -350,9 +350,18 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
   data: function data() {
-    return {};
+    return {
+      bottom: 0
+    };
+  },
+  created: function created() {
+    var _uni$getSystemInfoSyn = uni.getSystemInfoSync(),
+      safeArea = _uni$getSystemInfoSyn.safeArea,
+      screenHeight = _uni$getSystemInfoSyn.screenHeight;
+    this.bottom = screenHeight - safeArea.bottom;
   },
   mounted: function mounted() {},
   methods: {

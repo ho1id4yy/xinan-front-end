@@ -16,7 +16,8 @@
         "password/password",
         "pet/pet",
         "wishlist/wishlist",
-        "socialplatform/socialplatform"
+        "socialplatform/socialplatform",
+        "friendhome/friendhome"
       ]
     },
     {

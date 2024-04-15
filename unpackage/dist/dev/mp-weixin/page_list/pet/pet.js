@@ -146,27 +146,27 @@ var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 100));
 var petItem = function petItem() {
   __webpack_require__.e(/*! require.ensure | page_list/pet/compoents/petItem */ "page_list/pet/compoents/petItem").then((function () {
-    return resolve(__webpack_require__(/*! ./compoents/petItem.vue */ 237));
+    return resolve(__webpack_require__(/*! ./compoents/petItem.vue */ 245));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var addPetBox = function addPetBox() {
   __webpack_require__.e(/*! require.ensure | page_list/pet/compoents/addPetBox */ "page_list/pet/compoents/addPetBox").then((function () {
-    return resolve(__webpack_require__(/*! ./compoents/addPetBox.vue */ 244));
+    return resolve(__webpack_require__(/*! ./compoents/addPetBox.vue */ 252));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var getPetBox = function getPetBox() {
   __webpack_require__.e(/*! require.ensure | page_list/pet/compoents/getPetBox */ "page_list/pet/compoents/getPetBox").then((function () {
-    return resolve(__webpack_require__(/*! ./compoents/getPetBox.vue */ 251));
+    return resolve(__webpack_require__(/*! ./compoents/getPetBox.vue */ 259));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var sendPetBox = function sendPetBox() {
   __webpack_require__.e(/*! require.ensure | page_list/pet/compoents/sendAccount */ "page_list/pet/compoents/sendAccount").then((function () {
-    return resolve(__webpack_require__(/*! ./compoents/sendAccount.vue */ 258));
+    return resolve(__webpack_require__(/*! ./compoents/sendAccount.vue */ 266));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var editAccoluntVue = function editAccoluntVue() {
   __webpack_require__.e(/*! require.ensure | page_list/pet/compoents/editAccolunt */ "page_list/pet/compoents/editAccolunt").then((function () {
-    return resolve(__webpack_require__(/*! ./compoents/editAccolunt.vue */ 265));
+    return resolve(__webpack_require__(/*! ./compoents/editAccolunt.vue */ 273));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {

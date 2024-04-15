@@ -64,15 +64,7 @@
 				</view>
 			</view>
 		</view>
-		<view class='bottom'>
-			<view class='bottombar'>
-			<view class='block'></view>
-			<image class='label' src='../../static/icon/first_black.png'></image>
-			<image @click="toserve" class='label' src='../../static/icon/second_white.png'></image>
-			<image @click='tocircle' class='label' src='../../static/icon/third_white.png'></image>
-			<image @click='touser' class='label'  src='../../static/icon/Group_white.png'></image>
-		</view>
-		</view>
+		 <buttom-bar :buttombar="buttombar"></buttom-bar>
 		
 		
 		
@@ -81,7 +73,7 @@
 		<view v-if='showlist' class='grayblock'>
 		</view>
 		<view v-if='showlist' class='changeheadblock'>
-			<image class='head' src='../../static/icon/Ellipse 30.png'></image>
+			<image @click='tohome' class='head' src='../../static/icon/Ellipse 30.png'></image>
 			<image @click='close5' class='close' src='../../static/icon/close.png'></image>
 			<view class='name'>安小心</view>
 			<view class='number'>心安号：123456789999</view>
@@ -189,7 +181,11 @@
 </template>
 
 <script>
+	import buttomBar from '@/compoents/buttomBar/buttomBar.vue'
 	export default {
+		components: {
+		    buttomBar
+		},
 		data() {
 			return {
 				showlist:false,
@@ -208,12 +204,21 @@
 				idtemp4:null,
 				idtemp5:null,
 				idtemp6:null,
-				id:null
+				id:null,
+				buttombar: {
+					active: 0,
+					imglist: [
+						'/static/icon/first_black.png',
+						'/static/icon/second_white.png',
+						'/static/icon/third_white.png',
+						'/static/icon/Group_white.png'
+					]
+				},
 			};
 		},
 		methods:{
 			toinvitelist(){
-				uni.navigateTo({
+				uni.reLaunch({
 					url:'/page_list/invitelist/invitelist'
 				})
 			},
@@ -244,6 +249,11 @@
 			change2(idx){
 				this.showlist=true
 				this.idtemp2=idx
+				this.idtemp1=null
+				this.idtemp3=null
+				this.idtemp4=null
+				this.idtemp5=null
+				this.idtemp6=null
 			},
 			change3(idx){
 				this.showlist=true
@@ -322,6 +332,11 @@
 			},
 			close4(){
 				this.cgn2=false
+			},
+			tohome(){
+				uni.reLaunch({
+					url:'/page_list/friendhome/friendhome'
+				})
 			}
 		}
 	}
@@ -366,7 +381,7 @@
 .overflow{
 	margin-top: 250rpx;
 	  position: fixed;
-	  height: 810rpx;
+	  height: 1010rpx;
 	  width: 100%;
 	  overflow-y: hiden;
 	  overflow: auto;
@@ -377,7 +392,7 @@
 	z-index: 2000;
 	background-color: rgba(128,128,128,0.8);
 	opacity: 0.8;
-	height: 1334rpx;
+	height: 1700rpx;
 	width: 750rpx;
 };
 .changeheadblock2{
@@ -388,10 +403,10 @@
 	border: 5 solid white;
 	border-radius: 20rpx;
 	z-index: 20000;
-	margin-left: 110rpx;
-	margin-top: 350rpx;
+	margin-left: 150rpx;
+	margin-top: 450rpx;
 	background-color: rgba(256,256,256,1);
-	padding: 30rpx 30rpx 50rpx 30rpx;
+	padding: 25rpx 25rpx 45rpx 25rpx;
 	.close{
 		height:30rpx;
 		width:30rpx;
@@ -407,7 +422,7 @@
 			height: 40rpx;
 			font-size: 40%;
 			color: black;
-			margin:20rpx 150rpx 20rpx 150rpx;
+			margin:20rpx 150rpx 20rpx 140rpx;
 		};
 		.changename{
 			background-color: #343434;
@@ -573,7 +588,7 @@
 			font-size: 40%;
 			color: black;
 			opacity: 0.2;
-			margin:20rpx 0rpx 20rpx 20rpx;
+			margin:20rpx 0rpx 20rpx 45rpx;
 		};
 		.group_active{
 			border: 5rpx solid black;

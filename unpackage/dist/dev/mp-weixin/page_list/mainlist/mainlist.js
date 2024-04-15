@@ -176,107 +176,49 @@ exports.default = void 0;
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default = {
   data: function data() {
-    return {};
+    return {
+      buttombar: {
+        active: 0,
+        imglist: ['/static/icon/first_black.png', '/static/icon/second_white.png', '/static/icon/third_white.png', '/static/icon/Group_white.png']
+      },
+      mainList: [{
+        name: "葬礼邀请名单",
+        checked: false,
+        url: '/page_list/invitelist/invitelist'
+      }, {
+        name: "愿望清单",
+        checked: false,
+        url: '/page_list/wishlist/wishlist'
+      }, {
+        name: "社交平台管理",
+        checked: false,
+        url: '/page_list/socialplatform/socialplatform'
+      }, {
+        name: "密码柜管理",
+        checked: false,
+        url: '/page_list/password/password'
+      }, {
+        name: "宠物管理",
+        checked: false,
+        url: '/page_list/pet/pet'
+      }, {
+        name: "珍宝收藏馆",
+        checked: false,
+        url: '/page_list/treasure/treasure'
+      }]
+    };
   },
   methods: {
-    toinvitelist: function toinvitelist() {
+    c: function c() {
       uni.navigateTo({
         url: '/page_list/invitelist/invitelist'
       });
     },
-    towishlist: function towishlist() {
+    goto: function goto(url) {
       uni.navigateTo({
-        url: '/page_list/wishlist/wishlist'
-      });
-    },
-    tosocial: function tosocial() {
-      uni.navigateTo({
-        url: '/page_list/socialplatform/socialplatform'
-      });
-    },
-    totre: function totre() {
-      uni.navigateTo({
-        url: '/page_list/treasure/treasure'
-      });
-    },
-    topsw: function topsw() {
-      uni.navigateTo({
-        url: '/page_list/password/password'
-      });
-    },
-    topet: function topet() {
-      uni.navigateTo({
-        url: '/page_list/pet/pet'
-      });
-    },
-    toserve: function toserve() {
-      uni.redirectTo({
-        url: '/pages/serve/serve'
-      });
-    },
-    tocircle: function tocircle() {
-      uni.redirectTo({
-        url: '/page_anxincircle/anxincircle/anxincircle'
-      });
-    },
-    touser: function touser() {
-      uni.redirectTo({
-        url: '/page_user/homepage/homepage'
+        url: url
       });
     }
   }

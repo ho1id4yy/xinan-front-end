@@ -146,7 +146,7 @@ var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 100));
 var addBox = function addBox() {
   __webpack_require__.e(/*! require.ensure | page_list/wishlist/compoents/addBox */ "page_list/wishlist/compoents/addBox").then((function () {
-    return resolve(__webpack_require__(/*! ./compoents/addBox.vue */ 272));
+    return resolve(__webpack_require__(/*! ./compoents/addBox.vue */ 280));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
