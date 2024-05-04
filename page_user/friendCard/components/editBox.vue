@@ -11,7 +11,7 @@
 			<view class="xinanNum">心安号：{{friendInfo.id}}</view>
 			<view class="name">
 				<text>好友备注</text>
-				<input type="number" v-model="friendInfo.remarkName" />
+				<input type="number" v-model="friendInfo.username" />
 			</view>
 			<view class="xuanzefenzu">更改分组</view>
 			<swiper class="category">
@@ -22,12 +22,18 @@
 					</view>
 				</swiper-item>
 			</swiper>
-			<button class="submmit" @click="submmit">更改</button>
+			<view class="buttonContent">
+				<button class="button" @click="submmit">更改</button>
+				<button class="button" @click="deleteFriends">删除</button>
+			</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	import {
+		deleteFriend
+	} from '../../../util/userApi.js'
 	export default {
 		data() {
 			return {
@@ -59,7 +65,7 @@
 				uni.$emit('closeEditFriendBox')
 			},
 			submmit() {
-				if (!this.friendInfo.remarkName) {
+				if (!this.friendInfo.username) {
 					uni.showToast({
 						title: '请填写备注',
 						icon: 'fail',
@@ -69,7 +75,27 @@
 				let page = Math.floor(this.currentCategory / 6);
 				let idx = this.currentCategory % 6;
 				console.log("好友分组", page, idx, '\n', this.categoryLIst[page][idx].id, this.friendInfo.id);
-				uni.$emit('editFriend', this.categoryLIst[page][idx].id, this.friendInfo.id, 0, this.friendInfo.remarkName)
+				uni.$emit('editFriend', this.categoryLIst[page][idx].id, this.friendInfo.id, 0, this.friendInfo.username)
+			},
+			deleteFriends() {
+				const that=this;
+				uni.showModal({
+					title: '确定删除吗?',
+					success: function(res) {
+						if (res.confirm) {
+							deleteFriend(that.friendInfo.id).then(res => {
+								console.log("删除好友成功", res)
+								uni.redirectTo({
+									url: '/page_user/friendlist/friendlist'
+								})
+							}).catch(err => {
+								console.log("删除好友失败", err)
+							})
+						} else if (res.cancel) {
+							console.log('用户点击取消');
+						}
+					}
+				});
 			},
 			moveHandle() {}
 		}
@@ -202,27 +228,37 @@
 				}
 			}
 
-			.submmit {
+			.buttonContent {
 				$height: 60rpx;
 				height: $height;
-				width: 80%;
-				box-sizing: border-box;
-
-				position: relative;
-				left: 50%;
-				transform: translateX(-50%);
-				padding: 0;
-				margin: 0;
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
 				margin-top: 20rpx;
 
-				line-height: $height;
-				text-align: center;
-				color: #fff;
-				background-color: #343434;
-				border: #343434 2rpx solid;
-				border-radius: 20rpx;
+				.button {
+					height: $height;
+					width: 48%;
+					box-sizing: border-box;
 
+					position: relative;
+					padding: 0;
+					margin: 0;
+
+					line-height: $height;
+					text-align: center;
+					color: #fff;
+					background-color: #343434;
+					border: #343434 2rpx solid;
+					border-radius: 20rpx;
+
+					&:nth-child(2) {
+						color: #000;
+						background-color: #fff;
+					}
+				}
 			}
 		}
+
 	}
 </style>
