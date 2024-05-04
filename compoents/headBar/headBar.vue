@@ -3,12 +3,12 @@
 		<view class="headBar-wrap">
 			<view class="headBar">
 				<view class="headBar-head" @click="back">
-					<image src="../../static/icon/first_black.png" alt="" srcset=""  />
-					<text>清单</text>
+					<image class="image" src="../../static/icon/first_black.png" alt="" srcset="" />
+					<text class="text">清单</text>
 				</view>
 				<view class="headBar-body">
-					<text>{{content}}</text>
-					<image src="../../static/icon/Vector 11.png" alt="" mode="aspectFit" srcset="" />
+					<text class="text">{{content}}</text>
+					<image class="image" src="../../static/icon/Vector 11.png" alt="" mode="aspectFit" srcset="" />
 				</view>
 			</view>
 		</view>
@@ -48,21 +48,21 @@
 
 		.headBar {
 			position: relative;
-			height:100%;
-			width:100%;
+			height: 100%;
+			width: 100%;
 
 			.headBar-head {
 				height: 60rpx;
 				display: flex;
 				align-items: center;
 
-				image {
+				.image {
 					margin-left: 40rpx;
 					height: 40rpx;
 					width: 40rpx;
 				}
 
-				text {
+				.text {
 					margin-left: 20rpx;
 				}
 			}
@@ -74,14 +74,14 @@
 				display: flex;
 				align-items: center;
 
-				text {
+				.text {
 					margin-left: 40rpx;
 					font-size: 50rpx;
 					white-space: nowrap;
 					font-weight: 900;
 				}
 
-				image {
+				.image {
 					height: 120rpx;
 					margin-right: 20rpx;
 				}

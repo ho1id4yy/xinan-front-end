@@ -1,9 +1,8 @@
 {
   "pages": [
     "pages/serve/serve",
+    "pages/login/login",
     "pages/merchant/merchant",
-    "compoents/buttomBar/buttomBar",
-    "compoents/headBar/headBar",
     "pages/detail/detail"
   ],
   "subPackages": [
@@ -31,9 +30,10 @@
       "pages": [
         "homepage/homepage",
         "friendlist/friendlist",
-        "friend/friend",
+        "friendCard/friendCard",
         "favoritebusiness/favoritebusiness",
-        "personalization/personalization"
+        "personalization/personalization",
+        "friendXinanCircle/friendXinanCircle"
       ]
     }
   ],

@@ -6,12 +6,40 @@
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
+			try {
+				const token = uni.getStorageSync('token');
+				const id = uni.getStorageSync('id');
+				if (token && id) {
+					console.log("已登录");
+					this.globalData.token = token;
+					this.globalData.id = id;
+					console.log(token)
+				} else {
+					console.log("没有token，id需要登陆")
+					uni.reLaunch({
+						url: '/pages/login/login'
+					});
+				}
+			} catch (e) {
+				console.log("登录出错", e)
+				uni.reLaunch({
+					url: '/pages/login/login'
+				});
+			}
 		},
 		onShow: function() {
 			console.log('App Show')
 		},
 		onHide: function() {
 			console.log('App Hide')
+		},
+		globalData: {
+			// token
+			token: '',
+			// 用户id
+			id: '',
+			userInfo: {},
+			BASE_URL: "http://120.24.61.209:8081",
 		}
 	}
 </script>

@@ -1,0 +1,35 @@
+
+@mixin input() { // 输入框封装（大小应该不会变吧，）
+		$height: 80rpx;
+		box-sizing: border-box;
+		height: $height;
+		width:100%;
+		border-radius: $height;
+		border: 3rpx solid #000;
+		line-height: $height;
+		margin-top: 25rpx;
+		position: relative;
+
+		input {
+			height: $height;
+			width: 85%;
+			position: relative;
+			left: 50%;
+			transform: translateX(-50%)
+		}
+
+		text {
+			$textheight: 35rpx;
+			height: $textheight;
+			line-height: $textheight;
+			box-sizing: border-box;
+			padding: 0rpx 10rpx;
+			background-color: #fff;
+			position: absolute;
+			top: -$height/2;
+			transform: translateY(50%);
+			left: 1.5em;
+		}
+}
+
+$bouttom-black:#343434;// 全局的黑色主题色

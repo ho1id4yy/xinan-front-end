@@ -205,6 +205,7 @@
 </script>
 
 <style lang="scss" scoped>
+	@import '../../../gloabal.scss';
 	.boxmarsk {
 		height: 100vh;
 		width: 100%;
@@ -262,39 +263,6 @@
 				}
 			}
 
-			@mixin input {
-				$height: 80rpx;
-				box-sizing: border-box;
-				height: $height;
-				border-radius: $height;
-				border: 3rpx solid #000;
-				line-height: $height;
-				margin-top: 25rpx;
-				position: relative;
-
-				input {
-					height: $height;
-					width: 85%;
-					position: relative;
-					left: 50%;
-					transform: translateX(-50%)
-				}
-
-				text {
-					$textheight: 35rpx;
-					height: $textheight;
-					line-height: $textheight;
-					box-sizing: border-box;
-					padding: 0rpx 10rpx;
-					background-color: #fff;
-					position: absolute;
-					top: -$height/2;
-					transform: translateY(50%);
-					left: 1.5em;
-				}
-			}
-
-
 			.userAcount {
 				@include input;
 			}
@@ -309,34 +277,7 @@
 				z-index: 1100;
 
 				.addWish {
-					$height: 80rpx;
-					box-sizing: border-box;
-					height: $height;
-					border-radius: $height;
-					border: 3rpx solid #000;
-					line-height: $height;
-					position: relative;
-
-					input {
-						height: $height;
-						width: 85%;
-						position: relative;
-						left: 50%;
-						transform: translateX(-50%)
-					}
-
-					text {
-						$textheight: 35rpx;
-						height: $textheight;
-						line-height: $textheight;
-						box-sizing: border-box;
-						padding: 0rpx 10rpx;
-						background-color: #fff;
-						position: absolute;
-						top: -$height/2;
-						transform: translateY(50%);
-						left: 1.5em;
-					}
+					@include input;
 				}
 
 				.appList {

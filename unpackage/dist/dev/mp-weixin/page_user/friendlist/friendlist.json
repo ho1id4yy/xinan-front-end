@@ -2,6 +2,8 @@
   "navigationBarTitleText": "",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "buttom-bar": "/compoents/buttomBar/buttomBar"
+    "buttom-bar": "/compoents/buttomBar/buttomBar",
+    "add-friend-box": "/page_user/friendlist/compoents/addFriendBox",
+    "accept-friend": "/page_user/friendlist/compoents/acceptFriend"
   }
 }

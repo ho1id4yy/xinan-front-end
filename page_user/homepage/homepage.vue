@@ -1,68 +1,30 @@
 <template>
 	<view>
-		<view class='top'>
-			<image @click="changeground" class='background' src='../../static/icon/homepagebackground.png'></image>
-			<view class='content'>
-				<image @click="changehead" class='head' src='../../static/icon/Ellipse 30.png'></image>
-				<view class='name'>安小心</view>
-				<view class='number'>心安号：12345678</view>
-				<view class='personal'>我的个性签名是这样一句话</view>
-				<view class='bigblock'>
-					<view class='num'>33</view>
-					<view class='num'>36%</view>
-					<view class='num'>78</view>
+		<image @click="changeBG" class='background' :src='userInfo.backgroundImage' mode="aspectFill"></image>
+		<view class='content'>
+			<button class='head' open-type="chooseAvatar" @chooseavatar="changeAvatar">
+				<image :src='userInfo.avatar' mode="aspectFit"></image>
+			</button>
+			<view class='name'>{{userInfo.username}}</view>
+			<view class='number'>心安号：{{userInfo.id}}</view>
+			<view class='signature'>{{userInfo.signature}}</view>
+			<view class='bigblock'>
+				<view class="top">
+					<view class='num'>{{userInfo.wishCount||0}}</view>
+					<view class='num'>{{userInfo.listProcess||0}}</view>
+					<view class='num'>{{userInfo.friendCount||0}}</view>
+				</view>
+				<view class="buttom">
 					<view class='num2'>我的愿望数</view>
 					<view class='num2'>清单进度</view>
 					<view class='num2'>我的好友</view>
 				</view>
 			</view>
 		</view>
-		<view class='block'>
-			<image class='label' src='../../static/icon/cake.png'></image>
-			<image class='line' src='../../static/icon/Line 13.png'></image>
-			<view class='row'>生日快乐</view>
-		</view>
-		<view class='block' @click='tofriendlist'>
-			<image class='label' src='../../static/icon/carbon_friendship.png'></image>
-			<image class='line' src='../../static/icon/Line 13.png'></image>
-			<view class='row'>好友列表</view>
-		</view>
-		<view class='block' @click="tofavoritemerchant">
-			<image class='label' src='../../static/icon/clarity_store-line.png'></image>
-			<image class='line' src='../../static/icon/Line 13.png'></image>
-			<view class='row'>收藏商家</view>
-		</view>
-		<view class='block' @click='toset'>
-			<image class='label' src='../../static/icon/Group.png'></image>
-			<image class='line' src='../../static/icon/Line 13.png'></image>
-			<view class='row'>个性设置</view>
-		</view>
-
-		<view v-if='showcover' class='grayblock'>
-		</view>
-		<view v-if='showcover' class='changeheadblock'>
-			<image class='head' src='../../static/icon/Ellipse 30.png'></image>
-			<image @click="cancel" class='close' src='../../static/icon/close.png'></image>
-			<view class='btn'>
-				用微信头像
-			</view>
-			<view class='btn'>
-				从相册选择
-			</view>
-			<view class='not' @click='cancel'>
-				取消
-			</view>
-		</view>
-		<view v-if='showground' class='grayblock'>
-		</view>
-		<view v-if='showground' class='changegroundblock'>
-			<image class='ground' src='../../static/icon/Component 103.png'></image>
-			<image class='close' @click="cancel2" src='../../static/icon/close.png'></image>
-			<view class='btn'>
-				从相册选择
-			</view>
-			<view class='not' @click="cancel2">
-				取消
+		<view class="blockContent">
+			<view class='block' @click="goPage(item.url)" v-for="(item,index) in blockInfo" :key='index'>
+				<image class='label' :src='item.label'></image>
+				<view class='text'>{{item.content}}</view>
 			</view>
 		</view>
 		<buttom-bar :buttombar="buttombar"></buttom-bar>
@@ -70,365 +32,254 @@
 </template>
 
 <script>
-export default {
-	data() {
-		return {
-			showcover: false,
-			showground: false,
-			buttombar: {
-				active: 3,
-				imglist: [
-					'/static/icon/first_white.png',
-					'/static/icon/second_white.png',
-					'/static/icon/third_white.png',
-					'/static/icon/Group_black.png'
+	import {
+		getUserInfo,
+		updataUserInfo
+	} from '../../util/userApi.js';
+	import {
+		updataImage
+	} from '../../util/api';
+	export default {
+		data() {
+			return {
+				buttombar: {
+					active: 3,
+					imglist: [
+						'/static/icon/first_white.png',
+						'/static/icon/second_white.png',
+						'/static/icon/third_white.png',
+						'/static/icon/Group_black.png'
+					]
+				},
+				userInfo: {},
+				blockInfo: [{
+						label: '../../static/icon/cake.png',
+						content: '生日快乐',
+						url: '',
+					},
+					{
+						label: '../../static/icon/carbon_friendship.png',
+						content: '好友列表',
+						url: '/page_user/friendlist/friendlist'
+					}, {
+						label: '../../static/icon/clarity_store-line.png',
+						content: '收藏商家',
+						url: '/page_user/favoritebusiness/favoritebusiness'
+					}, {
+						label: '../../static/icon/Group.png',
+						content: '个性设置',
+						url: '/page_user/personalization/personalization'
+					}
 				]
+			};
+		},
+		onLoad() {
+			// 获取用户信息
+			getUserInfo().then(res => {
+				console.log("获取用户信息成功", res)
+				this.userInfo = res.data;
+				getApp().globalData.userInfo = res.data;
+			}).catch(err => {
+				console.log("获取用户信息失败", err)
+			})
+		},
+		methods: {
+			goPage(url) {
+				if (url) {
+					uni.navigateTo({
+						url
+					})
+				}
 			},
-		};
-	},
-	methods: {
-		toserve() {
-			uni.reLaunch({
-				url: '/pages/serve/serve'
-			})
-		},
-		tocircle() {
-			uni.reLaunch({
-				url: '/page_anxincircle/anxincircle/anxincircle'
-			})
-		},
-		tolist() {
-			uni.reLaunch({
-				url: '/page_list/mainlist/mainlist'
-			})
-		},
-		changehead() {
-			this.showcover = true
-		},
-		changeground() {
-			this.showground = true
-		},
-		tofriendlist() {
-			uni.reLaunch({
-				url: '/page_user/friendlist/friendlist'
-			})
-		},
-		tofavoritemerchant() {
-			uni.reLaunch({
-				url: '/page_user/favoritebusiness/favoritebusiness'
-			})
-		},
-		cancel() {
-			this.showcover = false
-		},
-		cancel2() {
-			this.showground = false
-		},
-		toset() {
-			uni.reLaunch({
-				url: '/page_user/personalization/personalization'
-			})
+			changeBG() {
+				uni.chooseImage({
+					success: (res) => {
+						const tempUrl = res.tempFilePaths[0];
+						updataImage(tempUrl).then(res => {
+							console.log("修改背景图片成功", res)
+							this.$set(this.userInfo, 'backgroundImage', res)
+							// 链式调用
+							return updataUserInfo(this.userInfo)// 修改后上传用户信息
+						}).then((res) => {
+							// 修改后上传用户信息 ,这是updataUserInfo的then
+							console.log("上传用户信息成功",res)
+						}).catch(err => {
+							console.log("修改背景图片失败", err)
+						})
+					},
+					fail: (err) => {
+						console.log("照片选择失败！");
+					}
+				})
+			},
+			changeAvatar(e) {
+				console.log("图片临时路径", e.detail.avatarUrl)
+				updataImage(e.detail.avatarUrl).then(url => {
+					console.log("照片选择成功！", url);
+					this.$set(this.userInfo, 'avatar', url)
+				}).catch(err => {
+					console.log("照片选择失败！", err)
+				})
+			},
 		}
 	}
-}
 </script>
 
 <style lang="scss" scoped>
-.top {
-	height: 540rpx;
-	width: 100%;
-
 	.background {
 		width: 100%;
 		height: 400rpx;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
 	}
 
-	;
 
 	.content {
-		width: 600rpx;
-		height: 370rpx;
-		margin-top: -270rpx;
-		margin-left: 80rpx;
+		$width: 600rpx;
+		// 大小
+		width: $width;
+		// 位置
+		position: relative;
+		margin: 200rpx auto 0;
+		z-index: 100;
+		// 样式
 		border: 3rpx solid white;
 		border-radius: 40rpx;
 		background-color: white;
-		position: absolute;
-		z-index: 100;
 		box-shadow: 0px 5px 5px #C5C5C5;
+		// 子代
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		flex-wrap: nowrap;
 
 		.head {
-			margin-top: -100rpx;
-			margin-left: 190rpx;
-			width: 200rpx;
-			height: 200rpx;
+			$size: 200rpx;
+			width: $size;
+			height: $size;
 			position: relative;
+
+			box-sizing: border-box;
+			margin: -$size/2 0 0 0;
+			padding: 0;
+			border-radius: 50%;
+			border: 10rpx solid #fff;
+			overflow: hidden;
+
+			image {
+				width: $size;
+				height: $size;
+			}
 		}
 
-		;
 
 		.name {
+			margin-top: 20rpx;
 			font-size: 130%;
 			font-weight: 600;
-			margin-left: 220rpx;
 		}
 
-		;
 
 		.number {
+			margin-top: 10rpx;
 			font-size: 20rpx;
 			color: #C5C5C5;
-			margin-left: 200rpx;
 		}
 
-		;
 
-		.personal {
+		.signature {
+			margin-top: 10rpx;
 			font-size: 20rpx;
-			margin-left: 170rpx;
-			margin-bottom: 40rpx;
+			text-align: center;
 		}
 
-		;
 
 		.bigblock {
-			height: 200rpx;
-			width: 560rpx;
+			$height: 120rpx;
+			$width: 80%;
+			height: $height;
+			width: $width;
+			margin-top: 20rpx;
 
-			.num {
-				font-size: 40rpx;
-				font-weight: 600;
-				margin-right: 40rpx;
-				display: inline;
-				margin-left: 80rpx;
+			.top {
+				height: $height/2;
+				display: flex;
+				justify-content: space-around;
+
+				.num {
+					width: $width/3;
+					text-align: center;
+					font-size: 40rpx;
+					font-weight: 600;
+				}
 			}
 
-			;
+			.buttom {
+				height: $height/2;
+				display: flex;
+				justify-content: space-around;
 
-			.num2 {
-
-				font-size: 20rpx;
-				display: inline;
-				margin: 20rpx 47rpx 0rpx 55rpx;
-				color: #C5C5C5;
+				.num2 {
+					width: $width/3;
+					text-align: center;
+					font-size: 20rpx;
+					color: #C5C5C5;
+				}
 			}
-
-			;
 		}
-
 	}
 
-}
+	.blockContent {
+		width: 100%;
 
-;
+		margin-top: 30rpx;
 
-.block {
-	border: 5rpx solid black;
-	border-radius: 40rpx;
-	height: 110rpx;
-	width: 600rpx;
-	position: relative;
-	margin-left: 78rpx;
-	margin-bottom: 13rpx;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		flex-wrap: nowrap;
 
-	.label {
-		margin: 30rpx 10rpx 0rpx 30rpx;
-		width: 50rpx;
-		position: relative;
-		height: 50rpx;
+
+
+		.block {
+			$height: 110rpx;
+			height: $height;
+			width: 600rpx;
+			position: relative;
+			margin-bottom: 13rpx;
+			border: 5rpx solid black;
+			border-radius: 40rpx;
+			box-sizing: border-box;
+			padding: 0 20rpx;
+			display: flex;
+			align-items: center;
+
+			&:last-child {
+				margin-bottom: 15vh;
+			}
+
+			.label {
+				$size: 50rpx;
+				width: $size;
+				height: $size;
+				position: relative;
+				margin-right: 20rpx;
+			}
+
+
+			.text {
+				$textHeight: $height * 0.7;
+				height: $textHeight ;
+				line-height: $textHeight;
+				border-left: 4rpx solid #C5C5C5;
+				font-weight: bold;
+				position: relative;
+				padding-left: 20rpx;
+			}
+		}
 	}
-
-	;
-
-	.line {
-		width: 3rpx;
-		position: relative;
-		height: 70rpx;
-	}
-
-	;
-
-	.row {
-		display: inline;
-		font-weight: bold;
-		position: relative;
-		float: right;
-		margin-top: 40rpx;
-		margin-right: 350rpx;
-	}
-}
-
-.bottombar {
-	width: 700rpx;
-	margin: 0rpx 20rpx 20rpx 25rpx;
-	border: 5rpx solid black;
-	box-sizing: border-box;
-	border-radius: 60rpx;
-	height: 120rpx;
-	z-index: 100;
-	background-color: #FFFFFF;
-	position: absolute;
-
-	.block {
-		border: 5rpx solid black;
-		border-radius: 50rpx;
-		height: 70rpx;
-		width: 140rpx;
-		display: inline-block;
-		position: absolute;
-		margin: 20rpx 70rpx 20rpx 515rpx;
-	}
-
-	.label {
-		height: 40rpx;
-		width: 40rpx;
-		display: inline-block;
-		margin-right: 85rpx;
-		margin-left: 40rpx;
-		margin-top: 35rpx;
-		float: right;
-	}
-}
-
-;
-
-.grayblock {
-	position: absolute;
-	z-index: 1000;
-	background-color: rgba(128, 128, 128, 0.8);
-	opacity: 0.8;
-	height: 100%;
-	width: 100%;
-	margin-top: -141.5%;
-}
-
-;
-
-.changeheadblock {
-	height: 550;
-	width: 450;
-	position: absolute;
-	border: 5 solid white;
-	border-radius: 20rpx;
-	z-index: 1005;
-	margin-top: -900rpx;
-	margin-left: 100rpx;
-	background-color: rgba(256, 256, 256, 1);
-	padding: 30rpx;
-
-	.head {
-		height: 200rpx;
-		width: 200rpx;
-		position: relative;
-		z-index: 1007;
-		margin: 50rpx 130rpx 0rpx 150rpx;
-	}
-
-	;
-
-	.close {
-		height: 30rpx;
-		width: 30rpx;
-		float: right;
-	}
-
-	;
-
-	.btn {
-		border: 5rpx solid black;
-		border-radius: 20rpx;
-		background-color: #343434;
-		;
-		color: #FFFFFF;
-		font-size: 80%;
-		padding: 10rpx;
-		text-align: center;
-		height: 40rpx;
-		width: 180rpx;
-		margin: 20rpx 130rpx 20rpx 150rpx;
-	}
-
-	;
-
-	.not {
-		border: 5rpx solid black;
-		border-radius: 20rpx;
-		background-color: white;
-		font-size: 80%;
-		padding: 10rpx;
-		text-align: center;
-		height: 40rpx;
-		width: 180rpx;
-		margin: 20rpx 130rpx 20rpx 150rpx;
-	}
-
-	;
-	clear: both;
-}
-
-;
-
-.changegroundblock {
-	height: 550;
-	width: 450;
-	position: absolute;
-	border: 5 solid white;
-	border-radius: 20rpx;
-	z-index: 1005;
-	margin-top: -900rpx;
-	margin-left: 90rpx;
-	background-color: rgba(256, 256, 256, 1);
-	padding: 30rpx;
-
-	.ground {
-		height: 300rpx;
-		width: 420rpx;
-		position: relative;
-		z-index: 1007;
-		margin: 50rpx 20rpx 0rpx 40rpx;
-	}
-
-	;
-
-	.close {
-		height: 30rpx;
-		width: 30rpx;
-		float: right;
-	}
-
-	;
-
-	.btn {
-		border: 5rpx solid black;
-		border-radius: 20rpx;
-		background-color: #343434;
-		;
-		color: #FFFFFF;
-		font-size: 80%;
-		padding: 10rpx;
-		text-align: center;
-		height: 40rpx;
-		width: 180rpx;
-		margin: 20rpx 130rpx 20rpx 160rpx;
-	}
-
-	;
-
-	.not {
-		border: 5rpx solid black;
-		border-radius: 20rpx;
-		background-color: white;
-		font-size: 80%;
-		padding: 10rpx;
-		text-align: center;
-		height: 40rpx;
-		width: 180rpx;
-		margin: 20rpx 130rpx 20rpx 160rpx;
-	}
-
-	;
-	clear: both;
-}
-
-;
 </style>

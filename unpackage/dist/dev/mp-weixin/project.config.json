@@ -11,6 +11,7 @@
     "minified": false,
     "newFeature": true,
     "bigPackageSizeSupport": true,
+    "ignoreUploadUnusedFiles": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -18,8 +19,8 @@
     }
   },
   "compileType": "miniprogram",
-  "libVersion": "3.4.1",
-  "appid": "wx311765e51ce48c17",
+  "libVersion": "3.4.2",
+  "appid": "wx9712fdaee7783a49",
   "projectname": "xinan-front-end",
   "condition": {
     "miniprogram": {
@@ -35,28 +36,28 @@
           "query": ""
         },
         {
-          "name": "珍宝",
-          "pathName": "page_list/treasure/treasure",
+          "name": "LogIn",
+          "pathName": "page_user/login/login",
           "query": ""
         },
         {
-          "name": "密码",
-          "pathName": "page_list/password/password",
+          "name": "user",
+          "pathName": "page_user/homepage/homepage",
           "query": ""
         },
         {
-          "name": "宠物",
-          "pathName": "page_list/pet/pet",
+          "name": "personalization",
+          "pathName": "page_user/personalization/personalization",
           "query": ""
         },
         {
-          "name": "愿望单",
-          "pathName": "page_list/wishlist/wishlist",
+          "name": "friendList",
+          "pathName": "page_user/friendlist/friendlist",
           "query": ""
         },
         {
-          "name": "平台管理",
-          "pathName": "page_list/socialplatform/socialplatform",
+          "name": "friendCard",
+          "pathName": "page_user/friendCard/friendCard",
           "query": ""
         }
       ]

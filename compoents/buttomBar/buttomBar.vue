@@ -1,16 +1,13 @@
 <template>
-	<view class="footer">
-		<view class="buttom-bar-wrap">
-			<view class="buttom-bar">
-				<ul>
-					<li :key="idx" :class="[idx==buttombar.active?'border active':'border']"
-						v-for="(item,idx) in buttombar.imglist" @click="goto(idx)">
-						<image :src="item" alt=""  />
-					</li>
-				</ul>
-			</view>
+	<view class="buttom-bar-wrap">
+		<view class="buttom-bar">
+			<ul class="ul">
+				<li :key="idx" :class="[idx==buttombar.active?'border active':'border']"
+					v-for="(item,idx) in buttombar.imglist" @click="goto(idx)">
+					<image class="image" :src="item" alt="" />
+				</li>
+			</ul>
 		</view>
-        <view class="null" :style="{height: bottom + 'px'}">占位符</view>
 	</view>
 </template>
 
@@ -18,36 +15,37 @@
 	export default {
 		data() {
 			return {
-                bottom: 0,
-            }
+				bottom: 0,
+			}
 		},
-        created() {
-            const {safeArea,  screenHeight} = uni.getSystemInfoSync()
-            this.bottom = screenHeight - safeArea.bottom
-        },
-		mounted() {
-            
+		created() {
+			// const {
+			// 	safeArea,
+			// 	screenHeight
+			// } = uni.getSystemInfoSync()
+			// this.bottom = screenHeight - safeArea.bottom
 		},
+		mounted() {},
 		methods: {
 			goto(idx) {
-				if(idx==0){
+				if (idx == 0) {
 					uni.navigateTo({
-						url:'/page_list/mainlist/mainlist'
+						url: '/page_list/mainlist/mainlist'
 					})
 				}
-				if(idx==1){
+				if (idx == 1) {
 					uni.navigateTo({
-						url:'/pages/serve/serve'
+						url: '/pages/serve/serve'
 					})
 				}
-				if(idx==2){
+				if (idx == 2) {
 					uni.navigateTo({
-						url:'/page_anxincircle/anxincircle/anxincircle'
+						url: '/page_anxincircle/anxincircle/anxincircle'
 					})
 				}
-				if(idx==3){
+				if (idx == 3) {
 					uni.navigateTo({
-						url:'/page_user/homepage/homepage'
+						url: '/page_user/homepage/homepage'
 					})
 				}
 			}
@@ -71,25 +69,17 @@
 </script>
 
 <style lang="scss" scoped>
-	$height:8vh;
-    .footer{
-        position: fixed;
-        bottom: 0rpx;
-        left: 0;
-        right: 0;
-        flex-shrink: 0;
-    }
-    .null{
-        text-align: center;
-        font-size: 18rpx;
-        opacity: 0;
-    }
+	$height: 8vh;
 	.buttom-bar-wrap {
-		background-color: transparent;
+		background-color: #fff;
 		z-index: 2999;
 		box-sizing: border-box;
 		width: 100%;
 		padding: 0rpx 25rpx 0;
+		position: fixed;
+		bottom: 0rpx;
+		left: 0;
+
 		.buttom-bar {
 			height: 100%;
 			width: 100%;
@@ -99,12 +89,13 @@
 			box-sizing: border-box;
 			overflow: hidden;
 			background-color: #fff;
-            padding: 8rpx 0rpx;
-			ul {
+			padding: 8rpx 0rpx;
+
+			.ul {
 				height: 100%;
 				width: 100%;
 				display: flex;
-				//justify-content: space-around;
+				justify-content: space-around;
 				align-items: center;
 
 				.border {
@@ -118,7 +109,8 @@
 					&.active {
 						border: #000 2rpx solid;
 					}
-					image {
+
+					.image {
 						width: ($height/3);
 						height: ($height/3);
 					}

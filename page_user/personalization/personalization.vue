@@ -8,51 +8,51 @@
 				<image class='vector' src='../../static/icon/Vector 11.png'></image>
 			</view>
 		</view>
-		<image class='head' src='../../static/icon/Ellipse 30.png'></image>
-		<view class='block'>
-			<view class='top'>
-				昵称
+		<button class='head' open-type="chooseAvatar" @chooseavatar="changeAvatar">
+			<image :src='userInfo.avatar' mode="aspectFit"></image>
+		</button>
+		<view class="inputArea">
+			<view class="inputBar">
+				<text>昵称</text>
+				<input type="nickname" v-model="userInfo.username" />
 			</view>
-			<input class='text1' value="安小心">
-		</view>
-		<view class='block'>
-			<view class='top'>
-				签名
+			<view class="inputBar">
+				<text>签名</text>
+				<input type="text" v-model="userInfo.signature" />
 			</view>
-			<input class='text1' value="此心安处是吾乡">
-		</view>
-		<view class='block'>
-			<view class='top'>
-				手机
+			<view class="inputBar">
+				<text>手机</text>
+				<input type="number" v-model="userInfo.phone" />
 			</view>
-			<input class='text1' value="1399999999999">
-		</view>
-		<view class='block'>
-			<view class='top'>
-				性别
+			<view class="inputBar">
+				<picker mode="selector" value="0" :range="['男','女']" @change="changeGender">
+					<text>性别</text>
+					<input type="text" :value="(userInfo.gender==0?'男':'女')" />
+				</picker>
 			</view>
-			<input class='text1' value="女">
-		</view>
-		<view class='block'>
-			<view class='top'>
-				生日
+			<view class="inputBar">
+				<picker mode="date" @change="changeBrithday">
+					<text>生日</text>
+					<input type="text" :value="userInfo.birthday" />
+				</picker>
 			</view>
-			<input class='text1' value="2024-3-15">
 		</view>
-		<button class='save'>保存</button>
-		<view class='tip'>性别、手机号及生日信息保存后无法重新修改，请谨慎填写。</view>
-		
-		
+		<button class='save' @click="submit">保存</button>
+		<!-- <view class='tip'>性别、手机号及生日信息保存后无法重新修改，请谨慎填写。</view> -->
 		<buttom-bar :buttombar="buttombar"></buttom-bar>
 	</view>
 </template>
 
 <script>
-	import buttomBar from '@/compoents/buttomBar/buttomBar.vue'
+	import {
+		updataImage
+	} from 'util/api.js';
+	import {
+		updataUserInfo,
+		getUserInfo,
+		addFriendCategory
+	} from 'util/userApi.js'
 	export default {
-		components: {
-		    buttomBar
-		},
 		data() {
 			return {
 				buttombar: {
@@ -64,180 +64,221 @@
 						'/static/icon/Group_black.png'
 					]
 				},
+				userInfo: {
+					avatar: "", // 头像
+					birthday: '2024-1-1', //生日
+					gender: 0, // 性别
+					phone: '', //电话
+					signature: '', // 签名
+					username: '' // 昵称
+				},
 			};
 		},
-		methods:{
-				toserve(){
-					uni.redirectTo({
-						url:'/pages/serve/serve'
+		onLoad() {
+			// 初始化信息
+			getUserInfo().then(res => {
+				console.log("用户信息", res.data)
+				this.userInfo = res.data
+			}).catch(err => {
+				console.log(err)
+			})
+		},
+		methods: {
+			submit() { // 提交修改信息
+				updataUserInfo(this.userInfo).then(res => {
+					console.log("修改成功", res)
+					uni.navigateTo({
+						url: '/page_user/homepage/homepage'
 					})
-				},
-				tocircle(){
-					uni.redirectTo({
-						url:'/page_anxincircle/anxincircle/anxincircle'
-					})
-				},
-				touser(){
-					uni.redirectTo({
-						url:'/page_user/homepage/homepage'
-					})
-				},
-				tolist(){
-					uni.redirectTo({
-						url:'/page_list/mainlist/mainlist'
-					})
-				}
+				}).catch(err => {
+					console.log("修改失败", err)
+				})
+			},
+			changeAvatar(e) {
+				console.log("图片临时路径", e.detail.avatarUrl)
+				updataImage(e.detail.avatarUrl).then(url => {
+					console.log("照片选择成功！", url);
+					this.$set(this.userInfo, 'avatar', url)
+				}).catch(err => {
+					console.log("照片选择失败！", err)
+				})
+			},
+			changeBrithday(e) {
+				// 更改生日
+				this.$set(this.userInfo, 'birthday', e.detail.value)
+			},
+			changeGender(e) {
+				// 更改性别
+				this.$set(this.userInfo, 'gender', e.detail.value)
+			},
+			toserve() {
+				uni.redirectTo({
+					url: '/pages/serve/serve'
+				})
+			},
+			tocircle() {
+				uni.redirectTo({
+					url: '/page_anxincircle/anxincircle/anxincircle'
+				})
+			},
+			touser() {
+				uni.redirectTo({
+					url: '/page_user/homepage/homepage'
+				})
+			},
+			tolist() {
+				uni.redirectTo({
+					url: '/page_list/mainlist/mainlist'
+				})
 			}
 		}
+	}
 </script>
 
 <style lang="scss">
-.tip{
-	font-size: 20rpx;
-	color:rgb(110,110,110);
-	opacity: 0.3;
-	margin-left: 120rpx;
-	margin-bottom: 10rpx;
-	margin-top: 10rpx;
-}
-.save{
-	border:5 solid black;
-	border-radius: 40rpx;
-	background-color: #343434;
-	width:250rpx;
-	margin: 0rpx auto;
-	color:white;
-	font-size: 80%;
-}
-.bottombar{
-		width:700rpx;
-		margin:0rpx 20rpx 20rpx 20rpx;
-		border:5rpx solid black;
+	@import '../../gloabal.scss';
+
+	.tip {
+		font-size: 20rpx;
+		color: rgb(110, 110, 110);
+		opacity: 0.3;
+		margin-left: 120rpx;
+		margin-bottom: 10rpx;
+		margin-top: 10rpx;
+	}
+
+	.save {
+		$height: 60rpx;
+		$width: 50%;
+		width: $width;
+		height: $height;
+		background-color: $bouttom-black;
 		box-sizing: border-box;
-		border-radius: 60rpx;
-		height:120rpx;
-		z-index:10;
-		background-color: #FFFFFF;
-		position:absolute;
-		.block{
-			border:5rpx solid black;
-			border-radius: 50rpx;
-			height:70rpx;
-			width:140rpx;
-			display:inline-block;
-			position:absolute;
-			margin:15rpx 70rpx 20rpx 520rpx;
+		display: inline-block;
+		position: relative;
+		color: #FFFFFF;
+		font-weight: 600;
+		border: 2rpx solid #000;
+		border-radius: 15rpx;
+		line-height: $height;
+		font-size: 24rpx;
+		margin-top: 5rpx;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.head {
+		$size: 200rpx;
+		color: transparent;
+		width: $size;
+		height: $size;
+		padding: 0;
+		position: relative;
+		// left: 50%;
+		// transform: translateX(-50%);
+
+		image {
+			width: $size;
+			height: $size;
 		}
-		.label{
-			height:40rpx;
-			width:40rpx;
-			display:inline-block;
-			margin-right:85rpx;
-			margin-left: 40rpx;
-			margin-top:35rpx;
-			float:right;
+	}
+
+	.inputArea {
+		position: relative;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 20rpx auto;
+
+		.inputBar {
+			@include input;
+			width: 85%;
 		}
-};
-.head{
-	margin-left: 250rpx;
-	width:200rpx;
-	height:200rpx;
-	position: relative;
-};
-.top{
-	width: 70rpx;
-	position: relative;
-	z-index: 20;
-	background-color: white;
-	margin-left: 150rpx;
-	padding-left: 10rpx;
-	font-size: 80%;
-}
-.text1{
-	font-size: 80%;
-	position: absolute;
-	z-index: -1;
-	width:520rpx;
-	margin-left: 80rpx;
-	margin-top: -20rpx;
-	border:5rpx solid black;
-	border-radius: 50rpx;
-	padding:15rpx 0rpx 15rpx 70rpx;
-}
-.block{
-		height:118rpx;
-		.add{
-			height:60rpx;
-			width:60rpx;
+	}
+
+
+	.block {
+		height: 118rpx;
+
+		.add {
+			height: 60rpx;
+			width: 60rpx;
 			display: inline;
-			float:right;
-			margin:10rpx 55rpx 0 0;
-		};
-		.input{
-			border:5rpx solid black;
+			float: right;
+			margin: 10rpx 55rpx 0 0;
+		}
+
+		;
+
+		.input {
+			border: 5rpx solid black;
 			border-radius: 20rpx;
-			height:70rpx;
-			width:570rpx;
-			float:left;
-			margin-left:40rpx;
+			height: 70rpx;
+			width: 570rpx;
+			float: left;
+			margin-left: 40rpx;
 			font-size: 90%;
 			display: inline;
-			.text{
-				height:70rpx;
-				width:400rpx;
-				margin-left:40rpx;
+
+			.text {
+				height: 70rpx;
+				width: 400rpx;
+				margin-left: 40rpx;
 				font-size: 90%;
 				float: left;
 				display: inline;
-			};
-		};
-		.button{
-			background-color: #343434;
-			color: #FFFFFF;
-			border: 2rpx solid black;
-			border-radius: 15rpx;
-			width:120rpx;
-			height:60rpx;
-			float:right;
+			}
+		}
+
+
+		.icon {
+			width: 40rpx;
+			height: 40rpx;
+			background-color: #FFFFFF;
+			float: left;
+			display: inline-block;
+			margin-top: 20rpx;
+			margin-left: 40rpx;
+			margin-right: 0rpx;
 			display: inline;
-			font-size: 21rpx;
-			margin-top:5rpx;
-			margin-right:8rpx;
-		};
-		.icon{
-		width:40rpx;
-		height:40rpx;
-		background-color: #FFFFFF;
-		float:left;
-		display: inline-block;
-		margin-top: 20rpx;
-		margin-left:40rpx;
-		margin-right: 0rpx;
-		display:inline;
-		float:left;
-	};
-	.title{
-		color: #343434;
-		font-size:30rpx;
-		display: inline;
-		margin-top:20rpx;
-		margin-left:20rpx;
-		float:left;
-	};
-	.line{
-		height:80rpx;
-		font-weight: bold;
-		width:667rpx;
-		float:left;
-		margin-left:40rpx;
-		margin-top:10rpx;
-		font-size: 150%;
-		.vector{
-			width:380rpx;
-			height:50rpx;
-			margin-left:65rpx;
-		};
-	};
-	clear: both;
-};
+			float: left;
+		}
+
+		;
+
+		.title {
+			color: #343434;
+			font-size: 30rpx;
+			display: inline;
+			margin-top: 20rpx;
+			margin-left: 20rpx;
+			float: left;
+		}
+
+		;
+
+		.line {
+			height: 80rpx;
+			font-weight: bold;
+			width: 667rpx;
+			float: left;
+			margin-left: 40rpx;
+			margin-top: 10rpx;
+			font-size: 150%;
+
+			.vector {
+				width: 380rpx;
+				height: 50rpx;
+				margin-left: 65rpx;
+			}
+
+			;
+		}
+
+		;
+		clear: both;
+	}
+
+	;
 </style>

@@ -3,18 +3,26 @@
 		<view class="addBox-wrap">
 			<view class="addBox">
 				<view class="head">
+					<input type="text" placeholder="便签标题......" v-model="subTitle" />
+				</view>
+				<view class="head">
 					<input type="text" placeholder="时光主题......" v-model="title" />
 				</view>
 				<view class="content" @click="updataImg">
-					<image :src="item" mode="" v-for="(item,idx) in imgList"></image>
+					<image :src="item" mode="" v-for="(item,idx) in imgList" :key="idx"></image>
 				</view>
 				<view class="buttom">
-					<picker mode="date" @change="changeDate">
-						<text>选择发生时间</text>
-						<text>{{time}}</text>
-					</picker>
+					<text class="text">发生时间</text>
+					<view class="time">
+						<picker mode="date" @change="changeBeginDate">
+							<text>{{beginDate.replaceAll('-', '.')}}-</text>
+						</picker>
+						<picker mode="date" @change="changeEndDate">
+							<text>{{endDate.replaceAll('-', '.')}}</text>
+						</picker>
+					</view>
 				</view>
-				<view class="addIcon" @click="commit">
+				<view class=" addIcon" @click="commit">
 					<text>发布</text>
 				</view>
 			</view>
@@ -23,11 +31,16 @@
 </template>
 
 <script>
+	import {
+		updataImage
+	} from '../../../util/api.js'
 	export default {
 		data() {
 			return {
+				subTitle: "",
 				title: "",
-				time: "0000-00-00",
+				beginDate: "0000.00.00",
+				endDate: "0000.00.00",
 				isUpdataImg: false,
 				imgList: [
 					"",
@@ -44,19 +57,28 @@
 
 		},
 		methods: {
-			changeDate(e) {
-				this.time = e.detail.value
+			changeBeginDate(e) {
+				let data = e.detail.value;
+				// this.beginDate = data.replaceAll('-', '.')
+				this.beginDate = data;
+			},
+			changeEndDate(e) {
+				let data = e.detail.value;
+				// this.endDate = data.replaceAll('-', '.')
+				this.endDate = data;
 			},
 			updataImg() {
 				uni.chooseImage({
 					success: (res) => {
 						let tempFilePaths = res.tempFilePaths;
 						this.imgList.splice(0);
-						for (let i = 0; i < tempFilePaths.length; i++) {
-							this.imgList.push(tempFilePaths[i])
-						}
-						while (this.imgList.length < 4) {
-							this.imgList.push("")
+						for (let i = 0; i < (tempFilePaths.length < 4 ? tempFilePaths.length : 4); i++) {
+							updataImage(tempFilePaths[i]).then(url => {
+								this.imgList.push(url);
+								console.log("上传图片成功", url);
+							}).catch(err => {
+								console.log("上传图片失败", err)
+							})
 						}
 						this.isUpdataImg = true;
 					}
@@ -80,18 +102,24 @@
 						icon: 'error',
 						duration: 1500
 					})
-				} else if (this.time == "0000-00-00") {
+				} else if (this.beginDate == "0000.00.00" || this.endDate == "0000.00.00") {
 					uni.showToast({
 						title: '请选择时间',
 						icon: 'error',
 						duration: 1500
 					})
 				} else {
-					uni.$emit("addItem", {
+					uni.$emit("addXinanCricle", {
+						beginDate: this.beginDate,
+						endDate: this.endDate,
+						photo1: this.imgList[0],
+						photo2: this.imgList[1],
+						photo3: this.imgList[2],
+						photo4: this.imgList[3],
+						subTitle: this.subTitle,
 						title: this.title,
-						headImg: "/static/picture/headImg.png",
-						time: this.time,
-						contentList: this.imgList
+						userId: getApp().globalData.id,
+						avatar: getApp().globalData.userInfo.avatar
 					})
 					uni.showToast({
 						title: '发布成功',
@@ -117,11 +145,9 @@
 		z-index: 1000;
 
 		.addBox-wrap {
-			$height: 750rpx;
-			$width: $height * 0.7;
+			$width: 750rpx * 0.7;
 			$paddingSize: 30rpx;
 			width: $width;
-			height: $height;
 			position: absolute;
 			transform: translate(-50%, -50%);
 			left: 50%;
@@ -144,7 +170,7 @@
 
 					input {
 						color: #d9d9d9;
-						font-size: 42rpx;
+						font-size: 30rpx;
 					}
 				}
 
@@ -185,16 +211,21 @@
 					height: $height;
 					line-height: $height;
 					width: 100%;
+					font-size: 30rpx;
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
 
-					text {
-						&:nth-child(1) {
-							float: left;
-							font-weight: 600;
-						}
+					.text {
+						font-weight: 600;
+					}
 
-						&:nth-child(2) {
-							float: right;
-						}
+					.time {
+						word-spacing: 3rpx;
+						display: flex;
+						justify-content: flex-start;
+						flex-wrap: nowrap;
+						align-items: center;
 					}
 				}
 

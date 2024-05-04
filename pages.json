@@ -1,229 +1,220 @@
 {
-	"easycom": {
-			"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
-		},
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			//服务页主页
-			"path" : "pages/serve/serve",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
-			}
-		},
-		{
-			//商家选择页
-			"path" : "pages/merchant/merchant",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
-			}
-		},
-		{
-			"path" : "compoents/buttomBar/buttomBar",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
-			}
-		},
-		{
-			"path" : "compoents/headBar/headBar",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
-			}
-		},
-		{
-			"path" : "pages/detail/detail",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
-			}
-		}],
-		"subPackages": [
-			{
-				"root": "page_list",
-				"pages": [
-					{
-						//葬礼邀请页
-						"path": "invitelist/invitelist",
-						"style": {
-							"navigationBarTitleText": "",
-							"enablePullDownRefresh": false
-						}
-					},
-					{
-						//清单页主页
-						"path": "mainlist/mainlist",
-						"navigationBarTitleText" : "",
-						"enablePullDownRefresh" : false
-					},
-					{
-						//珍宝收藏馆
-						"path" : "treasure/treasure",
-						"style" : 
-						{
-							"navigationBarTitleText" : "",
-							"enablePullDownRefresh" : false
-						}
-					},
-					{
-						//密码柜
-						"path" : "password/password",
-						"style" : 
-						{
-							"navigationBarTitleText" : "",
-							"enablePullDownRefresh" : false
-						}
-					},
-					{
-						//宠物
-						"path" : "pet/pet",
-						"style" : 
-						{
-							"navigationBarTitleText" : "",
-							"enablePullDownRefresh" : false
-						}
-					},
-					{
-						//愿望清单
-						"path" : "wishlist/wishlist",
-						"style" : 
-						{
-							"navigationBarTitleText" : "",
-							"enablePullDownRefresh" : false
-						}
-					},
-					{
-						//社交平台管理
-						"path" : "socialplatform/socialplatform",
-						"style" : 
-						{
-							"navigationBarTitleText" : "",
-							"enablePullDownRefresh" : false
-						}
-					},
-					{
-						"path" : "friendhome/friendhome",
-						"style" : 
-						{
-							"navigationBarTitleText" : "",
-							"enablePullDownRefresh" : false
-						}
-					}
-				]
-			},
-			{
-				"root": "page_anxincircle",
-				"pages": [
-					{
-						//安心圈
-						"path": "anxincircle/anxincircle"
-					}
-				]
-			},
-			{
-				"root": "page_user",
-				"pages": [
-					{
-						//个人主页
-						"path" : "homepage/homepage",
-						"style" : 
-						{
-							"navigationBarTitleText" : "",
-							"enablePullDownRefresh" : false
-						}
-					},
-					{
-						//好友列表
-						"path" : "friendlist/friendlist",
-						"style" : 
-						{
-							"navigationBarTitleText" : "",
-							"enablePullDownRefresh" : false
-						}
-					},
-					{
-						//好友页
-						"path" : "friend/friend",
-						"style" : 
-						{
-							"navigationBarTitleText" : "",
-							"enablePullDownRefresh" : false
-						}
-					},
-					{
-						//收藏商家
-						"path" : "favoritebusiness/favoritebusiness",
-						"style" : 
-						{
-							"navigationBarTitleText" : "",
-							"enablePullDownRefresh" : false
-						}
-					},
-					{
-						//个性设置
-						"path" : "personalization/personalization",
-						"style" : 
-						{
-							"navigationBarTitleText" : "",
-							"enablePullDownRefresh" : false
-						}
-					}
-				]
-			}
-		],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8",
-		"rpxCalcMaxDeviceWidth": 1024, 
-		"rpxCalcBaseDeviceWidth": 375, 
-		"rpxCalcIncludeWidth": 750
-	},
-	"uniIdRouter": {},
-	"condition" : { //模式配置，仅开发期间生效
-		"current": 0, //当前激活的模式(list 的索引项)
-		"list": [
-			{
-				"name": "心安圈", //模式名称
-				"path": "page_anxincircle/anxincircle/anxincircle", //启动页面，必选
-				"query": "" //启动参数，在页面的onLoad函数里面得到
-			},
-			{
-				"name": "列表主页", //模式名称
-				"path": "page_list/mainlist/mainlist", //启动页面，必选
-				"query": "" //启动参数，在页面的onLoad函数里面得到
-			},
-			{
-				"name": "珍宝", //模式名称
-				"path": "page_list/treasure/treasure", //启动页面，必选
-				"query": "" //启动参数，在页面的onLoad函数里面得到
-			},
-			{
-				"name": "密码", //模式名称
-				"path": "page_list/password/password", //启动页面，必选
-				"query": "" //启动参数，在页面的onLoad函数里面得到
-			},{
-				"name": "宠物", //模式名称
-				"path": "page_list/pet/pet", //启动页面，必选
-				"query": "" //启动参数，在页面的onLoad函数里面得到
-			},{
-				"name": "愿望单", //模式名称
-				"path": "page_list/wishlist/wishlist", //启动页面，必选
-				"query": "" //启动参数，在页面的onLoad函数里面得到
-			},{
-				"name": "平台管理", //模式名称
-				"path": "page_list/socialplatform/socialplatform", //启动页面，必选
-				"query": "" //启动参数，在页面的onLoad函数里面得到
-			}
-		]
-	}
-	
+    "easycom" : {
+        "^u-(.*)" : "@/uview-ui/components/u-$1/u-$1.vue"
+    },
+    "pages" : [
+        //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+        {
+            //服务页主页
+            "path" : "pages/serve/serve",
+            "style" : {
+                "navigationBarTitleText" : "",
+                "enablePullDownRefresh" : false
+            }
+        },
+        {
+            //登陆页
+            "path" : "pages/login/login",
+            "style" : {
+                "navigationBarTitleText" : "",
+                "enablePullDownRefresh" : false
+            }
+        },
+        {
+            //商家选择页
+            "path" : "pages/merchant/merchant",
+            "style" : {
+                "navigationBarTitleText" : "",
+                "enablePullDownRefresh" : false
+            }
+        },
+        {
+            "path" : "pages/detail/detail",
+            "style" : {
+                "navigationBarTitleText" : "",
+                "enablePullDownRefresh" : false
+            }
+        }
+    ],
+    "subPackages" : [
+        {
+            "root" : "page_list",
+            "pages" : [
+                {
+                    //葬礼邀请页
+                    "path" : "invitelist/invitelist",
+                    "style" : {
+                        "navigationBarTitleText" : "",
+                        "enablePullDownRefresh" : false
+                    }
+                },
+                {
+                    //清单页主页
+                    "path" : "mainlist/mainlist",
+                    "navigationBarTitleText" : "",
+                    "enablePullDownRefresh" : false
+                },
+                {
+                    //珍宝收藏馆
+                    "path" : "treasure/treasure",
+                    "style" : {
+                        "navigationBarTitleText" : "",
+                        "enablePullDownRefresh" : false
+                    }
+                },
+                {
+                    //密码柜
+                    "path" : "password/password",
+                    "style" : {
+                        "navigationBarTitleText" : "",
+                        "enablePullDownRefresh" : false
+                    }
+                },
+                {
+                    //宠物
+                    "path" : "pet/pet",
+                    "style" : {
+                        "navigationBarTitleText" : "",
+                        "enablePullDownRefresh" : false
+                    }
+                },
+                {
+                    //愿望清单
+                    "path" : "wishlist/wishlist",
+                    "style" : {
+                        "navigationBarTitleText" : "",
+                        "enablePullDownRefresh" : false
+                    }
+                },
+                {
+                    //社交平台管理
+                    "path" : "socialplatform/socialplatform",
+                    "style" : {
+                        "navigationBarTitleText" : "",
+                        "enablePullDownRefresh" : false
+                    }
+                },
+                {
+                    "path" : "friendhome/friendhome",
+                    "style" : {
+                        "navigationBarTitleText" : "",
+                        "enablePullDownRefresh" : false
+                    }
+                }
+            ]
+        },
+        {
+            "root" : "page_anxincircle",
+            "pages" : [
+                {
+                    //安心圈
+                    "path" : "anxincircle/anxincircle"
+                }
+            ]
+        },
+        {
+            "root" : "page_user",
+            "pages" : [
+                {
+                    //个人主页
+                    "path" : "homepage/homepage",
+                    "style" : {
+                        "navigationBarTitleText" : "",
+                        "enablePullDownRefresh" : false
+                    }
+                },
+                {
+                    //好友列表
+                    "path" : "friendlist/friendlist",
+                    "style" : {
+                        "navigationBarTitleText" : "",
+                        "enablePullDownRefresh" : false
+                    }
+                },
+                {
+                    //好友页
+                    "path" : "friendCard/friendCard",
+                    "style" : {
+                        "navigationBarTitleText" : "",
+                        "enablePullDownRefresh" : false
+                    }
+                },
+                {
+                    //收藏商家
+                    "path" : "favoritebusiness/favoritebusiness",
+                    "style" : {
+                        "navigationBarTitleText" : "",
+                        "enablePullDownRefresh" : false
+                    }
+                },
+                {
+                    //个性设置
+                    "path" : "personalization/personalization",
+                    "style" : {
+                        "navigationBarTitleText" : "",
+                        "enablePullDownRefresh" : false
+                    }
+                },
+                {
+                	"path" : "friendXinanCircle/friendXinanCircle",
+                	"style" : 
+                	{
+                		"navigationBarTitleText" : "",
+                		"enablePullDownRefresh" : false
+                	}
+                }
+            ]
+        }
+    ],
+    "globalStyle" : {
+        "navigationBarTextStyle" : "black",
+        "navigationBarTitleText" : "",
+        "navigationBarBackgroundColor" : "#F8F8F8",
+        "backgroundColor" : "#F8F8F8",
+        "rpxCalcMaxDeviceWidth" : 1024,
+        "rpxCalcBaseDeviceWidth" : 375,
+        "rpxCalcIncludeWidth" : 750
+    },
+    "uniIdRouter" : {},
+    "condition" : {
+        //模式配置，仅开发期间生效
+        "current" : 0, //当前激活的模式(list 的索引项)
+        "list" : [
+            {
+                "name" : "心安圈", //模式名称
+                "path" : "page_anxincircle/anxincircle/anxincircle", //启动页面，必选
+                "query" : "" //启动参数，在页面的onLoad函数里面得到
+            },
+            {
+                "name" : "列表主页", //模式名称
+                "path" : "page_list/mainlist/mainlist", //启动页面，必选
+                "query" : "" //启动参数，在页面的onLoad函数里面得到
+            },
+            {
+                "name" : "LogIn", //模式名称
+                "path" : "page_user/login/login", //启动页面，必选
+                "query" : "" //启动参数，在页面的onLoad函数里面得到
+            },
+            {
+                "name" : "user", //模式名称
+                "path" : "page_user/homepage/homepage", //启动页面，必选
+                "query" : "" //启动参数，在页面的onLoad函数里面得到
+            },
+            {
+                "name" : "personalization", //模式名称
+                "path" : "page_user/personalization/personalization", //启动页面，必选
+                "query" : "" //启动参数，在页面的onLoad函数里面得到
+            },
+            {
+                "name" : "friendList", //模式名称
+                "path" : "page_user/friendlist/friendlist", //启动页面，必选
+                "query" : "" //启动参数，在页面的onLoad函数里面得到
+            },
+            {
+                "name" : "friendCard", //模式名称
+                "path" : "page_user/friendCard/friendCard", //启动页面，必选
+                "query" : "" //启动参数，在页面的onLoad函数里面得到
+            }
+        ]
+    }
 }
