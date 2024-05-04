@@ -43,7 +43,8 @@ export function userFavorites(merchantId) {
 // 根据id得到用户信息
 export function getUserInfo(id = getApp().globalData.id) {
 	return Request({
-		url: `/user/user/${id}`,
+		// url: `/user/user/${id}`,
+		url: `/user/user/card/${id}`,
 		method: 'GET'
 	})
 }

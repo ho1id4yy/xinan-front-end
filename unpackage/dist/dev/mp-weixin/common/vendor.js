@@ -242,7 +242,8 @@ function userFavorites(merchantId) {
 function getUserInfo() {
   var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : getApp().globalData.id;
   return (0, _http.default)({
-    url: "/user/user/".concat(id),
+    // url: `/user/user/${id}`,
+    url: "/user/user/card/".concat(id),
     method: 'GET'
   });
 }

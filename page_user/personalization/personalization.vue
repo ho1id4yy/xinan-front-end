@@ -25,7 +25,7 @@
 				<input type="number" v-model="userInfo.phone" />
 			</view>
 			<view class="inputBar">
-				<picker mode="selector" value="0" :range="['男','女']" @change="changeGender">
+				<picker mode="selector" value="0" :range="['女','男','秘密']" @change="changeGender">
 					<text>性别</text>
 					<input type="text" :value="(userInfo.gender==0?'男':'女')" />
 				</picker>
