@@ -53,7 +53,7 @@ export function addProcessDetail(detailObj) {
 	return Request({
 		url: '/user/process/detail',
 		method: 'POST',
-		data: ProcessObj
+		data: detailObj
 	})
 }
 // 根据流程细则id修改流程细则 , detailObj 修改后的
@@ -72,7 +72,7 @@ export function changeProcessDetailOrder(detailArr) {
 		data: detailArr
 	})
 }
-// 根据id批量删除流程细则 detaiIdlArr,数组
+// 根据id批量删除流程细则 detaiIdlArr,数组[0,1,2]
 export function deleteProcessDetail(detailIdlArr) {
 	return Request({
 		url: `/user/process/detail/${detailIdlArr.join()}`,

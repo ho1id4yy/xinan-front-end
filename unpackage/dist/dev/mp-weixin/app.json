@@ -3,7 +3,9 @@
     "pages/serve/serve",
     "pages/login/login",
     "pages/merchant/merchant",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/test/test",
+    "pages/editDetail/editDetail"
   ],
   "subPackages": [
     {
@@ -48,6 +50,7 @@
   },
   "usingComponents": {
     "buttom-bar": "/compoents/buttomBar/buttomBar",
-    "head-bar": "/compoents/headBar/headBar"
+    "head-bar": "/compoents/headBar/headBar",
+    "marsk-box": "/compoents/marskBox/marskBox"
   }
 }

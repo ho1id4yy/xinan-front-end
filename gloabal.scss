@@ -6,23 +6,19 @@
 		width:100%;
 		border-radius: $height;
 		border: 3rpx solid #000;
-		line-height: $height;
 		margin-top: 25rpx;
 		position: relative;
 
-		input {
+		input,.input {
 			height: $height;
 			width: 85%;
-			position: relative;
-			left: 50%;
-			transform: translateX(-50%)
+			margin: 0 auto;
 		}
 
 		text {
 			$textheight: 35rpx;
 			height: $textheight;
 			line-height: $textheight;
-			box-sizing: border-box;
 			padding: 0rpx 10rpx;
 			background-color: #fff;
 			position: absolute;
@@ -30,6 +26,27 @@
 			transform: translateY(50%);
 			left: 1.5em;
 		}
+}
+@mixin button($height,$width) {
+	height:$height;
+	width:$width;
+	line-height: $height;
+	padding: 0;
+	box-sizing: border-box;
+	border-radius: 15rpx;
+	border: 4rpx solid ;
+}
+@mixin button-black($height,$width) {
+	@include button($height,$width);
+	background-color: $bouttom-black;
+	color:#fff;
+	border-color:  #fff;
+}
+@mixin button-white($height,$width) {
+	@include button($height,$width);
+	background-color: #fff;
+	color:$bouttom-black;
+	border-color:#343434;
 }
 
 $bouttom-black:#343434;// 全局的黑色主题色

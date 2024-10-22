@@ -22,9 +22,7 @@
 		},
 		methods: {
 			back() {
-				uni.reLaunch({
-					url: '/page_list/mainlist/mainlist'
-				})
+				uni.navigateBack()
 			}
 		},
 		props: {

@@ -95,7 +95,7 @@ var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
 var toPrimitive = __webpack_require__(/*! ./toPrimitive.js */ 14);
 function toPropertyKey(t) {
   var i = toPrimitive(t, "string");
-  return "symbol" == _typeof(i) ? i : String(i);
+  return "symbol" == _typeof(i) ? i : i + "";
 }
 module.exports = toPropertyKey, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
@@ -163,10 +163,28 @@ module.exports = _construct, module.exports.__esModule = true, module.exports["d
 
 /***/ }),
 
-/***/ 151:
-/*!**************************************************!*\
-  !*** D:/此心安处是吾乡/xinan-front-end/util/userApi.js ***!
-  \**************************************************/
+/***/ 16:
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/setPrototypeOf.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _setPrototypeOf(o, p) {
+  module.exports = _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
+  return _setPrototypeOf(o, p);
+}
+module.exports = _setPrototypeOf, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 167:
+/*!*********************************************************!*\
+  !*** D:/此心安处是吾乡/xinan-front-end/util/xinanCircleApi.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -177,196 +195,94 @@ var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/inte
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.addFriendCategory = addFriendCategory;
-exports.addFriendFromRequest = addFriendFromRequest;
-exports.changeFriendData = changeFriendData;
-exports.deleteFriend = deleteFriend;
-exports.deleteFriendCategory = deleteFriendCategory;
-exports.deleteFriendRequest = deleteFriendRequest;
-exports.friendCategory = friendCategory;
-exports.getFriend = getFriend;
-exports.getFriendCategory = getFriendCategory;
-exports.getFriendRequest = getFriendRequest;
-exports.getUserCard = getUserCard;
-exports.getUserFavorites = getUserFavorites;
-exports.getUserInfo = getUserInfo;
-exports.getUserInfoByPhone = getUserInfoByPhone;
-exports.getUserLatestBirthday = getUserLatestBirthday;
-exports.postFriendRequest = postFriendRequest;
-exports.updataUserInfo = updataUserInfo;
-exports.userFavorites = userFavorites;
-var _http = _interopRequireDefault(__webpack_require__(/*! ./http */ 36));
-// 修改用户信息 ,userInfo 修改后的用户信息
-function updataUserInfo(userInfo) {
+exports.cancelHeartXinanCircle = cancelHeartXinanCircle;
+exports.deleteXinanCircle = deleteXinanCircle;
+exports.editXinanCircle = editXinanCircle;
+exports.getAllXinanCircle = getAllXinanCircle;
+exports.getOtherXinanCircle = getOtherXinanCircle;
+exports.heartXinanCircle = heartXinanCircle;
+exports.updataXinanCircle = updataXinanCircle;
+var _http = _interopRequireDefault(__webpack_require__(/*! ./http */ 33));
+// 分页查看所有的安心圈
+function getAllXinanCircle(page, pageSize) {
   return (0, _http.default)({
-    url: '/user/user',
-    data: userInfo,
-    method: 'PUT'
-  });
-}
-
-// 根据用户id查询距离用户最近生日天数
-function getUserLatestBirthday() {
-  var userId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : getApp().globalData.id;
-  return (0, _http.default)({
-    url: "/user/user/birthday/".concat(userId),
+    url: "/user/moment?page=".concat(page, "&pageSize=").concat(pageSize),
     method: 'GET'
   });
 }
-// 根据用户id查询用户名片
-function getUserCard() {
-  var userId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : getApp().globalData.id;
+// 分页查看指定用户的安心圈(查看别人的安心圈)
+function getOtherXinanCircle(page, pageSize) {
+  var userId = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : getApp().globalData.id;
   return (0, _http.default)({
-    url: "/user/user/card/".concat(userId),
+    url: "/user/moment/".concat(userId, "?page=").concat(page, "&pageSize=").concat(pageSize),
     method: 'GET'
   });
 }
-// 获取当前用户收藏的商家
-function getUserFavorites() {
+// 发布新的安心圈动态
+function updataXinanCircle(xinanCircleObj) {
   return (0, _http.default)({
-    url: '/user/user/favorites',
-    method: 'GET'
+    url: '/user/moment',
+    method: 'POST',
+    data: xinanCircleObj
   });
 }
-//用户根据商家id收藏商家
-function userFavorites(merchantId) {
+// 改动安心圈动态
+function editXinanCircle(xinanCircleObj) {
   return (0, _http.default)({
-    url: '/user/user/favorites',
+    url: '/user/moment',
+    method: 'PUT',
+    data: xinanCircleObj
+  });
+}
+// 根据id删除安心圈动态
+function deleteXinanCircle(id) {
+  return (0, _http.default)({
+    url: "/user/moment/".concat(id),
+    method: 'DELETE'
+  });
+}
+// 用户对安心圈点赞操作
+function heartXinanCircle(momentId) {
+  var userId = getApp().globalData.id;
+  return (0, _http.default)({
+    url: '/user/moment/likes',
     method: 'POST',
     data: {
-      merchantId: merchantId
-    }
-  });
-}
-// 根据id得到用户信息
-function getUserInfo() {
-  var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : getApp().globalData.id;
-  return (0, _http.default)({
-    // url: `/user/user/${id}`,
-    url: "/user/user/card/".concat(id),
-    method: 'GET'
-  });
-}
-
-// 根据手机号查询用户
-function getUserInfoByPhone(phoneNumber) {
-  return (0, _http.default)({
-    url: "/user/user/find/".concat(phoneNumber),
-    method: 'GET'
-  });
-}
-// 根据好友ID删除好友
-function deleteFriend(friendId) {
-  return (0, _http.default)({
-    url: "/user/user/friend/".concat(friendId),
-    method: "DELETE"
-  });
-}
-// 查询当前用户好友分类 
-function getFriendCategory() {
-  return (0, _http.default)({
-    url: '/user/user/friendCategory',
-    method: "GET"
-  });
-}
-// 插入新的好友分类
-function addFriendCategory(categoryName) {
-  return (0, _http.default)({
-    url: '/user/user/friendCategory',
-    method: "POST",
-    data: {
-      name: categoryName
-    }
-  });
-}
-// 根据好友 分组对象 id 修改好友的分组信息, (categoryId, name ,分组对象)
-function friendCategory(categoryObj, userId) {
-  return (0, _http.default)({
-    url: '/user/user/friendCategory',
-    method: "PUT",
-    data: {
-      id: categoryObj.id,
-      name: categoryObj.name,
+      momentId: momentId,
       userId: userId
     }
   });
 }
-// 根据好友分组信息id删除分组
-function deleteFriendCategory(categoryId) {
+// 用户根据安心圈id撤销点赞
+function cancelHeartXinanCircle(momentId) {
   return (0, _http.default)({
-    url: "/user/user/friendCategory/".concat(categoryId),
-    method: "DELETE"
-  });
-}
-//查找用户所有好友
-function getFriend() {
-  return (0, _http.default)({
-    url: "/user/user/friends",
-    method: "GET"
-  });
-}
-// 添加好友,根据好友请求的请求来添加 好友分类id ，好友的用户id ，葬礼是否邀请用户，messageId根据好友请求列表得到 好友备注名
-function addFriendFromRequest(friendCategoryId, id) {
-  var invited = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-  var messageId = arguments.length > 3 ? arguments[3] : undefined;
-  var remarkName = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
-  return (0, _http.default)({
-    url: "/user/user/friends",
-    method: "POST",
-    data: {
-      friendCategoryId: friendCategoryId,
-      id: id,
-      invited: invited,
-      messageId: messageId,
-      remarkName: remarkName
-    }
-  });
-}
-//删除好友请求, 添加好友后删除请求列表
-function deleteFriendRequest(friendId) {
-  return (0, _http.default)({
-    url: "/user/user/friends/request/".concat(friendId),
-    method: "DELETE"
-  });
-}
-
-// 查看好友请求 ， 别人想加你为好友
-function getFriendRequest() {
-  return (0, _http.default)({
-    url: "/user/user/friends/request",
-    method: "GET"
-  });
-}
-// 发送好友请求 加别人为好友   categoryid给对方的分类 , 接收者用户id
-function postFriendRequest(categoryid, receiverId) {
-  return (0, _http.default)({
-    url: "/user/user/friends/request",
-    method: "POST",
-    data: {
-      packageId: categoryid,
-      receiverId: receiverId
-    }
-  });
-}
-//更改好友信息 ， 改备注 ，邀请 ，和分类
-function changeFriendData(friendCategoryId, id) {
-  var invited = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-  var remarkName = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
-  return (0, _http.default)({
-    url: "/user/user/friends",
-    method: "PUT",
-    data: {
-      friendCategoryId: friendCategoryId,
-      id: id,
-      invited: invited,
-      remarkName: remarkName
-    }
+    url: "/user/moment/likes/".concat(momentId),
+    method: 'DELETE'
   });
 }
 
 /***/ }),
 
-/***/ 152:
+/***/ 17:
+/*!*************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/isNativeReflectConstruct.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _isNativeReflectConstruct() {
+  try {
+    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
+  } catch (t) {}
+  return (module.exports = _isNativeReflectConstruct = function _isNativeReflectConstruct() {
+    return !!t;
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports)();
+}
+module.exports = _isNativeReflectConstruct, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 176:
 /*!**********************************************!*\
   !*** D:/此心安处是吾乡/xinan-front-end/util/api.js ***!
   \**********************************************/
@@ -381,10 +297,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.updataImage = updataImage;
-var _http = _interopRequireDefault(__webpack_require__(/*! ./http */ 36));
+var _http = _interopRequireDefault(__webpack_require__(/*! ./http */ 33));
 // 上传图片
 function updataImage(templeUrl) {
-  console.log(getApp().globalData.token);
   return new Promise(function (resolve, reject) {
     uni.uploadFile({
       url: getApp().globalData.BASE_URL + '/user/common/upload',
@@ -405,43 +320,6 @@ function updataImage(templeUrl) {
   });
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-
-/***/ 16:
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/setPrototypeOf.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _setPrototypeOf(o, p) {
-  module.exports = _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
-  return _setPrototypeOf(o, p);
-}
-module.exports = _setPrototypeOf, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 17:
-/*!*************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/isNativeReflectConstruct.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _isNativeReflectConstruct() {
-  try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-  } catch (t) {}
-  return (module.exports = _isNativeReflectConstruct = function _isNativeReflectConstruct() {
-    return !!t;
-  }, module.exports.__esModule = true, module.exports["default"] = module.exports)();
-}
-module.exports = _isNativeReflectConstruct, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
 
@@ -1215,8 +1093,8 @@ function populateParameters(result) {
     appVersion: "1.0.0",
     appVersionCode: "100",
     appLanguage: getAppLanguage(hostLanguage),
-    uniCompileVersion: "4.06",
-    uniRuntimeVersion: "4.06",
+    uniCompileVersion: "4.28",
+    uniRuntimeVersion: "4.28",
     uniPlatform: undefined || "mp-weixin",
     deviceBrand: deviceBrand,
     deviceModel: model,
@@ -1992,7 +1870,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"xinan-front-end","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"xinan-front-end","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -9035,7 +8913,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"xinan-front-end","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"xinan-front-end","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -9056,14 +8934,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"xinan-front-end","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"xinan-front-end","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"xinan-front-end","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"xinan-front-end","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -9159,7 +9037,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"xinan-front-end","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"xinan-front-end","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -9620,7 +9498,278 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 34:
+/***/ 32:
+/*!**************************************************!*\
+  !*** D:/此心安处是吾乡/xinan-front-end/util/userApi.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addFriendCategory = addFriendCategory;
+exports.addFriendFromRequest = addFriendFromRequest;
+exports.changeFriendData = changeFriendData;
+exports.deleteFriend = deleteFriend;
+exports.deleteFriendCategory = deleteFriendCategory;
+exports.deleteFriendRequest = deleteFriendRequest;
+exports.friendCategory = friendCategory;
+exports.getFriend = getFriend;
+exports.getFriendCategory = getFriendCategory;
+exports.getFriendRequest = getFriendRequest;
+exports.getUserCard = getUserCard;
+exports.getUserFavorites = getUserFavorites;
+exports.getUserInfo = getUserInfo;
+exports.getUserInfoByPhone = getUserInfoByPhone;
+exports.getUserLatestBirthday = getUserLatestBirthday;
+exports.postFriendRequest = postFriendRequest;
+exports.updataUserInfo = updataUserInfo;
+exports.userFavorites = userFavorites;
+var _http = _interopRequireDefault(__webpack_require__(/*! ./http */ 33));
+// 修改用户信息 ,userInfo 修改后的用户信息
+function updataUserInfo(userInfo) {
+  return (0, _http.default)({
+    url: '/user/user',
+    data: userInfo,
+    method: 'PUT'
+  });
+}
+
+// 根据用户id查询距离用户最近生日天数
+function getUserLatestBirthday() {
+  var userId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : getApp().globalData.id;
+  return (0, _http.default)({
+    url: "/user/user/birthday/".concat(userId),
+    method: 'GET'
+  });
+}
+// 根据用户id查询用户名片
+function getUserCard() {
+  var userId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : getApp().globalData.id;
+  return (0, _http.default)({
+    url: "/user/user/card/".concat(userId),
+    method: 'GET'
+  });
+}
+// 获取当前用户收藏的商家
+function getUserFavorites() {
+  return (0, _http.default)({
+    url: '/user/user/favorites',
+    method: 'GET'
+  });
+}
+//用户根据商家id收藏商家
+function userFavorites(merchantId) {
+  return (0, _http.default)({
+    url: '/user/user/favorites',
+    method: 'POST',
+    data: {
+      merchantId: merchantId
+    }
+  });
+}
+// 根据id得到用户信息
+function getUserInfo() {
+  var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : getApp().globalData.id;
+  return (0, _http.default)({
+    // url: `/user/user/${id}`,
+    url: "/user/user/card/".concat(id),
+    method: 'GET'
+  });
+}
+
+// 根据手机号查询用户
+function getUserInfoByPhone(phoneNumber) {
+  return (0, _http.default)({
+    url: "/user/user/find/".concat(phoneNumber),
+    method: 'GET'
+  });
+}
+// 根据好友ID删除好友
+function deleteFriend(friendId) {
+  return (0, _http.default)({
+    url: "/user/user/friend/".concat(friendId),
+    method: "DELETE"
+  });
+}
+// 查询当前用户好友分类 
+function getFriendCategory() {
+  return (0, _http.default)({
+    url: '/user/user/friendCategory',
+    method: "GET"
+  });
+}
+// 插入新的好友分类
+function addFriendCategory(categoryName) {
+  return (0, _http.default)({
+    url: '/user/user/friendCategory',
+    method: "POST",
+    data: {
+      name: categoryName
+    }
+  });
+}
+// 根据好友 分组对象 id 修改好友的分组信息, (categoryId, name ,分组对象)
+function friendCategory(categoryObj, userId) {
+  return (0, _http.default)({
+    url: '/user/user/friendCategory',
+    method: "PUT",
+    data: {
+      id: categoryObj.id,
+      name: categoryObj.name,
+      userId: userId
+    }
+  });
+}
+// 根据好友分组信息id删除分组
+function deleteFriendCategory(categoryId) {
+  return (0, _http.default)({
+    url: "/user/user/friendCategory/".concat(categoryId),
+    method: "DELETE"
+  });
+}
+//查找用户所有好友
+function getFriend() {
+  return (0, _http.default)({
+    url: "/user/user/friends",
+    method: "GET"
+  });
+}
+// 添加好友,根据好友请求的请求来添加 好友分类id ，好友的用户id ，葬礼是否邀请用户，messageId根据好友请求列表得到 好友备注名
+function addFriendFromRequest(friendCategoryId, id) {
+  var invited = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+  var messageId = arguments.length > 3 ? arguments[3] : undefined;
+  var remarkName = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
+  return (0, _http.default)({
+    url: "/user/user/friends",
+    method: "POST",
+    data: {
+      friendCategoryId: friendCategoryId,
+      id: id,
+      invited: invited,
+      messageId: messageId,
+      remarkName: remarkName
+    }
+  });
+}
+//删除好友请求, 添加好友后删除请求列表
+function deleteFriendRequest(friendId) {
+  return (0, _http.default)({
+    url: "/user/user/friends/request/".concat(friendId),
+    method: "DELETE"
+  });
+}
+
+// 查看好友请求 ， 别人想加你为好友
+function getFriendRequest() {
+  return (0, _http.default)({
+    url: "/user/user/friends/request",
+    method: "GET"
+  });
+}
+// 发送好友请求 加别人为好友   categoryid给对方的分类 , 接收者用户id
+function postFriendRequest(categoryid, receiverId) {
+  return (0, _http.default)({
+    url: "/user/user/friends/request",
+    method: "POST",
+    data: {
+      packageId: categoryid,
+      receiverId: receiverId
+    }
+  });
+}
+//更改好友信息 ， 改备注 ，邀请 ，和分类
+function changeFriendData(friendCategoryId, id) {
+  var invited = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+  var remarkName = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+  return (0, _http.default)({
+    url: "/user/user/friends",
+    method: "PUT",
+    data: {
+      friendCategoryId: friendCategoryId,
+      id: id,
+      invited: invited,
+      remarkName: remarkName
+    }
+  });
+}
+
+/***/ }),
+
+/***/ 33:
+/*!***********************************************!*\
+  !*** D:/此心安处是吾乡/xinan-front-end/util/http.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Request;
+function Request(_ref) {
+  var url = _ref.url,
+    method = _ref.method,
+    _ref$data = _ref.data,
+    data = _ref$data === void 0 ? null : _ref$data,
+    _ref$contentType = _ref.contentType,
+    contentType = _ref$contentType === void 0 ? 'application/json' : _ref$contentType;
+  uni.showLoading({
+    title: '加载中'
+  });
+  return new Promise(function (resolve, reject) {
+    uni.request({
+      url: getApp().globalData.BASE_URL + url,
+      data: data || {},
+      method: method || 'GET',
+      header: {
+        // || '' 考虑到登录API没有token。
+        'token': getApp().globalData.token || '',
+        'Content-Type': contentType
+      },
+      success: function success(res) {
+        if (res.statusCode !== 200) {
+          // 返回错误
+          if (res.statusCode == 401) {
+            // 没有token，或者token失效
+            uni.removeStorage({
+              // 移除失效的token
+              key: "token",
+              success: function success() {
+                uni.redirectTo({
+                  url: "/pages/login/login"
+                });
+              }
+            });
+            return;
+          }
+          return reject();
+        }
+        resolve(res.data);
+      },
+      fail: function fail(err) {
+        reject(err);
+      },
+      complete: function complete() {
+        uni.hideLoading();
+      }
+    });
+  });
+}
+;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
+/***/ 36:
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
   \**********************************************************************************************************/
@@ -9752,7 +9901,7 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 35:
+/***/ 37:
 /*!***********************************************************!*\
   !*** D:/此心安处是吾乡/xinan-front-end/uni.promisify.adaptor.js ***!
   \***********************************************************/
@@ -9776,157 +9925,6 @@ uni.addInterceptor({
 
 /***/ }),
 
-/***/ 36:
-/*!***********************************************!*\
-  !*** D:/此心安处是吾乡/xinan-front-end/util/http.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = Request;
-var BASE_URL = "http://120.24.61.209:8081";
-function Request(_ref) {
-  var url = _ref.url,
-    method = _ref.method,
-    _ref$data = _ref.data,
-    data = _ref$data === void 0 ? null : _ref$data,
-    _ref$contentType = _ref.contentType,
-    contentType = _ref$contentType === void 0 ? 'application/json' : _ref$contentType;
-  uni.showLoading({
-    title: '加载中'
-  });
-  return new Promise(function (resolve, reject) {
-    uni.request({
-      url: BASE_URL + url,
-      data: data || {},
-      method: method || 'GET',
-      header: {
-        // || '' 考虑到登录API没有token。
-        'token': getApp().globalData.token || '',
-        'Content-Type': contentType
-      },
-      success: function success(res) {
-        if (res.statusCode !== 200) {
-          // 返回错误
-          if (res.statusCode == 401) {
-            // 没有token，或者token失效
-            uni.removeStorage({
-              // 移除失效的token
-              key: "token",
-              success: function success() {
-                uni.redirectTo({
-                  url: "/pages/login/login"
-                });
-              }
-            });
-            return;
-          }
-          return reject();
-        }
-        resolve(res.data);
-      },
-      fail: function fail(err) {
-        reject(err);
-      },
-      complete: function complete() {
-        uni.hideLoading();
-      }
-    });
-  });
-}
-;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-
-/***/ 382:
-/*!*********************************************************!*\
-  !*** D:/此心安处是吾乡/xinan-front-end/util/xinanCircleApi.js ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.cancelHeartXinanCircle = cancelHeartXinanCircle;
-exports.deleteXinanCircle = deleteXinanCircle;
-exports.editXinanCircle = editXinanCircle;
-exports.getAllXinanCircle = getAllXinanCircle;
-exports.getOtherXinanCircle = getOtherXinanCircle;
-exports.heartXinanCircle = heartXinanCircle;
-exports.updataXinanCircle = updataXinanCircle;
-var _http = _interopRequireDefault(__webpack_require__(/*! ./http */ 36));
-// 分页查看所有的安心圈
-function getAllXinanCircle(page, pageSize) {
-  return (0, _http.default)({
-    url: "/user/moment?page=".concat(page, "&pageSize=").concat(pageSize),
-    method: 'GET'
-  });
-}
-// 分页查看指定用户的安心圈(查看别人的安心圈)
-function getOtherXinanCircle(page, pageSize) {
-  var userId = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : getApp().globalData.id;
-  return (0, _http.default)({
-    url: "/user/moment/".concat(userId, "?page=").concat(page, "&pageSize=").concat(pageSize),
-    method: 'GET'
-  });
-}
-// 发布新的安心圈动态
-function updataXinanCircle(xinanCircleObj) {
-  return (0, _http.default)({
-    url: '/user/moment',
-    method: 'POST',
-    data: xinanCircleObj
-  });
-}
-// 改动安心圈动态
-function editXinanCircle(xinanCircleObj) {
-  return (0, _http.default)({
-    url: '/user/moment',
-    method: 'PUT',
-    data: xinanCircleObj
-  });
-}
-// 根据id删除安心圈动态
-function deleteXinanCircle(id) {
-  return (0, _http.default)({
-    url: "/user/moment/".concat(id),
-    method: 'DELETE'
-  });
-}
-// 用户对安心圈点赞操作
-function heartXinanCircle(momentId) {
-  var userId = getApp().globalData.id;
-  return (0, _http.default)({
-    url: '/user/moment/likes',
-    method: 'POST',
-    data: {
-      momentId: momentId,
-      userId: userId
-    }
-  });
-}
-// 用户根据安心圈id撤销点赞
-function cancelHeartXinanCircle(momentId) {
-  return (0, _http.default)({
-    url: "/user/moment/likes/".concat(momentId),
-    method: 'DELETE'
-  });
-}
-
-/***/ }),
-
 /***/ 4:
 /*!**********************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
@@ -9943,7 +9941,7 @@ module.exports = _interopRequireDefault, module.exports.__esModule = true, modul
 
 /***/ }),
 
-/***/ 43:
+/***/ 44:
 /*!***************************************************!*\
   !*** D:/此心安处是吾乡/xinan-front-end/util/severApi.js ***!
   \***************************************************/
@@ -9967,7 +9965,7 @@ exports.deleteProcess = deleteProcess;
 exports.deleteProcessDetail = deleteProcessDetail;
 exports.getMerchants = getMerchants;
 exports.getUserProcess = getUserProcess;
-var _http = _interopRequireDefault(__webpack_require__(/*! ./http */ 36));
+var _http = _interopRequireDefault(__webpack_require__(/*! ./http */ 33));
 //得到用户服务流程
 function getUserProcess() {
   return (0, _http.default)({
@@ -10022,7 +10020,7 @@ function addProcessDetail(detailObj) {
   return (0, _http.default)({
     url: '/user/process/detail',
     method: 'POST',
-    data: ProcessObj
+    data: detailObj
   });
 }
 // 根据流程细则id修改流程细则 , detailObj 修改后的
@@ -10041,7 +10039,7 @@ function changeProcessDetailOrder(detailArr) {
     data: detailArr
   });
 }
-// 根据id批量删除流程细则 detaiIdlArr,数组
+// 根据id批量删除流程细则 detaiIdlArr,数组[0,1,2]
 function deleteProcessDetail(detailIdlArr) {
   return (0, _http.default)({
     url: "/user/process/detail/".concat(detailIdlArr.join()),

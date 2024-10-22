@@ -80,13 +80,8 @@ export default {
 		};
 	},
 	methods: {
-		c() {
-			uni.reLaunch({
-				url: '/page_list/invitelist/invitelist'
-			})
-		},
 		goto(url) {
-			uni.reLaunch({
+			uni.navigateTo({
 				url: url
 			})
 		}

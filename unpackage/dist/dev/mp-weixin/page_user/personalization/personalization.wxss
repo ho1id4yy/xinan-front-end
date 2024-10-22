@@ -49,23 +49,18 @@
   width: 100%;
   border-radius: 80rpx;
   border: 3rpx solid #000;
-  line-height: 80rpx;
   margin-top: 25rpx;
   position: relative;
   width: 85%;
 }
-.inputArea .inputBar input {
+.inputArea .inputBar input, .inputArea .inputBar .input {
   height: 80rpx;
   width: 85%;
-  position: relative;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  margin: 0 auto;
 }
 .inputArea .inputBar text {
   height: 35rpx;
   line-height: 35rpx;
-  box-sizing: border-box;
   padding: 0rpx 10rpx;
   background-color: #fff;
   position: absolute;

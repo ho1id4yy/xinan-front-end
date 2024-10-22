@@ -99,10 +99,10 @@
 							console.log("修改背景图片成功", res)
 							this.$set(this.userInfo, 'backgroundImage', res)
 							// 链式调用
-							return updataUserInfo(this.userInfo)// 修改后上传用户信息
+							return updataUserInfo(this.userInfo) // 修改后上传用户信息
 						}).then((res) => {
 							// 修改后上传用户信息 ,这是updataUserInfo的then
-							console.log("上传用户信息成功",res)
+							console.log("上传用户信息成功", res)
 						}).catch(err => {
 							console.log("修改背景图片失败", err)
 						})
@@ -117,8 +117,13 @@
 				updataImage(e.detail.avatarUrl).then(url => {
 					console.log("照片选择成功！", url);
 					this.$set(this.userInfo, 'avatar', url)
+					// 链式调用
+					return updataUserInfo(this.userInfo) // 修改后上传用户信息
+				}).then((res) => {
+					// 修改后上传用户信息 ,这是updataUserInfo的then
+					console.log("上传用户信息成功", res)
 				}).catch(err => {
-					console.log("照片选择失败！", err)
+					console.log("上传用户信息失败！", err)
 				})
 			},
 		}

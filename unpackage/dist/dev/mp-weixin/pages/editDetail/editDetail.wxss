@@ -1,0 +1,148 @@
+.buttom-bar-wrap.data-v-8a672320 {
+  background-color: #fff;
+  z-index: 999;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0rpx 25rpx 0;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0;
+}
+.buttom-bar-wrap .buttom-bar.data-v-8a672320 {
+  height: 100%;
+  width: 100%;
+  border-radius: 120rpx;
+  border: 2rpx solid #000;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: #fff;
+  padding: 8rpx 0rpx;
+}
+.buttom-bar-wrap .buttom-bar .ul.data-v-8a672320 {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.buttom-bar-wrap .buttom-bar .ul .border.data-v-8a672320 {
+  width: 20%;
+  height: 84rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 120rpx;
+}
+.buttom-bar-wrap .buttom-bar .ul .border.active.data-v-8a672320 {
+  border: #000 2rpx solid;
+}
+.buttom-bar-wrap .buttom-bar .ul .border .image.data-v-8a672320 {
+  width: 2.66667vh;
+  height: 2.66667vh;
+}
+
+.block.data-v-7de17734 {
+  height: 140rpx;
+  clear: both;
+}
+.block .icon.data-v-7de17734 {
+  width: 30rpx;
+  height: 30rpx;
+  background-color: #FFFFFF;
+  float: left;
+  display: inline-block;
+  margin-top: 25rpx;
+  margin-left: 60rpx;
+  margin-right: 0rpx;
+  display: inline;
+  float: left;
+}
+.block .title.data-v-7de17734 {
+  color: #343434;
+  font-size: 30rpx;
+  display: inline;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  float: left;
+}
+.block .line.data-v-7de17734 {
+  height: 80rpx;
+  font-weight: bold;
+  width: 667rpx;
+  float: left;
+  margin-left: 60rpx;
+  margin-top: 10rpx;
+  font-size: 150%;
+}
+.block .line .vector.data-v-7de17734 {
+  width: 400rpx;
+  height: 50rpx;
+  float: right;
+}
+.buttonBar.data-v-7de17734 {
+  height: 65rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.buttonBar .add.data-v-7de17734 {
+  height: 65rpx;
+  width: 45%;
+  line-height: 65rpx;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 15rpx;
+  border: 4rpx solid;
+  background-color: #343434;
+  color: #fff;
+  border-color: #fff;
+}
+.buttonBar .edit.data-v-7de17734 {
+  height: 65rpx;
+  width: 45%;
+  line-height: 65rpx;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 15rpx;
+  border: 4rpx solid;
+  background-color: #fff;
+  color: #343434;
+  border-color: #343434;
+}
+.something.data-v-7de17734 {
+  height: 730rpx;
+  width: 100%;
+}
+.something .rectangle.data-v-7de17734 {
+  height: 180rpx;
+  margin: 20rpx 45rpx 20rpx 50rpx;
+  border: 5rpx solid black;
+  background-color: #F5F5F5;
+  border-radius: 20rpx;
+  padding-left: 15rpx;
+  padding-bottom: 15rpx;
+}
+.something .rectangle .box.data-v-7de17734 {
+  height: 40rpx;
+}
+.something .rectangle .box .index.data-v-7de17734 {
+  color: #343434;
+  width: 50rpx;
+  font-weight: bold;
+  font-size: 180%;
+  display: inline;
+  margin-right: 20rpx;
+}
+.something .rectangle .box .title.data-v-7de17734 {
+  color: #343434;
+  display: inline;
+}
+.something .rectangle .exp.data-v-7de17734 {
+  margin-top: 40rpx;
+  font-size: 50%;
+  margin-left: 95rpx;
+}
+

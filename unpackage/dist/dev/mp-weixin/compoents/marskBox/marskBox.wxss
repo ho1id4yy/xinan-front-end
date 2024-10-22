@@ -1,0 +1,32 @@
+.boxmarsk.data-v-8fc0faec {
+  height: 100vh;
+  width: 100%;
+  background-color: #343434bd;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+}
+.boxmarsk .addBox.data-v-8fc0faec {
+  width: 471rpx;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  background-color: #ffffff;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  border-radius: 15rpx;
+}
+.boxmarsk .addBox .closeBox.data-v-8fc0faec {
+  height: 25rpx;
+  width: 100%;
+  position: relative;
+}
+.boxmarsk .addBox .closeBox .image.data-v-8fc0faec {
+  height: 25rpx;
+  width: 25rpx;
+  float: right;
+}
+

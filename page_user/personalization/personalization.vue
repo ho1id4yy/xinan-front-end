@@ -111,26 +111,6 @@
 				// 更改性别
 				this.$set(this.userInfo, 'gender', e.detail.value)
 			},
-			toserve() {
-				uni.redirectTo({
-					url: '/pages/serve/serve'
-				})
-			},
-			tocircle() {
-				uni.redirectTo({
-					url: '/page_anxincircle/anxincircle/anxincircle'
-				})
-			},
-			touser() {
-				uni.redirectTo({
-					url: '/page_user/homepage/homepage'
-				})
-			},
-			tolist() {
-				uni.redirectTo({
-					url: '/page_list/mainlist/mainlist'
-				})
-			}
 		}
 	}
 </script>

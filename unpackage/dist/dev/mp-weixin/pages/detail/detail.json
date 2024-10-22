@@ -2,6 +2,7 @@
   "navigationBarTitleText": "",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "buttom-bar": "/compoents/buttomBar/buttomBar"
+    "add-box": "/pages/detail/compoents/addBox",
+    "edit-box": "/pages/detail/compoents/editBox"
   }
 }

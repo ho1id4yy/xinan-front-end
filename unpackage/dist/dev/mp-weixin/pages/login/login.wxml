@@ -1,0 +1,1 @@
+<view class="data-v-b237504c"><image class="log data-v-b237504c" src="../../static/icon/logo.png" mode="aspectFill"></image><button data-event-opts="{{[['tap',[['wxLogin',['$event']]]]]}}" class="wxLogin data-v-b237504c" bindtap="__e">微信登录</button></view>

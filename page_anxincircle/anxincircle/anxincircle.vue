@@ -9,7 +9,6 @@
 			<!-- 有的情况 -->
 			<view class="circleContent-wrap" v-if="circleList.length">
 				<scroll-view class="circleContent" scroll-x="true" @scroll="onScroll" @scrolltolower="reachBottom">
-					<!-- <view class="circleContent"> -->
 					<view class="circleItem" v-for="(item,idx) in circleList" :key="idx">
 						<view class="itemContent">
 							<view class="top">
@@ -267,7 +266,6 @@
 		onLoad() {
 			uni.$on('closeAddBox', () => {
 				this.isShowAddBox = !this.isShowAddBox;
-
 			})
 			uni.$on('addXinanCricle', (res) => {
 				console.log(res)
@@ -278,7 +276,6 @@
 					return getAllXinanCircle(1, 1)
 				}).then(res => {
 					console.log("得到新发送到心安圈成功", res)
-
 					this.circleList = [...res.data.records, ...this.circleList];
 					this.isRefresh = false;
 					this.isLoading = 0;
@@ -288,7 +285,7 @@
 				})
 				this.isShowAddBox = !this.isShowAddBox;
 			})
-
+			
 			// 获取用户信息
 			getUserInfo().then(res => {
 				console.log("获取用户信息成功", res)
@@ -398,7 +395,6 @@
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%);
-				position: relative;
 				display: flex;
 				justify-content: flex-start;
 				align-items: center;

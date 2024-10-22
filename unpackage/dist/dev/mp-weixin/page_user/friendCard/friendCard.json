@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "edit-box": "/page_user/friendCard/components/editBox"
+  }
+}

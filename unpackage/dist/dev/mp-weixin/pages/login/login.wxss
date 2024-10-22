@@ -1,0 +1,21 @@
+.log.data-v-b237504c {
+  height: 200rpx;
+  width: 200rpx;
+  position: relative;
+  margin-top: 25%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.wxLogin.data-v-b237504c {
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 100rpx;
+  width: 85%;
+  background-color: #343434;
+  color: #fff;
+  margin-top: 25%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+

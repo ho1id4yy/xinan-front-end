@@ -1,31 +1,37 @@
 <template>
-	<view>
-	</view>
 </template>
 <script>
+	import { getUserInfo } from './util/userApi';
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
-			try {
-				const token = uni.getStorageSync('token');
-				const id = uni.getStorageSync('id');
-				if (token && id) {
-					console.log("已登录");
-					this.globalData.token = token;
-					this.globalData.id = id;
-					console.log(token)
-				} else {
-					console.log("没有token，id需要登陆")
-					uni.reLaunch({
-						url: '/pages/login/login'
-					});
-				}
-			} catch (e) {
-				console.log("登录出错", e)
-				uni.reLaunch({
-					url: '/pages/login/login'
-				});
-			}
+			// try {
+			// 	const token = uni.getStorageSync('token');
+			// 	const id = uni.getStorageSync('id');
+			// 	if (token && id) {
+			// 		console.log("已登录");
+			// 		this.globalData.token = token;
+			// 		this.globalData.id = id;
+			// 		console.log(token)
+			// 	} else {
+			// 		console.log("没有token，id需要登陆")
+			// 		uni.reLaunch({
+			// 			url: '/pages/login/login'
+			// 		});
+			// 	}
+			// } catch (e) {
+			// 	console.log("登录出错", e)
+			// 	uni.reLaunch({
+			// 		url: '/pages/login/login'
+			// 	});
+			// }
+			// // 获取用户信息
+			// getUserInfo().then(res => {
+			// 	console.log("获取用户信息成功", res)
+			// 	this.globalData.userInfo = res.data;
+			// }).catch(err => {
+			// 	console.log("获取用户信息失败", err)
+			// })
 		},
 		onShow: function() {
 			console.log('App Show')
@@ -39,7 +45,8 @@
 			// 用户id
 			id: '',
 			userInfo: {},
-			BASE_URL: "http://120.24.61.209:8081",
+			BASE_URL: "http://112.74.15.57:8081",
+				// BASE_URL: "http:120.24.61.209//:8081",
 		}
 	}
 </script>
@@ -72,6 +79,32 @@
 		}
 	}
 
+	.something {
+		checkbox {
+			$size: 50rpx;
+			width: $size;
+			height: $size;
+
+			@mixin box {
+				border-radius: 50% !important;
+				border: #000 solid 2rpx;
+			}
+
+			.wx-checkbox-input {
+				@include box;
+			}
+
+			.wx-checkbox-input-checked {
+				@include box;
+			}
+
+			.wx-checkbox-input-checked.wx-checkbox-input::before {
+				color: #000 !important;
+				font-size: 80rpx;
+				transform: translate(-35%, -65%);
+			}
+		}
+	}
 
 	.Mainlist-content {
 		checkbox {

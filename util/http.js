@@ -1,4 +1,3 @@
-const BASE_URL = "http://120.24.61.209:8081";
 export default function Request({
 	url,
 	method,
@@ -10,7 +9,7 @@ export default function Request({
 	})
 	return new Promise((resolve, reject) => {
 		uni.request({
-			url: BASE_URL + url,
+			url:getApp().globalData.BASE_URL  + url,
 			data: data || {},
 			method: method || 'GET',
 			header: {

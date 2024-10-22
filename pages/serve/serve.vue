@@ -36,72 +36,11 @@
 									<text class="title">{{ item.name }}</text>
 									<text class="desc">{{item.illustrate}}</text>
 								</view>
-								<view class="more" @click="todetail"></view>
+								<view class="more" @click="todetail(index)"></view>
 							</view>
 						</view>
 					</view>
 					<view class="view-bottom" :style="{height: `${gap + 40}px`}"></view>
-
-					<!-- column是左边那个进度线的图片，暂时先放-->
-					<!-- <image class='column' src='../../static/icon/Component 22.png'></image> -->
-					<!--进度条倒数第三个点ui封装的时候好像缺了，找一个补上-->
-					<!-- <image class='alter' src='../../static/icon/Ellipse 18.png'></image> -->
-
-					<!--上面三个流程-->
-					<!-- <view>
-                        <view class='row1'>摆设灵堂</view>
-                        </view>
-                        <view>
-                            <view class='row1'>摆设灵堂</view>
-                        </view>
-                        <view>
-                        <view class='row1'>摆设灵堂</view>
-                    </view> -->
-
-
-					<!--重点框-->
-					<!-- <view class='row2'>
-                        <image class='btn' src='../../static/icon/Ellipse 99.png'></image>
-                        <image @click="todetail" class='btnright' src='../../static/icon/Component 110.png'></image>
-                    </view> -->
-
-					<!--下面-->
-					<!-- <view>
-                        <view class='row1'>摆设灵堂</view>
-                        </view>
-                        <view>
-                            <view class='row1'>摆设灵堂</view>
-                        </view>
-                        <view>
-                        <view class='row1'>摆设灵堂</view>
-                    </view>
-                    <view>
-                        <view class='row1'>摆设灵堂</view>
-                        </view>
-                        <view>
-                            <view class='row1'>摆设灵堂</view>
-                        </view>
-                        <view>
-                        <view class='row1'>摆设灵堂</view>
-                    </view>
-                    <view>
-                        <view class='row1'>摆设灵堂</view>
-                        </view>
-                        <view>
-                            <view class='row1'>摆设灵堂</view>
-                        </view>
-                        <view>
-                        <view class='row1'>摆设灵堂</view>
-                    </view>
-                    <view>
-                        <view class='row1'>摆设灵堂</view>
-                        </view>
-                        <view>
-                            <view class='row1'>摆设灵堂</view>
-                        </view>
-                        <view>
-                        <view class='row1'>摆设灵堂</view>
-                    </view> -->
 				</view>
 			</view>
 		</scroll-view>
@@ -135,59 +74,8 @@
 						'/static/icon/Group_white.png'
 					]
 				},
-				list: [{
-						name: '医生确认死亡',
-						illustrate: '需要携带证件'
-					},
-					{
-						name: '净身穿衣',
-						illustrate: '需要携带证件'
-					},
-					{
-						name: '开具死亡证明',
-						illustrate: '需要携带证件'
-					},
-					{
-						name: '联系殡仪馆灵车',
-						illustrate: '需要携带证件'
-					},
-					{
-						name: '搭设灵堂',
-						illustrate: '需要携带证件'
-					},
-					{
-						name: '预约殡仪馆事项',
-						illustrate: '需要携带证件'
-					},
-					{
-						name: '选购殡葬用品',
-						illustrate: '需要携带证件'
-					},
-					{
-						name: '预备丧宴',
-						illustrate: '需要携带证件'
-					},
-					{
-						name: '办理殡仪馆手续',
-						illustrate: '需要携带证件'
-					},
-					{
-						name: '出殡仪式',
-						illustrate: '需要携带证件'
-					},
-					{
-						name: '举行尊体告别仪式',
-						illustrate: '需要携带证件'
-					},
-					{
-						name: '尊体火化',
-						illustrate: '需要携带证件'
-					},
-					{
-						name: '后续祭祀',
-						illustrate: '需要携带证件'
-					},
-				]
+				// 流程页信息
+				list: [],
 			};
 		},
 		created() {
@@ -230,29 +118,9 @@
 					url: '/pages/merchant/merchant'
 				})
 			},
-			toserve() {
+			todetail(processIndx) {
 				uni.navigateTo({
-					url: '/pages/serve/serve'
-				})
-			},
-			tocircle() {
-				uni.navigateTo({
-					url: '/page_anxincircle/anxincircle/anxincircle'
-				})
-			},
-			touser() {
-				uni.navigateTo({
-					url: '/page_user/homepage/homepage'
-				})
-			},
-			tolist() {
-				uni.navigateTo({
-					url: '/page_list/mainlist/mainlist'
-				})
-			},
-			todetail() {
-				uni.navigateTo({
-					url: '/pages/detail/detail'
+					url: `/pages/detail/detail?processIndx=${processIndx}`
 				})
 			}
 		},

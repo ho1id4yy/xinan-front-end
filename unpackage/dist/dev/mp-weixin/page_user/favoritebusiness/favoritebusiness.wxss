@@ -1,6 +1,6 @@
 .buttom-bar-wrap.data-v-8a672320 {
   background-color: #fff;
-  z-index: 2999;
+  z-index: 999;
   box-sizing: border-box;
   width: 100%;
   padding: 0rpx 25rpx 0;

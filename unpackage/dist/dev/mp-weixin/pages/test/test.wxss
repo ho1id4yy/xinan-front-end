@@ -1,0 +1,8 @@
+.drag-and-drop-sort-B.data-v-3e202046 {
+  position: relative;
+}
+.drag-and-drop-sort-B ._item.data-v-3e202046 {
+  position: absolute;
+  background-color: red;
+}
+

@@ -16,6 +16,24 @@
   color: #fff !important;
   font-weight: 900;
 }
+.something checkbox {
+  width: 50rpx;
+  height: 50rpx;
+}
+.something checkbox .wx-checkbox-input {
+  border-radius: 50% !important;
+  border: #000 solid 2rpx;
+}
+.something checkbox .wx-checkbox-input-checked {
+  border-radius: 50% !important;
+  border: #000 solid 2rpx;
+}
+.something checkbox .wx-checkbox-input-checked.wx-checkbox-input::before {
+  color: #000 !important;
+  font-size: 80rpx;
+  -webkit-transform: translate(-35%, -65%);
+          transform: translate(-35%, -65%);
+}
 .Mainlist-content checkbox {
   width: 50rpx;
   height: 50rpx;

@@ -9,7 +9,7 @@
 					<input type="text" placeholder="时光主题......" v-model="title" />
 				</view>
 				<view class="content" @click="updataImg">
-					<image :src="item" mode="" v-for="(item,idx) in imgList" :key="idx"></image>
+					<image :src="item" mode="aspectFill" v-for="(item,idx) in imgList" :key="idx"></image>
 				</view>
 				<view class="buttom">
 					<text class="text">发生时间</text>

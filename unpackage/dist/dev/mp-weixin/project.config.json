@@ -59,6 +59,21 @@
           "name": "friendCard",
           "pathName": "page_user/friendCard/friendCard",
           "query": ""
+        },
+        {
+          "name": "detail",
+          "pathName": "pages/detail/detail",
+          "query": "processIndx=0"
+        },
+        {
+          "name": "editdetail",
+          "pathName": "pages/editDetail/editDetail",
+          "query": "processIndx=0"
+        },
+        {
+          "name": "test",
+          "pathName": "pages/test/test",
+          "query": ""
         }
       ]
     }

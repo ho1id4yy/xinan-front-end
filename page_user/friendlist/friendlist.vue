@@ -11,7 +11,8 @@
 		<view class="inputWrap">
 			<view class="email" @click="openAcceptFriendBox">
 				<image src="/static/icon/emil.png" mode="aspectFit"></image>
-				<view class="dotted" v-show="isShowDots"></view>
+				<!-- 有申请就亮红点 -->
+				<view class="dotted" v-show="friendRequestList&&friendRequestList.length"></view>
 			</view>
 			<view class='input'>
 				<input type='number' v-model="phoneNum" class='text' placeholder="请输入手机号" />
@@ -20,7 +21,7 @@
 		</view>
 
 		<view class='list'>
-			<view class="item" v-for='(item,idx) in friendList' :key="idx" >
+			<view class="item" v-for='(item,idx) in friendList' :key="idx">
 				<image class='head' :src='item.avatar'></image>
 				<view class='name' :id='idx' @click="goFriendCard(item.id)">
 					{{item.remarkName}}
@@ -48,7 +49,8 @@
 		addFriendFromRequest,
 		postFriendRequest,
 		getFriendCategory,
-		changeFriendData
+		changeFriendData,
+		getUserInfo
 	} from 'util/userApi.js'
 	export default {
 		components: {
@@ -84,9 +86,6 @@
 			};
 		},
 		computed: {
-			isShowDots() {
-				return this.friendRequestList;
-			},
 			scrollCategoryLIst() {
 				let save = [];
 				for (let i = 0; i < this.categoryLIst.length / 6; i++) {
@@ -164,7 +163,12 @@
 					remarkName
 				).then(res => {
 					console.log('同意好友申请成功', res)
-					// 删除
+					// 得到用户的信息加入好友列表
+					return getUserInfo(id)
+				}).then(res => {
+					console.log("得到添加的好友的信息成功", res)
+					this.friendList.unshift(res.data)
+					// 删除请求
 					return deleteFriendRequest(id)
 				}).then(res => {
 					console.log('删除好友请求成功', res);
@@ -182,21 +186,29 @@
 				deleteFriendRequest(id).then(res => {
 					console.log('删除好友请求成功', res)
 					this.friendRequestList.splice(pos, 1);
-				}).catch('删除好友请求失败', err)
+					if (!this.friendRequestList.length) {
+						this.isShowAcceptFriendBox = !this.isShowAcceptFriendBox;
+					}
+				}).catch(err => {
+					console.log('删除好友请求失败', err)
+				})
 			})
 		},
 		methods: {
+			// 接收好友请求的盒子
 			openAcceptFriendBox() {
 				// 如果有
 				if (this.friendRequestList.length) {
 					this.isShowAcceptFriendBox = !this.isShowAcceptFriendBox;
 				}
 			},
+			// 看好友名片
 			goFriendCard(userId) {
 				uni.navigateTo({
 					url: `/page_user/friendCard/friendCard?userId=${userId}`,
 				})
 			},
+			// 请求好友
 			getAddFriend() {
 				if (this.phoneNum.length !== 11) {
 					console.log("无效手机号")

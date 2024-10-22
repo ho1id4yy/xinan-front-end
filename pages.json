@@ -34,6 +34,22 @@
                 "navigationBarTitleText" : "",
                 "enablePullDownRefresh" : false
             }
+        },
+        {
+        	"path" : "pages/test/test",
+        	"style" : 
+        	{
+        		"navigationBarTitleText" : "",
+        		"enablePullDownRefresh" : false
+        	}
+        },
+        {
+        	"path" : "pages/editDetail/editDetail",
+        	"style" : 
+        	{
+        		"navigationBarTitleText" : "",
+        		"enablePullDownRefresh" : false
+        	}
         }
     ],
     "subPackages" : [
@@ -214,7 +230,22 @@
                 "name" : "friendCard", //模式名称
                 "path" : "page_user/friendCard/friendCard", //启动页面，必选
                 "query" : "" //启动参数，在页面的onLoad函数里面得到
-            }
+            },
+			{
+			    "name" : "detail", //模式名称
+			    "path" : "pages/detail/detail", //启动页面，必选
+			    "query" : "processIndx=0" //启动参数，在页面的onLoad函数里面得到
+			},
+			{
+			    "name" : "editdetail", //模式名称
+			    "path" : "pages/editDetail/editDetail", //启动页面，必选
+			    "query" : "processIndx=0" //启动参数，在页面的onLoad函数里面得到
+			},
+			{
+			    "name" : "test", //模式名称
+			    "path" : "pages/test/test", //启动页面，必选
+			    "query" : "" //启动参数，在页面的onLoad函数里面得到
+			}
         ]
     }
 }

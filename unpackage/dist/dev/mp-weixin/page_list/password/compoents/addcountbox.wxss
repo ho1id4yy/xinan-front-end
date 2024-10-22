@@ -54,22 +54,17 @@
   width: 100%;
   border-radius: 80rpx;
   border: 3rpx solid #000;
-  line-height: 80rpx;
   margin-top: 25rpx;
   position: relative;
 }
-.boxmarsk .addcoundBox .userAcount input.data-v-b5ad57de {
+.boxmarsk .addcoundBox .userAcount input.data-v-b5ad57de, .boxmarsk .addcoundBox .userAcount .input.data-v-b5ad57de {
   height: 80rpx;
   width: 85%;
-  position: relative;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  margin: 0 auto;
 }
 .boxmarsk .addcoundBox .userAcount text.data-v-b5ad57de {
   height: 35rpx;
   line-height: 35rpx;
-  box-sizing: border-box;
   padding: 0rpx 10rpx;
   background-color: #fff;
   position: absolute;
@@ -84,22 +79,17 @@
   width: 100%;
   border-radius: 80rpx;
   border: 3rpx solid #000;
-  line-height: 80rpx;
   margin-top: 25rpx;
   position: relative;
 }
-.boxmarsk .addcoundBox .userPassword input.data-v-b5ad57de {
+.boxmarsk .addcoundBox .userPassword input.data-v-b5ad57de, .boxmarsk .addcoundBox .userPassword .input.data-v-b5ad57de {
   height: 80rpx;
   width: 85%;
-  position: relative;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  margin: 0 auto;
 }
 .boxmarsk .addcoundBox .userPassword text.data-v-b5ad57de {
   height: 35rpx;
   line-height: 35rpx;
-  box-sizing: border-box;
   padding: 0rpx 10rpx;
   background-color: #fff;
   position: absolute;
@@ -119,22 +109,17 @@
   width: 100%;
   border-radius: 80rpx;
   border: 3rpx solid #000;
-  line-height: 80rpx;
   margin-top: 25rpx;
   position: relative;
 }
-.boxmarsk .addcoundBox .checkApp .addWish input.data-v-b5ad57de {
+.boxmarsk .addcoundBox .checkApp .addWish input.data-v-b5ad57de, .boxmarsk .addcoundBox .checkApp .addWish .input.data-v-b5ad57de {
   height: 80rpx;
   width: 85%;
-  position: relative;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  margin: 0 auto;
 }
 .boxmarsk .addcoundBox .checkApp .addWish text.data-v-b5ad57de {
   height: 35rpx;
   line-height: 35rpx;
-  box-sizing: border-box;
   padding: 0rpx 10rpx;
   background-color: #fff;
   position: absolute;

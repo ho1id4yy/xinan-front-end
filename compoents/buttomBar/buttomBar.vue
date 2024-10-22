@@ -72,7 +72,7 @@
 	$height: 8vh;
 	.buttom-bar-wrap {
 		background-color: #fff;
-		z-index: 2999;
+		z-index: 999;
 		box-sizing: border-box;
 		width: 100%;
 		padding: 0rpx 25rpx 0;
